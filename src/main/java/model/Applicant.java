@@ -271,6 +271,4 @@ public class Applicant {
 	public void setTelephoneNumber(String telephoneNumber) {
 		this.telephoneNumber = telephoneNumber;
 	}
-	
-	
 }
