@@ -67,7 +67,7 @@ public class InsertApplicantServlet extends HttpServlet {
 		String educationAttainments = req.getParameter("educationAttainments");
 		String emailAddress = req.getParameter("emailAddress");
 		String firstName = req.getParameter("firstName");
-		String Gender = req.getParameter("Gender");
+		String gender = req.getParameter("gender");
 		String lastName = req.getParameter("lastName");
 		String middleName = req.getParameter("middleName");
 		String mobileNumber = req.getParameter("mobileNumber");
@@ -108,7 +108,7 @@ public class InsertApplicantServlet extends HttpServlet {
 		applicant.setEducationAttainments(educationAttainments);
 		applicant.setEmailAddress(emailAddress);
 		applicant.setFirstName(firstName);
-		applicant.setGender(Gender);
+		applicant.setGender(gender);
 		applicant.setLastName(lastName);
 		applicant.setMiddleName(middleName);
 		applicant.setMobileNumber(mobileNumber);
