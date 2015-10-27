@@ -53,7 +53,7 @@
 			<!-- 			</div> -->
 			<!-- 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"> -->
 			<div class="container-fluid">
-				<form class="form-horizontal" action="/insertApplicant" method="post" enctype="multipart/form-data">
+				<form class="form-horizontal" action="${pageContext.request.contextPath}/insertApplicant" method="post" enctype="multipart/form-data">
 					<!-- -----------------------------FIRST SECTION--------------------------- -->
 					<div class="form-group title" id="primaryInformation">
 						<h2>Primary Information</h2>

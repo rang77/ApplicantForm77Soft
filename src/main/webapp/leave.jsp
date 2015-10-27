@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>	
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -50,7 +50,7 @@
 			<!-- 			</div> -->
 			<!-- 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"> -->
 			<div class="container-fluid">
-				<form class="form-horizontal" action="/getLeaveCredits" method="post">
+				<form class="form-horizontal" action="${pageContext.request.contextPath}/getLeaveCredits" method="post">
 					<!-- -----------------------------FIRST SECTION--------------------------- -->
 					<div class="form-group title" id="primaryInformation">
 						<h2>Primary Information</h2>

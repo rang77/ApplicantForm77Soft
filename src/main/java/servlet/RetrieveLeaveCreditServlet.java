@@ -57,10 +57,10 @@ public class RetrieveLeaveCreditServlet extends HttpServlet {
 		QueryResult<Employee> result = api.query(String.format("SELECT id,FirstName__c FROM Employee__c WHERE IDNumber__c LIKE '%s'", idNumber), Employee.class);
 		
 		if(result.getTotalSize() == 0){
-			response.sendRedirect("/employeeNotFound.html");
+			response.sendRedirect("employeeNotFound.html");
 		}else{
 			Employee employee = result.getRecords().get(0);
-			RequestDispatcher rd = request.getRequestDispatcher("/viewLeave.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("viewLeave.jsp");
 			request.setAttribute("employee", employee);
 			rd.forward(request, response);
 		}

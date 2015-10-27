@@ -130,7 +130,7 @@ public class InsertApplicantServlet extends HttpServlet {
 		String id = api.createSObject("Applicant__c", applicant);
 
 		if (id == null || id.length() == 0) {
-			response.sendRedirect("/error.html");
+			response.sendRedirect("error.html");
 		} else {
 			if (req.getPart("resume") != null) {
 				Part attachedResume = req.getPart("resume");
@@ -164,7 +164,7 @@ public class InsertApplicantServlet extends HttpServlet {
 				}
 			}
 
-			response.sendRedirect("/success.html");
+			response.sendRedirect("success.html");
 		}
 	}
 
