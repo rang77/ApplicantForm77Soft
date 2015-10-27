@@ -1,9 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,13 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.catalina.connector.Request;
-
 import com.force.api.ApiConfig;
 import com.force.api.ForceApi;
 import com.force.api.QueryResult;
 
-import model.Applicant;
 import model.Employee;
 
 @WebServlet(name = "retrieveLeaveCreditServlet", urlPatterns = { "/getLeaveCredits/*", "/getLeaveCredits" }, initParams = {
@@ -31,7 +25,6 @@ import model.Employee;
 @WebInitParam(name = "environment", value = "https://login.salesforce.com"), })
 public class RetrieveLeaveCreditServlet extends HttpServlet {
 	
-	private static final DateFormat DF = new SimpleDateFormat("yyyy-mm-dd");
 	private static final long serialVersionUID = 1L;
 	
 	private static final String USERNAME = "devorg@77soft.com";
@@ -61,13 +54,13 @@ public class RetrieveLeaveCreditServlet extends HttpServlet {
 		
 		String idNumber = request.getParameter("idNumber");
 		
-		QueryResult<Employee> result = api.query(String.format("SELECT id FROM Employee__c WHERE Name LIKE %s", idNumber), Employee.class);
+		QueryResult<Employee> result = api.query(String.format("SELECT id,FirstName__c FROM Employee__c WHERE IDNumber__c LIKE '%s'", idNumber), Employee.class);
 		
 		if(result.getTotalSize() == 0){
 			response.sendRedirect("/employeeNotFound.html");
 		}else{
 			Employee employee = result.getRecords().get(0);
-			RequestDispatcher rd = request.getRequestDispatcher("/viewLeaves.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/viewLeave.jsp");
 			request.setAttribute("employee", employee);
 			rd.forward(request, response);
 		}
