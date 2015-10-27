@@ -17,7 +17,7 @@ import com.force.api.ForceApi;
 
 import model.Applicant;
 
-@WebServlet(name = "oauth", urlPatterns = { "/insertApplicant/*", "/insertApplicant" }, initParams = {
+@WebServlet(name = "insertApplicant", urlPatterns = { "/insertApplicant/*", "/insertApplicant" }, initParams = {
 // clientId is 'Consumer Key' in the Remote Access UI
 @WebInitParam(name = "clientId", value = "3MVG9ZL0ppGP5UrC9R5pfGadp9_.sezTYM4KyOofpmNB9S0IumaT57vNAI1j0Xbl6fJInNkjvcIDSCKZ9ypMm"),
 // clientSecret is 'Consumer Secret' in the Remote Access UI
@@ -78,8 +78,6 @@ public class InsertApplicantServlet extends HttpServlet {
 		String presentAddress = req.getParameter("presentAddress");
 		String skills = req.getParameter("skills");
 		String telephoneNumber = req.getParameter("telephoneNumber");
-		
-		
 		
 		applicant.setAchievementsCertifications(achievementsCertifications);
 		try {
