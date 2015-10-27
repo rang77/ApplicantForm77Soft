@@ -22,7 +22,7 @@ import com.force.api.ForceApi;
 import model.Applicant;
 import model.Attachment;
 
-@WebServlet(name = "oauth", urlPatterns = { "/insertApplicant/*", "/insertApplicant" }, initParams = {
+@WebServlet(name = "oauth", urlPatterns = { "/applicant-form/insertApplicant/*", "/applicant-form/insertApplicant" }, initParams = {
 // clientId is 'Consumer Key' in the Remote Access UI
 @WebInitParam(name = "clientId", value = "3MVG9ZL0ppGP5UrC9R5pfGadp9_.sezTYM4KyOofpmNB9S0IumaT57vNAI1j0Xbl6fJInNkjvcIDSCKZ9ypMm"),
 // clientSecret is 'Consumer Secret' in the Remote Access UI
@@ -52,7 +52,7 @@ public class InsertApplicantServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ApiConfig config = new ApiConfig();
 		config.setUsername(USERNAME);
 		config.setPassword(PASSWORD + SECURITY_TOKEN);
@@ -64,28 +64,28 @@ public class InsertApplicantServlet extends HttpServlet {
 
 		Applicant applicant = new Applicant();
 
-		String achievementsCertifications = req.getParameter("achievementsCertifications");
-		String availabilityOfEmployment = req.getParameter("availabilityOfEmployment");
-		String birthdate = req.getParameter("birthdate");
-		String citizenship = req.getParameter("citizenship");
-		String civilStatus = req.getParameter("civilStatus");
-		String currentPreviousCompany = req.getParameter("currentPreviousCompany");
-		String currentPreviousDateEnded = req.getParameter("currentPreviousDateEnded");
-		String currentPreviousDateStarted = req.getParameter("currentPreviousDateStarted");
-		String educationAttainments = req.getParameter("educationAttainments");
-		String emailAddress = req.getParameter("emailAddress");
-		String firstName = req.getParameter("firstName");
-		String gender = req.getParameter("gender");
-		String lastName = req.getParameter("lastName");
-		String middleName = req.getParameter("middleName");
-		String mobileNumber = req.getParameter("mobileNumber");
-		String currentPreviousManager = req.getParameter("currentPreviousManager");
-		String permanentAddress = req.getParameter("permanentAddress");
-		String currentPreviousPosition = req.getParameter("currentPreviousPosition");
-		String positionApplyingFor = req.getParameter("positionApplyingFor");
-		String presentAddress = req.getParameter("presentAddress");
-		String skills = req.getParameter("skills");
-		String telephoneNumber = req.getParameter("telephoneNumber");
+		String achievementsCertifications = request.getParameter("achievementsCertifications");
+		String availabilityOfEmployment = request.getParameter("availabilityOfEmployment");
+		String birthdate = request.getParameter("birthdate");
+		String citizenship = request.getParameter("citizenship");
+		String civilStatus = request.getParameter("civilStatus");
+		String currentPreviousCompany = request.getParameter("currentPreviousCompany");
+		String currentPreviousDateEnded = request.getParameter("currentPreviousDateEnded");
+		String currentPreviousDateStarted = request.getParameter("currentPreviousDateStarted");
+		String educationAttainments = request.getParameter("educationAttainments");
+		String emailAddress = request.getParameter("emailAddress");
+		String firstName = request.getParameter("firstName");
+		String gender = request.getParameter("gender");
+		String lastName = request.getParameter("lastName");
+		String middleName = request.getParameter("middleName");
+		String mobileNumber = request.getParameter("mobileNumber");
+		String currentPreviousManager = request.getParameter("currentPreviousManager");
+		String permanentAddress = request.getParameter("permanentAddress");
+		String currentPreviousPosition = request.getParameter("currentPreviousPosition");
+		String positionApplyingFor = request.getParameter("positionApplyingFor");
+		String presentAddress = request.getParameter("presentAddress");
+		String skills = request.getParameter("skills");
+		String telephoneNumber = request.getParameter("telephoneNumber");
 
 		applicant.setAchievementsCertifications(achievementsCertifications);
 		try {
@@ -129,10 +129,10 @@ public class InsertApplicantServlet extends HttpServlet {
 		String id = api.createSObject("Applicant__c", applicant);
 
 		if (id == null || id.length() == 0) {
-			response.sendRedirect("error.html");
+			response.sendRedirect("/applicant-form/error.html");
 		} else {
-			if (req.getPart("resume") != null) {
-				Part attachedResume = req.getPart("resume");
+			if (request.getPart("resume") != null) {
+				Part attachedResume = request.getPart("resume");
 
 				if (attachedResume.getSize() <= Attachment.MAX_FILE_SIZE) {
 					InputStream fileContent = attachedResume.getInputStream();
@@ -161,9 +161,8 @@ public class InsertApplicantServlet extends HttpServlet {
 
 					api.createSObject("Attachment", resume);
 				}
+				response.sendRedirect("/applicant-form/success.html");
 			}
-
-			response.sendRedirect("success.html");
 		}
 	}
 

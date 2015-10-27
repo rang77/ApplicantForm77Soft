@@ -16,7 +16,7 @@ import com.force.api.QueryResult;
 
 import model.Employee;
 
-@WebServlet(name = "retrieveLeaveCreditServlet", urlPatterns = { "/getLeaveCredits/*", "/getLeaveCredits" }, initParams = {
+@WebServlet(name = "retrieveLeaveCreditServlet", urlPatterns = { "/leave-management/getLeaveCredits/*", "/leave-management/getLeaveCredits" }, initParams = {
 // clientId is 'Consumer Key' in the Remote Access UI
 @WebInitParam(name = "clientId", value = "3MVG9ZL0ppGP5UrC9R5pfGadp9_.sezTYM4KyOofpmNB9S0IumaT57vNAI1j0Xbl6fJInNkjvcIDSCKZ9ypMm"),
 // clientSecret is 'Consumer Secret' in the Remote Access UI
@@ -57,10 +57,10 @@ public class RetrieveLeaveCreditServlet extends HttpServlet {
 		QueryResult<Employee> result = api.query(String.format("SELECT id,FirstName__c FROM Employee__c WHERE IDNumber__c LIKE '%s'", idNumber), Employee.class);
 		
 		if(result.getTotalSize() == 0){
-			response.sendRedirect("employeeNotFound.html");
+			response.sendRedirect("/leave-management/employeeNotFound.html");
 		}else{
 			Employee employee = result.getRecords().get(0);
-			RequestDispatcher rd = request.getRequestDispatcher("viewLeave.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/leave-management/viewLeave.jsp");
 			request.setAttribute("employee", employee);
 			rd.forward(request, response);
 		}

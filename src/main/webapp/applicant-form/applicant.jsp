@@ -8,10 +8,10 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<script src="jquery/jquery-1.11.3.js"></script>
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="css/dark-theme.css" />
-<link rel="stylesheet" href="css/form-elements.css" />
+<script src="/jquery/jquery-1.11.3.js"></script>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/dark-theme.css" />
+<link rel="stylesheet" href="/css/form-elements.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>77 Soft Applicant App</title>
 
@@ -20,6 +20,7 @@
 </head>
 
 <body>
+	CONTEXT: ${pageContext.request.contextPath}
 	<nav class="navbar navbar-inverse navbar-fixed-top inverse-dark">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -53,7 +54,7 @@
 			<!-- 			</div> -->
 			<!-- 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"> -->
 			<div class="container-fluid">
-				<form class="form-horizontal" action="${pageContext.request.contextPath}/insertApplicant" method="post" enctype="multipart/form-data">
+				<form class="form-horizontal" action="/applicant-form/insertApplicant" method="post" enctype="multipart/form-data">
 					<!-- -----------------------------FIRST SECTION--------------------------- -->
 					<div class="form-group title" id="primaryInformation">
 						<h2>Primary Information</h2>
@@ -315,6 +316,6 @@
 
 	<!-- Bootstrap core JavaScript
     ================================================== -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>
