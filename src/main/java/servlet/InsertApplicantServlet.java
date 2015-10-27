@@ -132,8 +132,9 @@ public class InsertApplicantServlet extends HttpServlet {
 		if (id == null || id.length() == 0) {
 			response.sendRedirect("/applicant-form/error.html");
 		} else {
+			Part attachedResume = request.getPart("resume");
+			
 			if (attachedResume.getSize() > 0 && attachedResume.getSize() <= Attachment.MAX_FILE_SIZE) {
-				Part attachedResume = request.getPart("resume");
 
 				InputStream fileContent = attachedResume.getInputStream();
 				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
