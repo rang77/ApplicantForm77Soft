@@ -4,49 +4,61 @@ import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Employee {
 
 	@JsonProperty(value = "Id")
-	private String id;
+	private String recordID;
 
 	@JsonProperty(value = "Name")
+	@JsonSerialize(include=Inclusion.NON_NULL)
 	private String employeeNumber;
 
 	@JsonProperty(value = "IDNumber__c")
+	@JsonSerialize(include=Inclusion.NON_NULL)
 	private String idNumber;
 
 	@JsonProperty(value = "FirstName__c")
+	@JsonSerialize(include=Inclusion.NON_NULL)
 	private String firstName;
 
 	@JsonProperty(value = "LastName__c")
+	@JsonSerialize(include=Inclusion.NON_NULL)
 	private String lastName;
 
 	@JsonProperty(value = "MiddleName__c")
+	@JsonSerialize(include=Inclusion.NON_NULL)
 	private String middleName;
 
 	@JsonProperty(value = "SLCredits__c")
+	@JsonSerialize(include=Inclusion.NON_NULL)
 	private String slCredits;
 
 	@JsonProperty(value = "VLCredits__c")
+	@JsonSerialize(include=Inclusion.NON_NULL)
 	private String vlCredits;
 
 	@JsonProperty(value = "UsedSLCredits__c")
+	@JsonSerialize(include=Inclusion.NON_NULL)
 	private String usedSlCredits;
 
 	@JsonProperty(value = "UsedVLCredits__c")
+	@JsonSerialize(include=Inclusion.NON_NULL)
 	private String usedVlCredits;
 
 	@JsonProperty(value = "LeaveRequests__r")
+	@JsonSerialize(include=Inclusion.NON_NULL)
 	private List<LeaveRequest> leaveRequests;
 
-	public String getId() {
-		return id;
+	public String getRecordID() {
+		return recordID;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setRecordID(String recordID) {
+		this.recordID = recordID;
 	}
 
 	public String getIdNumber() {

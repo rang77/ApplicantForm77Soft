@@ -20,7 +20,6 @@
 </head>
 
 <body>
-	CONTEXT: ${pageContext.request.contextPath}
 	<nav class="navbar navbar-inverse navbar-fixed-top inverse-dark">
 		<div class="container-fluid">
 			<div class="navbar-header">

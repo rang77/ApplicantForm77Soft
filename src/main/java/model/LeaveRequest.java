@@ -2,6 +2,7 @@ package model;
 
 import java.util.Date;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
@@ -15,7 +16,7 @@ public class LeaveRequest {
 	private String requestNumber;
 
 	@JsonProperty(value = "Employee__c")
-	private Employee employee;
+	private String employeeID;
 
 	@JsonProperty(value = "StartDate__c")
 	private Date startDate;
@@ -26,7 +27,6 @@ public class LeaveRequest {
 	@JsonProperty(value = "LeaveType__c")
 	private String leaveType;
 
-	@JsonProperty(value = "DaysOnLeave__c")
 	private int daysOnLeave;
 
 	public String getId() {
@@ -45,12 +45,12 @@ public class LeaveRequest {
 		this.requestNumber = requestNumber;
 	}
 
-	public Employee getEmployee() {
-		return employee;
+	public String getEmployeeID() {
+		return employeeID;
 	}
 
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
+	public void setEmployeeID(String employeeID) {
+		this.employeeID = employeeID;
 	}
 
 	public Date getStartDate() {
@@ -77,10 +77,12 @@ public class LeaveRequest {
 		this.leaveType = leaveType;
 	}
 
+	@JsonIgnore
 	public int getDaysOnLeave() {
 		return daysOnLeave;
 	}
 
+	@JsonProperty(value = "DaysOnLeave__c")
 	public void setDaysOnLeave(int daysOnLeave) {
 		this.daysOnLeave = daysOnLeave;
 	}
