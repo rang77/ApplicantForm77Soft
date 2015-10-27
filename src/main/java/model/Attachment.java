@@ -6,6 +6,8 @@ import org.codehaus.jackson.annotate.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Attachment {
 	
+	public static final long MAX_FILE_SIZE = Double.valueOf("5E+06").longValue();	
+	
 	@JsonProperty(value = "Id")
 	private String id;
 	
