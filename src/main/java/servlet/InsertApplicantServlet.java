@@ -132,39 +132,38 @@ public class InsertApplicantServlet extends HttpServlet {
 		if (id == null || id.length() == 0) {
 			response.sendRedirect("/applicant-form/error.html");
 		} else {
-			
-			if (request.getPart("resume").getName().equals("")) {
+			if (attachedResume.getSize() > 0 && attachedResume.getSize() <= Attachment.MAX_FILE_SIZE) {
 				Part attachedResume = request.getPart("resume");
 
-				if (attachedResume.getSize() <= Attachment.MAX_FILE_SIZE) {
-					InputStream fileContent = attachedResume.getInputStream();
-					ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-					byte[] chunk = new byte[(int) attachedResume.getSize()];
-					int amountRead;
-					while ((amountRead = fileContent.read(chunk)) != -1) {
-						outputStream.write(chunk, 0, amountRead);
-					}
-
-					String fileName = "";
-
-					for (String value : attachedResume.getHeader("content-disposition").split(";")) {
-						if (value.trim().startsWith("filename")) {
-							fileName = value.substring(value.indexOf('=') + 1).trim().replace("\"", "");
-							fileName = fileName.substring(fileName.lastIndexOf('/') + 1)
-									.substring(fileName.lastIndexOf('\\') + 1);
-						}
-					}
-
-					Attachment resume = new Attachment(chunk.length);
-
-					resume.setParentId(id);
-					resume.setName(fileName);
-					resume.setBody(outputStream.toByteArray());
-
-					api.createSObject("Attachment", resume);
+				InputStream fileContent = attachedResume.getInputStream();
+				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+				byte[] chunk = new byte[(int) attachedResume.getSize()];
+				int amountRead;
+				while ((amountRead = fileContent.read(chunk)) != -1) {
+					outputStream.write(chunk, 0, amountRead);
 				}
-				response.sendRedirect("/applicant-form/success.html");
+
+				String fileName = "";
+
+				for (String value : attachedResume.getHeader("content-disposition").split(";")) {
+					if (value.trim().startsWith("filename")) {
+						fileName = value.substring(value.indexOf('=') + 1).trim().replace("\"", "");
+						fileName = fileName.substring(fileName.lastIndexOf('/') + 1)
+								.substring(fileName.lastIndexOf('\\') + 1);
+					}
+				}
+
+				Attachment resume = new Attachment(chunk.length);
+
+				resume.setParentId(id);
+				resume.setName(fileName);
+				resume.setBody(outputStream.toByteArray());
+
+				api.createSObject("Attachment", resume);
+				
 			}
+			
+			response.sendRedirect("/applicant-form/success.html");
 		}
 	}
 
