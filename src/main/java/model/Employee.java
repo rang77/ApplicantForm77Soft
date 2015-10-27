@@ -1,6 +1,6 @@
 package model;
 
-import java.util.Date;
+import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
@@ -12,16 +12,19 @@ public class Employee {
 	private String id;
 
 	@JsonProperty(value = "Name")
+	private String employeeNumber;
+
+	@JsonProperty(value = "IDNumber__c")
 	private String idNumber;
 
 	@JsonProperty(value = "FirstName__c")
 	private String firstName;
 
 	@JsonProperty(value = "LastName__c")
-	private Date lastName;
+	private String lastName;
 
 	@JsonProperty(value = "MiddleName__c")
-	private Date middleName;
+	private String middleName;
 
 	@JsonProperty(value = "SLCredits__c")
 	private String slCredits;
@@ -34,6 +37,9 @@ public class Employee {
 
 	@JsonProperty(value = "UsedVLCredits__c")
 	private String usedVlCredits;
+
+	@JsonProperty(value = "LeaveRequests__r")
+	private List<LeaveRequest> leaveRequests;
 
 	public String getId() {
 		return id;
@@ -59,20 +65,28 @@ public class Employee {
 		this.firstName = firstName;
 	}
 
-	public Date getLastName() {
+	public String getLastName() {
 		return lastName;
 	}
 
-	public void setLastName(Date lastName) {
+	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
-	public Date getMiddleName() {
+	public String getMiddleName() {
 		return middleName;
 	}
 
-	public void setMiddleName(Date middleName) {
+	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
+	}
+
+	public String getEmployeeNumber() {
+		return employeeNumber;
+	}
+
+	public void setEmployeeNumber(String employeeNumber) {
+		this.employeeNumber = employeeNumber;
 	}
 
 	public String getSlCredits() {
@@ -105,6 +119,14 @@ public class Employee {
 
 	public void setUsedVlCredits(String usedVlCredits) {
 		this.usedVlCredits = usedVlCredits;
+	}
+
+	public List<LeaveRequest> getLeaveRequests() {
+		return leaveRequests;
+	}
+
+	public void setLeaveRequests(List<LeaveRequest> leaveRequests) {
+		this.leaveRequests = leaveRequests;
 	}
 
 }
