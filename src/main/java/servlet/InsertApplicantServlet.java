@@ -32,7 +32,7 @@ import model.Attachment;
 @MultipartConfig
 public class InsertApplicantServlet extends HttpServlet {
 
-	private static final DateFormat DF = new SimpleDateFormat("yyyy-mm-dd");
+	private static final DateFormat DF = new SimpleDateFormat("yyyy-MM-dd");
 	private static final long serialVersionUID = 1L;
 
 	private static final String USERNAME = "devorg@77soft.com";
@@ -94,6 +94,7 @@ public class InsertApplicantServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		try {
+			System.out.println("Birthdate: " + birthdate);
 			applicant.setBirthdate(DF.parse(birthdate));
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -131,7 +132,8 @@ public class InsertApplicantServlet extends HttpServlet {
 		if (id == null || id.length() == 0) {
 			response.sendRedirect("/applicant-form/error.html");
 		} else {
-			if (request.getPart("resume") != null) {
+			
+			if (request.getPart("resume").getName().equals("")) {
 				Part attachedResume = request.getPart("resume");
 
 				if (attachedResume.getSize() <= Attachment.MAX_FILE_SIZE) {
