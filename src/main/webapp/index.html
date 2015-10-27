@@ -14,6 +14,9 @@
 <link rel="stylesheet" href="css/form-elements.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>77 Soft Applicant App</title>
+
+<script>
+</script>
 </head>
 
 <body>
@@ -50,7 +53,7 @@
 			<!-- 			</div> -->
 			<!-- 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"> -->
 			<div class="container-fluid">
-				<form class="form-horizontal" action="/insertApplicant" method="post">
+				<form class="form-horizontal" action="/insertApplicant" method="post" enctype="multipart/form-data">
 					<!-- -----------------------------FIRST SECTION--------------------------- -->
 					<div class="form-group title" id="primaryInformation">
 						<h2>Primary Information</h2>
@@ -263,12 +266,12 @@
 						<h2>Application Information</h2>
 					</div>
 					<div class="form-group">
-						<label for="position"
+						<label for="positionApplied"
 							class="col-sm-2 control-label required-label">Position
 							Applying For</label>
 						<div class="col-sm-10">
 							<div class="input-group">
-								<input id="position" name="positionApplyingFor" type="text" class="form-control"
+								<input id="positionApplied" name="positionApplyingFor" type="text" class="form-control"
 									placeholder="Position" required> <span
 									class="input-group-addon"><span
 									class="glyphicon glyphicon-asterisk"></span></span>
@@ -290,10 +293,19 @@
 							</div>
 						</div>
 					</div>
+					<div class="form-group title" id="uploadResume">
+						<h2>Additional Attachments</h2>
+					</div>
+					<div class="form-group">
+						<label for="resume" class="col-sm-2 control-label">Resume</label>
+						<div class="col-sm-10">
+							<input id="resume" name="resume" type="file" class="form-control" />
+						</div>
+					</div>
 					<div class="form-group">
 						<div class="custom">
-							<button type="submit" class="btncustom">Submit</button>
 							<button type="reset" class="btncustom">Clear Fields</button>
+							<button type="submit" class="btncustom">Submit</button>
 						</div>
 					</div>
 				</form>
