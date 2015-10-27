@@ -34,7 +34,6 @@ public class InsertApplicantServlet extends HttpServlet {
 
 	private static final DateFormat DF = new SimpleDateFormat("yyyy-mm-dd");
 	private static final long serialVersionUID = 1L;
-	private static final long ATTACHMENT_MAX = Double.valueOf("5E+06").longValue();
 
 	private static final String USERNAME = "devorg@77soft.com";
 	private static final String PASSWORD = "77GSIDev";
@@ -135,7 +134,7 @@ public class InsertApplicantServlet extends HttpServlet {
 			if (req.getPart("resume") != null) {
 				Part attachedResume = req.getPart("resume");
 
-				if (attachedResume.getSize() <= ATTACHMENT_MAX) {
+				if (attachedResume.getSize() <= Attachment.MAX_FILE_SIZE) {
 					InputStream fileContent = attachedResume.getInputStream();
 					ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 					byte[] chunk = new byte[(int) attachedResume.getSize()];
