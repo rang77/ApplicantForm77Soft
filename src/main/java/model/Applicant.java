@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Date;
-
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
@@ -18,10 +16,10 @@ public class Applicant {
 	private String achievementsCertifications;
 	
 	@JsonProperty(value = "AvailabilityOfEmployment__c")
-	private Date availabilityOfEmployment;
+	private String availabilityOfEmployment;
 	
 	@JsonProperty(value = "Birthdate__c")
-	private Date birthdate;
+	private String birthdate;
 
 	@JsonProperty(value = "Citizenship__c")
 	private String citizenship;
@@ -33,10 +31,10 @@ public class Applicant {
 	private String currentPreviousCompany;
 
 	@JsonProperty(value = "CurrentPreviousDateEnded__c")
-	private Date currentPreviousDateEnded;
+	private String currentPreviousDateEnded;
 
 	@JsonProperty(value = "CurrentPreviousDateStarted__c")
-	private Date currentPreviousDateStarted;
+	private String currentPreviousDateStarted;
 
 	@JsonProperty(value = "EducationAttainments__c")
 	private String educationAttainments;
@@ -104,19 +102,19 @@ public class Applicant {
 		this.achievementsCertifications = achievementsCertifications;
 	}
 
-	public Date getAvailabilityOfEmployment() {
+	public String getAvailabilityOfEmployment() {
 		return availabilityOfEmployment;
 	}
 
-	public void setAvailabilityOfEmployment(Date availabilityOfEmployment) {
+	public void setAvailabilityOfEmployment(String availabilityOfEmployment) {
 		this.availabilityOfEmployment = availabilityOfEmployment;
 	}
 
-	public Date getBirthdate() {
+	public String getBirthdate() {
 		return birthdate;
 	}
 
-	public void setBirthdate(Date birthdate) {
+	public void setBirthdate(String birthdate) {
 		this.birthdate = birthdate;
 	}
 
@@ -144,19 +142,19 @@ public class Applicant {
 		this.currentPreviousCompany = currentPreviousCompany;
 	}
 
-	public Date getCurrentPreviousDateEnded() {
+	public String getCurrentPreviousDateEnded() {
 		return currentPreviousDateEnded;
 	}
 
-	public void setCurrentPreviousDateEnded(Date currentPreviousDateEnded) {
+	public void setCurrentPreviousDateEnded(String currentPreviousDateEnded) {
 		this.currentPreviousDateEnded = currentPreviousDateEnded;
 	}
 
-	public Date getCurrentPreviousDateStarted() {
+	public String getCurrentPreviousDateStarted() {
 		return currentPreviousDateStarted;
 	}
 
-	public void setCurrentPreviousDateStarted(Date currentPreviousDateStarted) {
+	public void setCurrentPreviousDateStarted(String currentPreviousDateStarted) {
 		this.currentPreviousDateStarted = currentPreviousDateStarted;
 	}
 

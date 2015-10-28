@@ -3,9 +3,6 @@ package servlet;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -19,11 +16,11 @@ import db.SalesforceDAO;
 import model.Applicant;
 import model.Attachment;
 
-@WebServlet(name = "insertapplicantform", urlPatterns = { "/applicant-form/insertApplicant/*", "/applicant-form/insertApplicant" })
+@WebServlet(name = "insertapplicantform", urlPatterns = { "/applicant-form/insertApplicant/*",
+		"/applicant-form/insertApplicant" })
 @MultipartConfig
 public class InsertApplicantServlet extends HttpServlet {
 
-	private static final DateFormat DF = new SimpleDateFormat("yyyy-MM-dd");
 	private static final long serialVersionUID = 1L;
 
 	public void init() throws ServletException {
@@ -33,9 +30,10 @@ public class InsertApplicantServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		SalesforceDAO<Applicant> connector = new SalesforceDAO<>();
-		
+
 		connector.connect();
 
 		Applicant applicant = new Applicant();
@@ -64,30 +62,19 @@ public class InsertApplicantServlet extends HttpServlet {
 		String telephoneNumber = request.getParameter("telephoneNumber");
 
 		applicant.setAchievementsCertifications(achievementsCertifications);
-		
-		try {
-			applicant.setAvailabilityOfEmployment(DF.parse(availabilityOfEmployment));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		try {
-			applicant.setBirthdate(DF.parse(birthdate));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+
+		applicant.setAvailabilityOfEmployment(availabilityOfEmployment);
+		applicant.setBirthdate(birthdate);
 		applicant.setCitizenship(citizenship);
 		applicant.setCivilStatus(civilStatus);
 		applicant.setCurrentPreviousCompany(currentPreviousCompany);
-		try {
-			applicant.setCurrentPreviousDateEnded(DF.parse(currentPreviousDateEnded));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		try {
-			applicant.setCurrentPreviousDateStarted(DF.parse(currentPreviousDateStarted));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		
+		if(!currentPreviousDateEnded.isEmpty())
+			applicant.setCurrentPreviousDateEnded(currentPreviousDateEnded);
+		
+		if(!currentPreviousDateStarted.isEmpty())
+			applicant.setCurrentPreviousDateStarted(currentPreviousDateStarted);
+		
 		applicant.setEducationAttainments(educationAttainments);
 		applicant.setEmailAddress(emailAddress);
 		applicant.setFirstName(firstName);
@@ -109,7 +96,7 @@ public class InsertApplicantServlet extends HttpServlet {
 			response.sendRedirect("/applicant-form/error.html");
 		} else {
 			Part attachedResume = request.getPart("resume");
-			
+
 			if (attachedResume.getSize() > 0 && attachedResume.getSize() <= Attachment.MAX_FILE_SIZE) {
 
 				InputStream fileContent = attachedResume.getInputStream();
@@ -137,9 +124,9 @@ public class InsertApplicantServlet extends HttpServlet {
 				resume.setBody(outputStream.toByteArray());
 
 				connector.create("Attachment", resume);
-				
+
 			}
-			
+
 			response.sendRedirect("/applicant-form/success.html");
 		}
 	}
