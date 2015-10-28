@@ -14,43 +14,43 @@ public class Employee {
 	private String recordID;
 
 	@JsonProperty(value = "Name")
-	@JsonSerialize(include=Inclusion.NON_NULL)
+	@JsonSerialize(include = Inclusion.NON_NULL)
 	private String employeeNumber;
 
 	@JsonProperty(value = "IDNumber__c")
-	@JsonSerialize(include=Inclusion.NON_NULL)
+	@JsonSerialize(include = Inclusion.NON_NULL)
 	private String idNumber;
 
 	@JsonProperty(value = "FirstName__c")
-	@JsonSerialize(include=Inclusion.NON_NULL)
+	@JsonSerialize(include = Inclusion.NON_NULL)
 	private String firstName;
 
 	@JsonProperty(value = "LastName__c")
-	@JsonSerialize(include=Inclusion.NON_NULL)
+	@JsonSerialize(include = Inclusion.NON_NULL)
 	private String lastName;
 
 	@JsonProperty(value = "MiddleName__c")
-	@JsonSerialize(include=Inclusion.NON_NULL)
+	@JsonSerialize(include = Inclusion.NON_NULL)
 	private String middleName;
 
 	@JsonProperty(value = "SLCredits__c")
-	@JsonSerialize(include=Inclusion.NON_NULL)
-	private String slCredits;
+	@JsonSerialize(include = Inclusion.NON_NULL)
+	private double slCredits;
 
 	@JsonProperty(value = "VLCredits__c")
-	@JsonSerialize(include=Inclusion.NON_NULL)
-	private String vlCredits;
+	@JsonSerialize(include = Inclusion.NON_NULL)
+	private double vlCredits;
 
 	@JsonProperty(value = "UsedSLCredits__c")
-	@JsonSerialize(include=Inclusion.NON_NULL)
-	private String usedSlCredits;
+	@JsonSerialize(include = Inclusion.NON_NULL)
+	private double usedSlCredits;
 
 	@JsonProperty(value = "UsedVLCredits__c")
-	@JsonSerialize(include=Inclusion.NON_NULL)
-	private String usedVlCredits;
+	@JsonSerialize(include = Inclusion.NON_NULL)
+	private double usedVlCredits;
 
 	@JsonProperty(value = "LeaveRequests__r")
-	@JsonSerialize(include=Inclusion.NON_NULL)
+	@JsonSerialize(include = Inclusion.NON_NULL)
 	private List<LeaveRequest> leaveRequests;
 
 	public String getRecordID() {
@@ -101,35 +101,35 @@ public class Employee {
 		this.employeeNumber = employeeNumber;
 	}
 
-	public String getSlCredits() {
+	public double getSlCredits() {
 		return slCredits;
 	}
 
-	public void setSlCredits(String slCredits) {
+	public void setSlCredits(double slCredits) {
 		this.slCredits = slCredits;
 	}
 
-	public String getVlCredits() {
+	public double getVlCredits() {
 		return vlCredits;
 	}
 
-	public void setVlCredits(String vlCredits) {
+	public void setVlCredits(double vlCredits) {
 		this.vlCredits = vlCredits;
 	}
 
-	public String getUsedSlCredits() {
+	public double getUsedSlCredits() {
 		return usedSlCredits;
 	}
 
-	public void setUsedSlCredits(String usedSlCredits) {
+	public void setUsedSlCredits(double usedSlCredits) {
 		this.usedSlCredits = usedSlCredits;
 	}
 
-	public String getUsedVlCredits() {
+	public double getUsedVlCredits() {
 		return usedVlCredits;
 	}
 
-	public void setUsedVlCredits(String usedVlCredits) {
+	public void setUsedVlCredits(double usedVlCredits) {
 		this.usedVlCredits = usedVlCredits;
 	}
 
