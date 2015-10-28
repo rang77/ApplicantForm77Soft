@@ -2,30 +2,78 @@
 <html>
 
 <head>
+	<meta charset="ISO-8859-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<script src="jquery/jquery-1.11.3.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/npm.js"></script>
+	
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/dark-theme.css" />
+	
+	<title>Seven Seven GSI</title>
+	
+	<style>
+		.container {
+			margin: 0 auto;
+			max-width: 400px;
+		}
+		
+		#home {
+			padding: 30px;
+			background-color: black;
+			border-radius: 25px;
+    		border: 2px solid #4E4E4E;
+		}
+		
+		.img-responsive {
+			margin: 0 auto;
+		}
+		
+		.btn-group {
+			margin-top: 10px;
+			width: 100%;
+		}
+	
+		button.btn {
+			width: 90%;
+		}
 
-<script src="/jquery/jquery-1.11.3.js"></script>
-<link href="/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="/css/dark-theme.css" />
-<link rel="stylesheet" href="/css/form-elements.css" />
-<meta charset="ISO-8859-1">
-<title>Salesforce | 77 Soft</title>
-
+		button.dropdown-toggle {
+			width: 10%;
+		}
+		
+		.dropdown-menu {
+			width: 100%;
+		}
+		
+		.vertical-center {
+			min-height: 90%;
+			display: flex;
+			align-items: center;
+		}
+	</style>
 </head>
 
 <body>
-
-	<div id="home-header">
-		<img src="/img/77logo-black.png" />
-	</div>
-
-	<div class="form-group">
-		<div class="custom">
-			<a class="btncustom" href="/applicant-form/applicant.jsp">applicant</a>
-			<br/>
-			<a class="btncustom" href="/leave-management/leave.jsp">leaves</a>
-			<br/>
+	<div class="vertical-center">
+		<div class="container">
+				<div id="home" class="row">
+					<img src="img/77logo-black.png" class="img-responsive" width="240px"/>
+					<div class="btn-group">
+						<button type="button" class="btn btn-danger">Menu</button>
+						<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" style="width: 100%">
+							<li><a href="/applicant-form/applicant.jsp">Applicant Form</a></li>
+							<li><a href="/leave-management/leave.jsp">Leave Management</a></li>
+						</ul>
+					</div>
+				</div>
 		</div>
 	</div>
-
 </body>
+
 </html>

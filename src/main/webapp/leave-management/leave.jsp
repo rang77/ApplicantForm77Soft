@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="/css/dark-theme.css" />
 <link rel="stylesheet" href="/css/form-elements.css" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>77 Soft Applicant App</title>
+<title>Seven Seven GSI | Leave Management</title>
 </head>
 
 <body>
@@ -23,21 +23,24 @@
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
 					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
+					<span class="sr-only">Toggle navigation</span> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span> 
+					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">77 Soft Applicant App</a>
+				<a class="navbar-brand" href="../index.html"><img src="../img/77logo-black.png" class="img-responsive" width="120px"/></a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-left">
-					<li><a href="#">Home</a></li>
+					<li><a href="../index.html">Home</a></li>
+					<li><a href="../applicant-form/applicant.jsp">Applicant Form</a></li>
+					<li><a href="../leave-management/leave.jsp">Leave Management</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 
-	<div class="container-fluid">
+	<div class="page-start container-fluid">
 		<div class="row">
 			<!-- 			<div class="col-sm-3 col-md-2 sidebar"> -->
 			<!-- 				<ul class="nav nav-sidebar"> -->
@@ -53,7 +56,7 @@
 				<form class="form-horizontal" action="/leave-management/getLeaveCredits" method="post">
 					<!-- -----------------------------FIRST SECTION--------------------------- -->
 					<div class="form-group title" id="primaryInformation">
-						<h2>Primary Information</h2>
+						<h2>Leave Management</h2>
 					</div>
 					<div class="well welldark-sm">
 						<strong><span class="glyphicon glyphicon-asterisk"></span>Required
@@ -74,8 +77,8 @@
 					
 					<div class="form-group">
 						<div class="custom">
+							<button type="reset" class="btncustom">Clear</button>
 							<button type="submit" class="btncustom">Submit</button>
-							<button type="reset" class="btncustom">Clear Fields</button>
 						</div>
 					</div>
 				</form>
