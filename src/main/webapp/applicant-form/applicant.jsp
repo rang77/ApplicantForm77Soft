@@ -9,6 +9,7 @@
 <meta name="author" content="">
 
 <script src="/jquery/jquery-1.11.3.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/css/dark-theme.css" />
 <link rel="stylesheet" href="/css/form-elements.css" />
@@ -62,8 +63,10 @@
 						<h2>Primary Information</h2>
 					</div>
 					<div class="well welldark-sm">
-						<strong><span class="glyphicon glyphicon-asterisk"></span>Required
-							Field</strong>
+						<strong>
+							<span class="glyphicon glyphicon-asterisk"></span>
+							Required Field
+						</strong>
 					</div>
 					<div class="form-group">
 						<label for="firstName"
@@ -315,9 +318,5 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

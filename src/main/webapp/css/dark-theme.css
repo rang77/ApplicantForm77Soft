@@ -30,6 +30,27 @@ html, body {
 	margin-top: 50px;
 }
 
+/* adjust table text color to black */
+table.table {
+	color: black;
+}
+
+table.table {
+	background-color: white;
+}
+
+/* adjust titles -- added bottom margin */
+.title {
+	margin-bottom: 15px;
+}
+
+/* additional CSS for output forms */
+.output-form .form-control {
+	background-color: #333;
+	border: 0;
+	color: white;
+}
+
 /* wrapper for page content to push down footer */
 .page-container {
 	min-height: 100%;

@@ -9,6 +9,7 @@
 <meta name="author" content="">
 
 <script src="/jquery/jquery-1.11.3.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/css/dark-theme.css" />
 <link rel="stylesheet" href="/css/form-elements.css" />
@@ -42,16 +43,6 @@
 
 	<div class="page-start container-fluid">
 		<div class="row">
-			<!-- 			<div class="col-sm-3 col-md-2 sidebar"> -->
-			<!-- 				<ul class="nav nav-sidebar"> -->
-			<!-- 					<li><a href="#">Primary Information</a></li> -->
-			<!-- 					<li><a href="#otherInformation">Other Information</a></li> -->
-			<!-- 					<li><a href="#prevEmployment">Current/Previous Employment -->
-			<!-- 							Information</a></li> -->
-			<!-- 					<li><a href="#appInformation">Application Information</a></li> -->
-			<!-- 				</ul> -->
-			<!-- 			</div> -->
-			<!-- 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main"> -->
 			<div class="container-fluid">
 				<form class="form-horizontal" action="/leave-management/getLeaveCredits" method="post">
 					<!-- -----------------------------FIRST SECTION--------------------------- -->
@@ -85,9 +76,5 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>
