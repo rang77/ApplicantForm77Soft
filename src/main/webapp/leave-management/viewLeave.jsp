@@ -75,27 +75,31 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 control-label">VL Credits: </label>
+						<label class="col-sm-2 control-label">Vacation Leave Credits: </label>
 						<div class="col-sm-10">
-							<div class="form-control"><c:out value="${employee.vlCredits}"/></div>
+							<div class="form-control">
+								<div class="progress">
+									<span class="progress-value">${employee.usedVlCredits} / ${employee.vlCredits} used</span>
+									<div class="progress-bar progress-bar-danger" role="progressbar" 
+										aria-valuenow="${employee.usedVlCredits}" aria-valuemin="0" aria-valuemax="${employee.vlCredits}" 
+										style="width:${(employee.usedVlCredits / employee.vlCredits) * 100}%;">
+								  	</div>
+								 </div>
+							</div>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 control-label">Used VL Credits: </label>
+						<label class="col-sm-2 control-label">Sick Leave Credits: </label>
 						<div class="col-sm-10">
-							<div class="form-control"><c:out value="${employee.usedVlCredits}"/></div>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">SL Credits: </label>
-						<div class="col-sm-10">
-							<div class="form-control"><c:out value="${employee.slCredits}"/></div>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Used SL Credits: </label>
-						<div class="col-sm-10">
-							<div class="form-control"><c:out value="${employee.usedSlCredits}"/></div>
+							<div class="form-control">
+								<div class="progress">
+									<span class="progress-value">${employee.usedSlCredits} / ${employee.slCredits} used</span>
+									<div class="progress-bar progress-bar-danger" role="progressbar" 
+										aria-valuenow="${employee.usedSlCredits}" aria-valuemin="0" aria-valuemax="${employee.slCredits}" 
+										style="width:${(employee.usedSlCredits / employee.slCredits) * 100}%;">
+								  	</div>
+								 </div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -154,7 +158,12 @@
 					<div class="form-group title" id="fileLeave">
 						<h2>File Leave</h2>
 					</div>
-					
+					<div class="well welldark-sm">
+						<strong>
+							<span class="glyphicon glyphicon-asterisk"></span>
+							Required Field
+						</strong>
+					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label required-label" for="leaveType">Leave Type: </label>
 						<div class="col-sm-10">

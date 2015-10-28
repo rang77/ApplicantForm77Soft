@@ -51,6 +51,18 @@ table.table {
 	color: white;
 }
 
+/* fix for progress bars -- center text */
+.progress {
+	text-align: center;	
+} 
+
+.progress-value {
+	position:absolute;
+    right:0;
+    left:0;
+    color: #222;
+}
+
 /* wrapper for page content to push down footer */
 .page-container {
 	min-height: 100%;
