@@ -19,10 +19,10 @@ public class LeaveRequest {
 	private String employeeID;
 
 	@JsonProperty(value = "StartDate__c")
-	private Date startDate;
+	private String startDate;
 
 	@JsonProperty(value = "EndDate__c")
-	private Date endDate;
+	private String endDate;
 
 	@JsonProperty(value = "LeaveType__c")
 	private String leaveType;
@@ -53,19 +53,19 @@ public class LeaveRequest {
 		this.employeeID = employeeID;
 	}
 
-	public Date getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 
-	public Date getEndDate() {
+	public String getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Date endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 

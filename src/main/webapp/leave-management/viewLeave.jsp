@@ -135,8 +135,8 @@
 										<tr>
 											<td><c:out value="${leaveRequest.requestNumber}"/></td>
 											<td><c:out value="${leaveRequest.leaveType}"/></td>
-											<td><fmt:formatDate pattern="MMMMM dd,yyyy zzz" value="${leaveRequest.startDate}"/></td>
-											<td><fmt:formatDate pattern="MMMMM dd,yyyy zzz" value="${leaveRequest.endDate}"/></td>
+											<td><c:out value="${leaveRequest.startDate}"/></td>
+											<td><c:out value="${leaveRequest.endDate}"/></td>
 											<td><c:out value="${leaveRequest.daysOnLeave}"/></td>
 										</tr>
 									</c:forEach>

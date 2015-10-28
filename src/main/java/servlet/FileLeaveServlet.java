@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.TimeZone;
@@ -31,11 +30,9 @@ import model.error.SalesforceError;
 public class FileLeaveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private static final DateFormat DF = new SimpleDateFormat("yyyy-MM-dd");
 	private static final ObjectMapper MAPPER = new ObjectMapper();
 
 	public void init() throws ServletException {
-		DF.setTimeZone(TimeZone.getTimeZone("GMT+8"));
 		MAPPER.enable(DeserializationConfig.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
 	}
 
@@ -57,15 +54,8 @@ public class FileLeaveServlet extends HttpServlet {
 		
 		leaveRequest.setEmployeeID(recordId);
 		leaveRequest.setLeaveType(leaveType);
-		
-		try {
-			leaveRequest.setStartDate(DF.parse(startDate));
-		} catch (ParseException e) {
-		}
-		try {
-			leaveRequest.setEndDate(DF.parse(endDate));
-		} catch (ParseException e) {
-		}
+		leaveRequest.setStartDate(startDate);
+		leaveRequest.setEndDate(endDate);
 		
 		try{
 			
