@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +46,18 @@
 
 	<div class="page-start container-fluid">
 		<div class="alert alert-danger">
-			<strong>An error has occurred </strong> Return to <a href="/leave-management/leave.jsp">this page</a> to try again.
+			<strong>An error has occurred </strong>
+			<c:if test="${not empty error}">
+				<c:out value="${error.message}."/>
+			</c:if>
+			<c:choose>
+				<c:when test="${not empty idNumber}">
+					Return to <a href="/leave-management/getLeaveCredits?idNumber=${idNumber}">this page</a> to try again.
+				</c:when>
+				<c:otherwise>
+					Return to <a href="/leave-management/leave.jsp">this page</a> to try again.
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</div>
 </body>

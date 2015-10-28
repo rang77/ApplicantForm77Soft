@@ -3,6 +3,7 @@ package db;
 import java.util.List;
 
 import com.force.api.ApiConfig;
+import com.force.api.ApiException;
 import com.force.api.ForceApi;
 
 public class SalesforceDAO<T> {
@@ -18,7 +19,6 @@ public class SalesforceDAO<T> {
 	private ForceApi api;
 
 	public void connect() {
-		// TODO Auto-generated method stub
 		config = new ApiConfig();
 		
 		config.setUsername(USERNAME);
@@ -31,33 +31,18 @@ public class SalesforceDAO<T> {
 	}
 	
 	public List<T> retrieve(String query, Class<T> objectType) {
-		// TODO Auto-generated method stub
 		return api.query(query, objectType).getRecords();
 	}
 	
-	public String create(String objectType, Object object) {
-		// TODO Auto-generated method stub
+	public String create(String objectType, Object object) throws ApiException{
 		return api.createSObject(objectType, object);
 	}
 
 	public String update(String objectType, Object object) {
 		return objectType;
-		// TODO Auto-generated method stub
-
 	}
 
 	public String delete(String objectType, Object object) {
 		return objectType;
-		// TODO Auto-generated method stub
-
 	}
-
-	public ForceApi getApi() {
-		return api;
-	}
-
-	public void setApi(ForceApi api) {
-		this.api = api;
-	}	
-
 }

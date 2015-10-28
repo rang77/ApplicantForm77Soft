@@ -34,7 +34,7 @@ public class InsertApplicantServlet extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SalesforceDAO connector = new SalesforceDAO();
+		SalesforceDAO<Applicant> connector = new SalesforceDAO<>();
 		
 		connector.connect();
 

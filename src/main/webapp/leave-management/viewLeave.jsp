@@ -169,7 +169,6 @@
 						<div class="col-sm-10">
 							<div class="input-group">
 								<select id="leaveType" name="leaveType" class="form-control">
-									<option disabled selected>Leave Type</option>
 									<option value="Vacation Leave">Vacation Leave</option>
 									<option value="Sick Leave">Sick Leave</option>
 								</select> <span

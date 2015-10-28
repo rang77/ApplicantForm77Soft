@@ -122,7 +122,7 @@
 								<option disabled selected>Civil Status</option>
 								<option value="single">Single</option>
 								<option value="married">Married</option>
-								<option value="widowed">Widowed</option>
+								<option value="widow/widower">Widow/Widower</option>
 								<option value="separated">Separated</option>
 							</select>
 						</div>
