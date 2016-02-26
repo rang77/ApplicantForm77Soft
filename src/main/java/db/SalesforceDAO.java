@@ -13,7 +13,7 @@ public class SalesforceDAO<T> {
 	private static final String DOMAIN = "https://login.salesforce.com";
 	private static final String USERNAME = "devorg@77soft.com";
 	private static final String PASSWORD = "77GSIDev1";
-	private static final String SECURITY_TOKEN = "ta3WbXLee49bAgxiiepNipmA";
+	private static final String SECURITY_TOKEN = "Gv0bAID3dNqiUTMvJpVlGDlQ6";
 	
 	private ApiConfig config;
 	private ForceApi api;
