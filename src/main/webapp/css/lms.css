@@ -1,0 +1,21 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	background-color: #F0F0F0;
+}
+
+#main-div {
+	margin: 0 auto;
+	background-color: white;
+}
+
+.vertical-center{
+	height: 50%;
+	position: relative;
+}
+
+.vertical-center div {
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+}
