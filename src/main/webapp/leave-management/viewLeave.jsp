@@ -12,7 +12,7 @@
 	<script src="/js/bootstrap.min.js"></script>
 	<link href="/css/bootstrap.css" rel="stylesheet">
 	<link rel="stylesheet" href="/css/neotheme.css" />
-	<link rel="stylesheet" href="/css/form-elements.css" />
+	<link rel="stylesheet" href="/css/form-elements-new.css" />
 	
 	<title>Seven Seven GSI | Leave Management</title>
 </head>
@@ -20,6 +20,7 @@
 
 	<nav class="navbar navbar-inverse navbar-fixed-top inverse-dark">
 		<div class="container-fluid">
+			<div class="col-sm-1"></div>
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
@@ -38,6 +39,7 @@
 					<li><a href="../leave-management/leave.jsp">Leave Management</a></li>
 				</ul>
 			</div>
+			<div class="col-sm-1"></div>
 		</div>
 	</nav>
 
@@ -111,14 +113,14 @@
 					<div class="form-group title" id="fileLeave">
 						<h2>File Leave</h2>
 					</div>
-					<div class="well welldark-sm">
+<!-- 					<div class="well welldark-sm">
 						<strong>
 							<span class="glyphicon glyphicon-asterisk"></span>
 							Required Field
 						</strong>
-					</div>
+					</div> -->
 					<div class="form-group">
-						<label class="col-sm-2 control-label required-label" for="leaveType">Leave Type: </label>
+						<label class="col-sm-2 control-label" for="leaveType">Leave Type: </label>
 						<div class="col-sm-10">
 							<div class="input-group">
 								<select id="leaveType" name="leaveType" class="form-control">
@@ -132,7 +134,7 @@
 					</div>
 					
 					<div class="form-group">
-						<label class="col-sm-2 control-label required-label" for="startDate">Start Date:  </label>
+						<label class="col-sm-2 control-label" for="startDate">Start Date:  </label>
 						<div class="col-sm-10">
 							<div class="input-group">
 								<input id="startDate" name="startDate" placeholder="Start Date"
@@ -146,7 +148,7 @@
 					</div>
 					
 					<div class="form-group">
-						<label class="col-sm-2 control-label required-label" for="endDate">End Date:  </label>
+						<label class="col-sm-2 control-label" for="endDate">End Date:  </label>
 						<div class="col-sm-10">
 							<div class="input-group">
 								<input id="endDate" name="endDate" placeholder="End Date"

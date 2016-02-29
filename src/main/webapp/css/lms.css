@@ -1,6 +1,51 @@
 @CHARSET "ISO-8859-1";
 
-body {
+.container {
+	margin: 0 auto;
+	max-width: 400px;
+}
+
+#home {
+	padding: 30px;
+	background-color: white;
+	border-radius: 25px;
+	border: 2px solid #4E4E4E;
+}
+
+.img-responsive {
+	margin: 0 auto;
+	padding-bottom: 15px;
+}
+
+.btn-group {
+	margin-top: 10px;
+	width: 100%;
+}
+
+button.btn {
+	width: 100%;
+}
+
+button.dropdown-toggle {
+	width: 10%;
+}
+
+.dropdown-menu {
+	width: 100%;
+}
+
+.vertical-center {
+	min-height: 90%;
+	display: flex;
+	align-items: center;
+}
+
+.login-title-custom{
+	text-align: center;
+	border-top: 1px solid #4E4E4E;
+}
+
+/* body {
 	background-color: #F0F0F0;
 }
 
@@ -18,4 +63,4 @@ body {
 	position: absolute;
 	top: 50%;
 	transform: translate(0, -50%);
-}
+} */

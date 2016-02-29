@@ -4,46 +4,54 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
+
 <head>
+<meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>77Global - Leave Management</title>
 
+<script src="/jquery/jquery-1.11.3.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<link href="/css/bootstrap.min.css" rel="stylesheet">
-<link href="/css/lms.css" rel="stylesheet">
+<script src="/js/npm.js"></script>
 
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/neotheme.css" />
+<link rel="stylesheet" href="/css/lms.css" />
+
+<title>Seven Seven GSI - Leave Management System</title>
 </head>
+
 <body>
-
 	<div class="vertical-center">
-		<div id="main-div" class="container">
-			<div>
-				<div>
-					<img alt="Logo" src="/img/77NewLogo.jpg" width="240px" />
-					<p>Leave Management</p>
-				</div>
-
-				<div>
-					<p>ERROR</p>
-
-					<div>
-						<form>
-							<div>
-								<input placeholder="ID Number">
+		<div class="container">
+			<div id="home" class="row">
+				<img src="/img/77NewLogo.jpg" class="img-responsive" width="240px" />
+				<form class="form-horizontal">
+					<div class="form-group title login-title-custom" id="formTitle">
+						LEAVE MANAGEMENT SYSTEM
+					</div>				
+					<div class="form-group">
+						<label class="col-sm-4 control-label" for="idNumber">Id Number: </label>
+						<div class="col-sm-8">
+							<div class="input-group">
+								<input type="text" class="form-control" id="idNumber" placeholder="Id Number"/>
 							</div>
-
-							<div>
-								<input type="submit" value="Login">
+						</div>
+					</div>				
+					<div class="form-group">
+						<label class="col-sm-4 control-label" for="password">Password: </label>
+						<div class="col-sm-8">
+							<div class="input-group">
+								<input type="password" class="form-control" id="password" placeholder="Password"/>
 							</div>
-						</form>
+						</div>
+					</div>				
+					<div class="btn-group">
+						<button type="submit" class="btn btn-danger">Login</button>
 					</div>
-				</div>
-
+				</form>
 			</div>
 		</div>
 	</div>
-
-
 </body>
+
 </html>
