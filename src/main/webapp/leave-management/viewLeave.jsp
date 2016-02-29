@@ -10,8 +10,8 @@
 	
 	<script src="/jquery/jquery-1.11.3.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-	<link href="/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="/css/dark-theme.css" />
+	<link href="/css/bootstrap.min2.css" rel="stylesheet">
+	<link rel="stylesheet" href="/css/neotheme.css" />
 	<link rel="stylesheet" href="/css/form-elements.css" />
 	
 	<title>Seven Seven GSI | Leave Management</title>
@@ -44,12 +44,13 @@
 	<div class="page-start container-fluid">
 
 		<!-- Employee Information Section -->
-		<div class="row">
-			<div class="container-fluid">
+		<div class="row container-fluid ">	
+			<div class="col-xs-1"></div>
+			<div class="container-fluid col-xs-12 col-sm-8 col-md-10">		
 				<div class="form-horizontal output-form" >
 					<div class="form-group title" id="employeeInformation">
 						<h2>Employee Information</h2>
-					</div>
+					</div>	
 					<div class="form-group">
 						<label class="col-sm-2 control-label">ID Number: </label>
 						<div class="col-sm-10">
@@ -104,14 +105,17 @@
 					</div>
 				</div>
 			</div>
+			<div class="col-xs-1"></div>
 		</div>
 
 		<!-- Leave Requests Section -->
-		<div class="row">
-			<div class="title" id="leaveRequests">
-				<h2>Leave Requests</h2>
-			</div>
-			<div class="col-sm-12">
+		<div class="row container-fluid">
+<!-- 			<div class="col-sm-12"> -->
+			<div class="col-xs-1"></div>
+			<div class="container-fluid col-xs-12 col-sm-6 col-md-10">
+				<div class="title" id="leaveRequests">
+					<h2>Leave Requests</h2>
+				</div>
 				<c:choose>
 					<c:when test="${empty employee.leaveRequests}">
 							<div class="alert alert-warning">
@@ -146,11 +150,13 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
+			<div class="col-xs-1"></div>
 		</div>
 			
 		<!-- File Leave Section -->
-		<div class="row">
-			<div class="container-fluid">
+		<div class="row container-fluid">
+			<div class="col-xs-1"></div>
+			<div class="container-fluid col-xs-12 col-sm-6 col-md-10">
 				<form class="form-horizontal" action="/leave-management/fileLeave" method="POST">
 					<input type="hidden" name="recordId" value="${employee.recordID}">
 					<input type="hidden" name="idNumber" value="${employee.idNumber}">
@@ -214,6 +220,7 @@
 					</div>
 				</form>
 			</div>
+			<div class="col-xs-1"></div>
 		</div>
 	</div>
 </body>
