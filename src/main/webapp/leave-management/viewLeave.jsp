@@ -10,7 +10,7 @@
 	
 	<script src="/jquery/jquery-1.11.3.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
-	<link href="/css/bootstrap.min2.css" rel="stylesheet">
+	<link href="/css/bootstrap.css" rel="stylesheet">
 	<link rel="stylesheet" href="/css/neotheme.css" />
 	<link rel="stylesheet" href="/css/form-elements.css" />
 	
@@ -42,42 +42,35 @@
 	</nav>
 
 	<div class="page-start container-fluid">
-
 		<!-- Employee Information Section -->
-		<div class="row container-fluid ">	
-			<div class="col-xs-1"></div>
-			<div class="container-fluid col-xs-12 col-sm-8 col-md-10">		
+		<div class="row-fluid container-fluid">
+			<div class="container-fluid col-sm-5 col-sm-offset-1">		
 				<div class="form-horizontal output-form" >
 					<div class="form-group title" id="employeeInformation">
 						<h2>Employee Information</h2>
 					</div>	
 					<div class="form-group">
-						<label class="col-sm-2 control-label">ID Number: </label>
-						<div class="col-sm-10">
+						<label class="col-sm-3 control-label">ID Number: </label>
+						<div class="col-sm-9">
 							<div class="form-control"><c:out value="${employee.idNumber}"/></div>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 control-label">First Name: </label>
-						<div class="col-sm-10">
-							<div class="form-control"><c:out value="${employee.firstName}"/></div>
+						<label class="col-sm-3 control-label">Full Name: </label>
+						<div class="col-sm-9">
+							<div class="form-control"><c:out value="${employee.lastName}, ${employee.firstName} ${employee.middleName}"/></div>
 						</div>
 					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Last Name: </label>
-						<div class="col-sm-10">
-							<div class="form-control"><c:out value="${employee.lastName}"/></div>
-						</div>
+				</div>
+			</div>
+			<div class="container-fluid col-sm-5">	
+				<div class="form-horizontal output-form" >
+					<div class="form-group title" id="leaveInformation">
+						<h2>Leave Information</h2>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 control-label">Middle Name: </label>
-						<div class="col-sm-10">
-							<div class="form-control"><c:out value="${employee.middleName}"/></div>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-2 control-label">Vacation Leave Credits: </label>
-						<div class="col-sm-10">
+						<label class="col-sm-3 control-label">VL Credits: </label>
+						<div class="col-sm-9">
 							<div class="form-control">
 								<div class="progress">
 									<span class="progress-value">${employee.usedVlCredits} / ${employee.vlCredits} used</span>
@@ -90,8 +83,8 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 control-label">Sick Leave Credits: </label>
-						<div class="col-sm-10">
+						<label class="col-sm-3 control-label">SL Credits: </label>
+						<div class="col-sm-9">
 							<div class="form-control">
 								<div class="progress">
 									<span class="progress-value">${employee.usedSlCredits} / ${employee.slCredits} used</span>
@@ -102,61 +95,15 @@
 								 </div>
 							</div>
 						</div>
-					</div>
+					</div>						
 				</div>
 			</div>
-			<div class="col-xs-1"></div>
+			<div class="clearfix visible-xs-block"></div>		
 		</div>
 
-		<!-- Leave Requests Section -->
-		<div class="row container-fluid">
-<!-- 			<div class="col-sm-12"> -->
-			<div class="col-xs-1"></div>
-			<div class="container-fluid col-xs-12 col-sm-6 col-md-10">
-				<div class="title" id="leaveRequests">
-					<h2>Leave Requests</h2>
-				</div>
-				<c:choose>
-					<c:when test="${empty employee.leaveRequests}">
-							<div class="alert alert-warning">
-								<em>No Leave Requests Yet</em>
-							</div>
-					</c:when>
-					<c:otherwise>
-						<div class="table-responsive">
-							<table class="table table-striped">
-								<thead>
-									<tr>
-										<th>#</th>
-										<th>Leave Type</th>
-										<th>Start Date</th>
-										<th>End Date</th>
-										<th>Days on Leave</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${employee.leaveRequests}" var="leaveRequest">
-										<tr>
-											<td><c:out value="${leaveRequest.requestNumber}"/></td>
-											<td><c:out value="${leaveRequest.leaveType}"/></td>
-											<td><c:out value="${leaveRequest.startDate}"/></td>
-											<td><c:out value="${leaveRequest.endDate}"/></td>
-											<td><c:out value="${leaveRequest.daysOnLeave}"/></td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
-					</c:otherwise>
-				</c:choose>
-			</div>
-			<div class="col-xs-1"></div>
-		</div>
-			
 		<!-- File Leave Section -->
 		<div class="row container-fluid">
-			<div class="col-xs-1"></div>
-			<div class="container-fluid col-xs-12 col-sm-6 col-md-10">
+			<div class="container-fluid col-xs-12 col-sm-6 col-sm-offset-1 col-md-10">
 				<form class="form-horizontal" action="/leave-management/fileLeave" method="POST">
 					<input type="hidden" name="recordId" value="${employee.recordID}">
 					<input type="hidden" name="idNumber" value="${employee.idNumber}">
@@ -220,7 +167,51 @@
 					</div>
 				</form>
 			</div>
-			<div class="col-xs-1"></div>
+			<div class="clearfix visible-xs-block"></div>
+		</div>
+
+		<!-- Leave Requests Section -->
+		<div class="row container-fluid">
+<!-- 			<div class="col-sm-12"> -->
+			<div class="container-fluid col-xs-12 col-sm-6 col-sm-offset-1 col-md-10">
+				<div class="title" id="leaveRequests">
+					<h2>Leave Requests</h2>
+				</div>
+				<c:choose>
+					<c:when test="${empty employee.leaveRequests}">
+							<div class="alert alert-warning">
+								<em>No Leave Requests Yet</em>
+							</div>
+					</c:when>
+					<c:otherwise>
+						<div class="table-responsive">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Leave Type</th>
+										<th>Start Date</th>
+										<th>End Date</th>
+										<th>Days on Leave</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${employee.leaveRequests}" var="leaveRequest">
+										<tr>
+											<td><c:out value="${leaveRequest.requestNumber}"/></td>
+											<td><c:out value="${leaveRequest.leaveType}"/></td>
+											<td><c:out value="${leaveRequest.startDate}"/></td>
+											<td><c:out value="${leaveRequest.endDate}"/></td>
+											<td><c:out value="${leaveRequest.daysOnLeave}"/></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+					</c:otherwise>
+				</c:choose>
+			</div>
+			<div class="clearfix visible-xs-block"></div>
 		</div>
 	</div>
 </body>
