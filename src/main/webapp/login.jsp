@@ -25,7 +25,7 @@
 		<div class="container">
 			<div id="home" class="row">
 				<img src="/img/77NewLogo.jpg" class="img-responsive" width="240px" />
-				<form class="form-horizontal">
+				<form class="form-horizontal" action="/leave-management/getLeaveCredits" method="post">
 					<div class="form-group title login-title-custom" id="formTitle">
 						LEAVE MANAGEMENT SYSTEM
 					</div>				
@@ -33,7 +33,7 @@
 						<label class="col-sm-4 control-label" for="idNumber">Id Number: </label>
 						<div class="col-sm-8">
 							<div class="input-group">
-								<input type="text" class="form-control" id="idNumber" placeholder="Id Number"/>
+								<input type="text" class="form-control" name="idNumber" id="idNumber" placeholder="Id Number"/>
 							</div>
 						</div>
 					</div>				
@@ -41,7 +41,7 @@
 						<label class="col-sm-4 control-label" for="password">Password: </label>
 						<div class="col-sm-8">
 							<div class="input-group">
-								<input type="password" class="form-control" id="password" placeholder="Password"/>
+								<input type="password" class="form-control" name="password" id="password" placeholder="Password"/>
 							</div>
 						</div>
 					</div>				
