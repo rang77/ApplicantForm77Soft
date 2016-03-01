@@ -33,6 +33,7 @@
 
 </head>
 <body>
+<<<<<<< HEAD
 	<nav class="navbar navbar-inverse navbar-fixed-top inverse-dark">
 	<div class="container-fluid">
 		<div class="col-sm-1"></div>
@@ -62,6 +63,23 @@
 				<li><a href="../index.html">Logout</a></li>
 			</ul>
 		</div>
+=======
+
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse" id="mainNavbar">
+		<ul class="nav navbar-nav">
+			<li><a href="../index.html">Home</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right navbar-right-custom">
+			<li class=""><a href="#" class="dropdown-toggle"
+				data-toggle="dropdown" role="button" aria-haspopup="true"
+				aria-expanded="false">Account Settings <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Change Password</a></li>
+				</ul></li>
+			<li><a href="../index.html">Logout</a></li>
+		</ul>
+>>>>>>> branch 'LMSNew' of https://github.com/rang77/ApplicantForm77Soft
 	</div>
 	</nav>
 
