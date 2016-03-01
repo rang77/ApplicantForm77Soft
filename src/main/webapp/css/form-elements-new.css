@@ -160,3 +160,7 @@ button.btncustom:active:focus, button.btncustom.active:focus { outline: 0; opaci
 .required-label {
 	color: #fd625e;
 }
+
+.navbar-right-custom{
+	padding-right: 125px;
+}
