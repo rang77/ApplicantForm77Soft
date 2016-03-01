@@ -8,12 +8,12 @@ import com.force.api.ForceApi;
 
 public class SalesforceDAO<T> {
 	
-	private static final String CLIENTID = "3MVG9PbQtiUzNgN4S79MiP7zmS6BZFASaVsqM23xscv4ZjTH0Mu0dyndwsWFmEmsoKnNgBAKt.xv2srlAjlwF";
-	private static final String CLIENTSECRET = "8479639149034290684";
-	private static final String DOMAIN = "https://test.salesforce.com";
-	private static final String USERNAME = "sfadmin@77soft.com.leave";
-	private static final String PASSWORD = "77UltimateLeave";
-	private static final String SECURITY_TOKEN = "qTV4gyJXi7Du55xmqZXnQUahX";
+	private static final String CLIENTID = "3MVG9ZL0ppGP5UrC9R5pfGadp9_.sezTYM4KyOofpmNB9S0IumaT57vNAI1j0Xbl6fJInNkjvcIDSCKZ9ypMm";
+	private static final String CLIENTSECRET = "8568904816664843552";
+	private static final String DOMAIN = "https://login.salesforce.com";
+	private static final String USERNAME = "devorg@77soft.com";
+	private static final String PASSWORD = "77GSIDev1";
+	private static final String SECURITY_TOKEN = "Gv0bAID3dNqiUTMvJpVlGDlQ6";
 	
 	private ApiConfig config;
 	private ForceApi api;
