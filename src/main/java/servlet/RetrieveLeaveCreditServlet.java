@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import db.SalesforceDAO;
-import model.Employee;
+import model.Resource;
 
 @WebServlet(name = "retrieveLeaveCreditServlet", urlPatterns = {"/leave-management/getLeaveCredits/*", "/leave-management/getLeaveCredits" })
 public class RetrieveLeaveCreditServlet extends HttpServlet {
@@ -22,25 +22,25 @@ public class RetrieveLeaveCreditServlet extends HttpServlet {
 	}
 	
 	private void getLeaveDetails(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-		SalesforceDAO<Employee> connector = new SalesforceDAO<Employee>();
+		SalesforceDAO<Resource> connector = new SalesforceDAO<Resource>();
 		
 		connector.connect();
 
 		String idNumber = request.getParameter("idNumber");
 
-		List<Employee> result = connector.retrieve(String.format(
+		List<Resource> result = connector.retrieve(String.format(
 				"SELECT id,Name,IDNumber__c,FirstName__c,"
-						+ "LastName__c,MiddleName__c,SLCredits__c,"
-						+ "UsedSLCredits__c,UsedVLCredits__c,VLCredits__c,"
+						+ "LastName__c,MiddleName__c,SickLeaveEntitlement__c,"
+						+ "SickLeavesUsed__c,VacationLeavesUsed__c,VacationLeaveEntitlement__c,"
 							+ "(SELECT Name, LeaveType__c,StartDate__c,EndDate__c,DaysOnLeave__c,"
-							+ "CreatedDate FROM LeaveRequests__r ORDER BY CreatedDate DESC)"
-						+ " FROM Employee__c WHERE IDNumber__c LIKE '%s'",
-				idNumber), Employee.class);
+							+ "CreatedDate FROM LeaveRequest__r ORDER BY CreatedDate DESC)"
+						+ " FROM Resource__c WHERE IDNumber__c LIKE '%s'",
+				idNumber), Resource.class);
 
 		if (result.size() == 0) {
 			response.sendRedirect("/leave-management/employeeNotFound.html");
 		} else {
-			Employee employee = result.get(0);
+			Resource employee = result.get(0);
 			
 			RequestDispatcher rd = request
 					.getRequestDispatcher("/leave-management/viewLeave.jsp");

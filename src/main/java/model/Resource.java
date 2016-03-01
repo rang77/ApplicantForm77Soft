@@ -8,7 +8,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Employee {
+public class Resource {
 
 	@JsonProperty(value = "Id")
 	private String recordID;
@@ -33,23 +33,23 @@ public class Employee {
 	@JsonSerialize(include = Inclusion.NON_NULL)
 	private String middleName;
 
-	@JsonProperty(value = "SLCredits__c")
+	@JsonProperty(value = "SickLeaveEntitlement__c")
 	@JsonSerialize(include = Inclusion.NON_NULL)
 	private double slCredits;
 
-	@JsonProperty(value = "VLCredits__c")
+	@JsonProperty(value = "VacationLeaveEntitlement__c")
 	@JsonSerialize(include = Inclusion.NON_NULL)
 	private double vlCredits;
 
-	@JsonProperty(value = "UsedSLCredits__c")
+	@JsonProperty(value = "SickLeavesUsed__c")
 	@JsonSerialize(include = Inclusion.NON_NULL)
-	private double usedSlCredits;
+	private double sickLeavesUsed;
 
-	@JsonProperty(value = "UsedVLCredits__c")
+	@JsonProperty(value = "VacationLeavesUsed__c")
 	@JsonSerialize(include = Inclusion.NON_NULL)
-	private double usedVlCredits;
+	private double vacationLeavesUsed;
 
-	@JsonProperty(value = "LeaveRequests__r")
+	@JsonProperty(value = "LeaveRequest__r")
 	@JsonSerialize(include = Inclusion.NON_NULL)
 	private List<LeaveRequest> leaveRequests;
 
@@ -117,20 +117,20 @@ public class Employee {
 		this.vlCredits = vlCredits;
 	}
 
-	public double getUsedSlCredits() {
-		return usedSlCredits;
+	public double getSickLeavesUsed() {
+		return sickLeavesUsed;
 	}
 
-	public void setUsedSlCredits(double usedSlCredits) {
-		this.usedSlCredits = usedSlCredits;
+	public void setSickLeavesUsed(double sickLeavesUsed) {
+		this.sickLeavesUsed = sickLeavesUsed;
 	}
 
-	public double getUsedVlCredits() {
-		return usedVlCredits;
+	public double getVacationLeavesUsed() {
+		return vacationLeavesUsed;
 	}
 
-	public void setUsedVlCredits(double usedVlCredits) {
-		this.usedVlCredits = usedVlCredits;
+	public void setVacationLeavesUsed(double vacationLeavesUsed) {
+		this.vacationLeavesUsed = vacationLeavesUsed;
 	}
 
 	public List<LeaveRequest> getLeaveRequests() {

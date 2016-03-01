@@ -13,7 +13,7 @@ public class LeaveRequest {
 	@JsonProperty(value = "Name")
 	private String requestNumber;
 
-	@JsonProperty(value = "Employee__c")
+	@JsonProperty(value = "Resource__c")
 	private String employeeID;
 
 	@JsonProperty(value = "StartDate__c")

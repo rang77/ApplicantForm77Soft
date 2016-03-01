@@ -75,10 +75,10 @@
 						<div class="col-sm-9">
 							<div class="form-control">
 								<div class="progress">
-									<span class="progress-value">${employee.usedVlCredits} / ${employee.vlCredits} used</span>
+									<span class="progress-value">${employee.vacationLeavesUsed} / ${employee.vlCredits} used</span>
 									<div class="progress-bar progress-bar-danger" role="progressbar" 
-										aria-valuenow="${employee.usedVlCredits}" aria-valuemin="0" aria-valuemax="${employee.vlCredits}" 
-										style="width:${(employee.usedVlCredits / employee.vlCredits) * 100}%;">
+										aria-valuenow="${employee.vacationLeavesUsed}" aria-valuemin="0" aria-valuemax="${employee.vlCredits}" 
+										style="width:${(employee.vacationLeavesUsed / employee.vlCredits) * 100}%;">
 								  	</div>
 								 </div>
 							</div>
@@ -89,10 +89,10 @@
 						<div class="col-sm-9">
 							<div class="form-control">
 								<div class="progress">
-									<span class="progress-value">${employee.usedSlCredits} / ${employee.slCredits} used</span>
+									<span class="progress-value">${employee.sickLeavesUsed} / ${employee.slCredits} used</span>
 									<div class="progress-bar progress-bar-danger" role="progressbar" 
-										aria-valuenow="${employee.usedSlCredits}" aria-valuemin="0" aria-valuemax="${employee.slCredits}" 
-										style="width:${(employee.usedSlCredits / employee.slCredits) * 100}%;">
+										aria-valuenow="${employee.sickLeavesUsed}" aria-valuemin="0" aria-valuemax="${employee.slCredits}" 
+										style="width:${(employee.sickLeavesUsed / employee.slCredits) * 100}%;">
 								  	</div>
 								 </div>
 							</div>

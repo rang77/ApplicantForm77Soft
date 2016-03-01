@@ -19,7 +19,7 @@ import org.codehaus.jackson.type.TypeReference;
 import com.force.api.ApiException;
 
 import db.SalesforceDAO;
-import model.Employee;
+import model.Resource;
 import model.LeaveRequest;
 import model.error.SalesforceError;
 
@@ -37,7 +37,7 @@ public class FileLeaveServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SalesforceDAO<Employee> connector = new SalesforceDAO<>();
+		SalesforceDAO<Resource> connector = new SalesforceDAO<>();
 		
 		connector.connect();
 		
