@@ -60,7 +60,7 @@
 						<ul class="dropdown-menu">
 							<li><a href="#">Change Password</a></li>
 						</ul></li>
-					<li><a href="../index.html">Logout</a></li>
+					<li><a href="/LogoutServlet">Logout</a></li>
 				</ul>
 			</div>
 		</div>

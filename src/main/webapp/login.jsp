@@ -25,7 +25,7 @@
 		<div class="container">
 			<div id="home" class="row">
 				<img src="/img/77NewLogo.jpg" class="img-responsive" width="240px" />
-				<form class="form-horizontal" action="/leave-management/getLeaveCredits" method="post">
+				<form class="form-horizontal" action="LoginServlet" method="post">
 					<div class="form-group title login-title-custom" id="formTitle">
 						LEAVE MANAGEMENT SYSTEM
 					</div>				

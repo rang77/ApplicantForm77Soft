@@ -13,7 +13,8 @@ import javax.servlet.http.HttpSession;
 import db.ResourceDAO;
 import model.Resource;
 
-@WebServlet(name = "retrieveLeaveCreditServlet", urlPatterns = {"/leave-management/getLeaveCredits/*", "/leave-management/getLeaveCredits" })
+//@WebServlet(name = "retrieveLeaveCreditServlet", urlPatterns = {"/leave-management/viewLeave", "/leave-management/getLeaveCredits/*", "/leave-management/getLeaveCredits" })
+@WebServlet(name = "/RetrieveLeaveCreditServlet")
 public class RetrieveLeaveCreditServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -24,18 +25,17 @@ public class RetrieveLeaveCreditServlet extends HttpServlet {
 	private void getLeaveDetails(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		ResourceDAO resourceDAO = new ResourceDAO();
 		
-		String idNumber = request.getParameter("idNumber");
+		HttpSession session = request.getSession();
+		
+		String idNumber = (String) session.getAttribute("resourceId");
 
 		Resource result = resourceDAO.retrieveResouce(idNumber);
 		
-		HttpSession session = request.getSession();
-
 		if (result != null) {
-			RequestDispatcher rd = request
-					.getRequestDispatcher("/leave-management/viewLeave.jsp");
-			session.setAttribute("resourceId", result.getIdNumber());
+//			RequestDispatcher rd = request
+//					.getRequestDispatcher("/leave-management/viewLeave.jsp");
 			request.setAttribute("employee", result);
-			rd.forward(request, response);
+//			rd.forward(request, response);
 		} else {
 			response.sendRedirect("/leave-management/employeeNotFound.html");
 		}

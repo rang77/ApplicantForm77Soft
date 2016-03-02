@@ -13,6 +13,9 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import db.ResourceDAO;
+import model.Resource;
+
 /**
  * Servlet Filter implementation class SessionFilter
  */
@@ -44,13 +47,23 @@ public class SessionFilter implements Filter {
 		// pass the request along the filter chain
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession(false);
+		RequestDispatcher dispatch = req.getRequestDispatcher("/login.jsp");
 
 		if (session != null) {
+/*			String uri = req.getRequestURI();
+			
+			String pageName = uri.substring(uri.lastIndexOf("/")+1);
+			
+			if(!pageName.equals("viewLeave.jsp")){
+				chain.doFilter(request, response);
+			}else{
+				dispatch = req.getRequestDispatcher("/leave-management/getLeaveCredits");				
+			}*/
 			chain.doFilter(request, response);
-		} else {
-			RequestDispatcher dispatch = req.getRequestDispatcher("/login.jsp");
+		}else{			
 			dispatch.forward(request, response);
 		}
+		
 	}
 
 	/**
