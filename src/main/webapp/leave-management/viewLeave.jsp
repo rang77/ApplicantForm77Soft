@@ -136,86 +136,13 @@
 			<div class="clearfix visible-xs-block"></div>
 		</div>
 
-		<!-- File Leave Section -->
-		<div class="row container-fluid">
-			<div
-				class="container-fluid col-xs-12 col-sm-6 col-sm-offset-1 col-md-10">
-				<form class="form-horizontal" action="/leave-management/fileLeave"
-					method="POST">
-					<input type="hidden" name="recordId" value="${employee.recordID}">
-					<input type="hidden" name="idNumber" value="${employee.idNumber}">
-
-					<div class="form-group title" id="fileLeave">
-						<h2>File Leave</h2>
-					</div>
-					<!-- 					<div class="well welldark-sm">
-						<strong>
-							<span class="glyphicon glyphicon-asterisk"></span>
-							Required Field
-						</strong>
-					</div> -->
-					<div class="form-group">
-						<label class="col-sm-2 control-label" for="leaveType">Leave
-							Type: </label>
-						<div class="col-sm-10">
-							<div class="input-group">
-								<select id="leaveType" name="leaveType" class="form-control">
-									<option value="Vacation Leave">Vacation Leave</option>
-									<option value="Sick Leave">Sick Leave</option>
-								</select> <span class="input-group-addon"><span
-									class="glyphicon glyphicon-asterisk"></span></span>
-							</div>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="col-sm-2 control-label" for="startDate">Start
-							Date: </label>
-						<div class="col-sm-10">
-							<div class="input-group">
-								<input id="startDate" name="startDate" placeholder="Start Date"
-									class="form-control" type="text" onfocus="(this.type='date')"
-									onblur="(this.type='text')" required> <span
-									class="input-group-addon"> <span
-									class="glyphicon glyphicon-asterisk"></span>
-								</span>
-							</div>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="col-sm-2 control-label" for="endDate">End
-							Date: </label>
-						<div class="col-sm-10">
-							<div class="input-group">
-								<input id="endDate" name="endDate" placeholder="End Date"
-									class="form-control" type="text" onfocus="(this.type='date')"
-									onblur="(this.type='text')" required> <span
-									class="input-group-addon"> <span
-									class="glyphicon glyphicon-asterisk"></span>
-								</span>
-							</div>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="custom">
-							<button type="reset" class="btncustom">Clear</button>
-							<button type="submit" class="btncustom">Submit</button>
-						</div>
-					</div>
-				</form>
-			</div>
-			<div class="clearfix visible-xs-block"></div>
-		</div>
-
 		<!-- Leave Requests Section -->
 		<div class="row container-fluid">
 			<!-- 			<div class="col-sm-12"> -->
 			<div
 				class="container-fluid col-xs-12 col-sm-6 col-sm-offset-1 col-md-10">
 				<div class="title" id="leaveRequests">
-					<h2>Leave Requests</h2>
+					<h2>Requested Leaves</h2>
 				</div>
 				<c:choose>
 					<c:when test="${empty employee.leaveRequests}">
@@ -240,6 +167,7 @@
 										<th>Start Date</th>
 										<th>End Date</th>
 										<th>Days on Leave</th>
+										<th>Reason</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -250,6 +178,7 @@
 											<td><c:out value="${leaveRequest.startDate}" /></td>
 											<td><c:out value="${leaveRequest.endDate}" /></td>
 											<td><c:out value="${leaveRequest.daysOnLeave}" /></td>
+											<td><c:out value="${leaveRequest.reason}" /></td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -257,6 +186,93 @@
 						</div>
 					</c:otherwise>
 				</c:choose>
+			</div>
+			<div class="clearfix visible-xs-block"></div>
+		</div>
+		
+		<!-- File Leave Section -->
+		<div class="row container-fluid">
+			<div
+				class="container-fluid col-xs-12 col-sm-6 col-sm-offset-1 col-md-10">
+				<form role="form" class="form-horizontal" action="/leave-management/fileLeave"
+					method="POST">
+					<input type="hidden" name="recordId" value="${employee.recordID}">
+					<input type="hidden" name="idNumber" value="${employee.idNumber}">
+
+					<div class="form-group title" id="fileLeave">
+						<h2>Create New Leave Request</h2>
+					</div>
+					
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="leaveType">Leave
+								Type: </label>
+							<div class="col-sm-10">
+								<div class="input-group">
+									<select id="leaveType" name="leaveType" class="form-control">
+										<option value="Vacation Leave">Vacation Leave</option>
+										<option value="Sick Leave">Sick Leave</option>
+									</select> <span class="input-group-addon"><span
+										class="glyphicon glyphicon-asterisk"></span></span>
+								</div>
+							</div>
+						</div>
+							
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="leaveType">
+								Reason:
+							</label>
+							<div class="col-sm-10">
+								<div class="input-group">
+									<input id="leaveReason" name="leaveReason" placeholder="Reason"
+										class="form-control" type="text" required> <span
+										class="input-group-addon"> <span
+										class="glyphicon glyphicon-asterisk"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="startDate">Start
+								Date: </label>
+							<div class="col-sm-10">
+								<div class="input-group">
+									<input id="startDate" name="startDate" placeholder="Start Date"
+										class="form-control" type="text" onfocus="(this.type='date')"
+										onblur="(this.type='text')" required> <span
+										class="input-group-addon"> <span
+										class="glyphicon glyphicon-asterisk"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="endDate">End
+								Date: </label>
+							<div class="col-sm-10">
+								<div class="input-group">
+									<input id="endDate" name="endDate" placeholder="End Date"
+										class="form-control" type="text" onfocus="(this.type='date')"
+										onblur="(this.type='text')" required> <span
+										class="input-group-addon"> <span
+										class="glyphicon glyphicon-asterisk"></span>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="custom">
+							<button type="reset" class="btncustom">Clear</button>
+							<button type="submit" class="btncustom">Submit</button>
+						</div>
+					</div>
+				</form>
 			</div>
 			<div class="clearfix visible-xs-block"></div>
 		</div>

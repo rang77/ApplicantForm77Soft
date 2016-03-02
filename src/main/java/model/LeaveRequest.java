@@ -25,6 +25,9 @@ public class LeaveRequest {
 	@JsonProperty(value = "LeaveType__c")
 	private String leaveType;
 
+	@JsonProperty(value = "Reason__c")
+	private String reason;
+
 	private int daysOnLeave;
 
 	public String getId() {
@@ -73,6 +76,14 @@ public class LeaveRequest {
 
 	public void setLeaveType(String leaveType) {
 		this.leaveType = leaveType;
+	}
+
+	public String getReason() {
+		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
 
 	@JsonIgnore

@@ -58,8 +58,9 @@ input[type="email"]:focus,
 textarea:focus, 
 textarea.form-control:focus {
 	outline: 0;
-	background: #444;
-    border: 3px solid #555;
+/* 	background: #444; */
+/*     border: 3px solid #555; */
+	border: 1px solid 66AFE9;
     -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
 }
 
