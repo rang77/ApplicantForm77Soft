@@ -27,9 +27,9 @@ public class RetrieveLeaveCreditServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		String idNumber = (String) session.getAttribute("resourceId");
+		String resourceId = (String) session.getAttribute("resourceId");
 
-		Resource result = resourceDAO.retrieveResouce(idNumber);
+		Resource result = resourceDAO.retrieveResouce(resourceId);
 		
 		if (result != null) {
 			RequestDispatcher rd = request
@@ -37,7 +37,11 @@ public class RetrieveLeaveCreditServlet extends HttpServlet {
 			request.setAttribute("employee", result);
 			rd.forward(request, response);
 		} else {
-			response.sendRedirect("/leave-management/employeeNotFound.html");
+			request.setAttribute("error", true);
+			RequestDispatcher rd = request
+					.getRequestDispatcher(request.getRequestURI());
+			
+			rd.forward(request, response);
 		}
 	}
 	

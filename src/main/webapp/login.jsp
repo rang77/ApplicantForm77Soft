@@ -17,6 +17,17 @@
 <link rel="stylesheet" href="/css/neotheme.css" />
 <link rel="stylesheet" href="/css/lms.css" />
 
+<style>
+.alert-custom{
+    padding: 5px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-bottom: 20px;
+	border:1px solid transparent;
+	border-radius:4px
+}
+</style>
+
 <title>Seven Seven GSI - Leave Management System</title>
 </head>
 
@@ -27,24 +38,32 @@
 				<img src="/img/77NewLogo.jpg" class="img-responsive" width="240px" />
 				<form class="form-horizontal" action="LoginServlet" method="post">
 					<div class="form-group title login-title-custom" id="formTitle">
-						LEAVE MANAGEMENT SYSTEM
-					</div>				
-					<div class="form-group">
-						<label class="col-sm-4 control-label" for="idNumber">Id Number: </label>
-						<div class="col-sm-8">
-							<div class="input-group">
-								<input type="text" class="form-control" name="idNumber" id="idNumber" placeholder="Id Number"/>
+						LEAVE MANAGEMENT SYSTEM</div>
+					<c:if test="${not empty error}">
+						<div class="alert-danger alert-custom">
+							<strong><c:out value="${error.message}"/></strong>
+						</div>
+					</c:if>
+					<div class="form-group" style="margin-top:22px">
+						<label class="col-xs-4 control-label" for="idNumber">Id
+							Number: </label>
+						<div class="col-xs-8">
+							<div class="input-group-xs">
+								<input type="text" class="form-control" name="idNumber"
+									id="idNumber" placeholder="Id Number" />
 							</div>
 						</div>
-					</div>				
+					</div>
 					<div class="form-group">
-						<label class="col-sm-4 control-label" for="password">Password: </label>
-						<div class="col-sm-8">
-							<div class="input-group">
-								<input type="password" class="form-control" name="password" id="password" placeholder="Password"/>
+						<label class="col-xs-4 control-label" for="password">Password:
+						</label>
+						<div class="col-xs-8">
+							<div class="input-group-xs">
+								<input type="password" class="form-control" name="password"
+									id="password" placeholder="Password" />
 							</div>
 						</div>
-					</div>				
+					</div>
 					<div class="btn-group">
 						<button type="submit" class="btn btn-danger">Login</button>
 					</div>

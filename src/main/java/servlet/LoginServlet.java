@@ -10,8 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.force.api.ApiException;
+
 import db.ResourceDAO;
+import helper.ServletHelper;
 import model.Resource;
+import model.error.SalesforceError;
 
 /**
  * Servlet implementation class LoginServlet
@@ -44,19 +48,47 @@ public class LoginServlet extends HttpServlet {
 		ResourceDAO resourceDAO = new ResourceDAO();
 		
 		String idNumber = request.getParameter("idNumber");
-
-		Resource result = resourceDAO.retrieveResouce(idNumber);
-		
 		HttpSession session = request.getSession();
-
-		if (result != null) {
+		
+		if(idNumber.isEmpty()){
+			SalesforceError error = new SalesforceError();
+			error.setMessage("Employee does not exist.");
+			request.setAttribute("error", error);
 			RequestDispatcher rd = request
-					.getRequestDispatcher("/leave-management/getLeaveCredits");
-			session.setAttribute("resourceId", result.getIdNumber());
-//			request.setAttribute("employee", result);
+					.getRequestDispatcher("/login.jsp");
+			
 			rd.forward(request, response);
-		} else {
-			response.sendRedirect("/leave-management/employeeNotFound.html");
+		}
+		
+		try{
+			Resource result = resourceDAO.retrieveResouce(idNumber);	
+			
+			if (result != null) {
+				RequestDispatcher rd = request
+						.getRequestDispatcher("/leave-management/getLeaveCredits");
+				session.setAttribute("recordId", result.getRecordID());
+				session.setAttribute("resourceId", result.getIdNumber());
+				rd.forward(request, response);
+			} else {
+				SalesforceError error = new SalesforceError();
+				error.setMessage("Employee does not exist.");
+				request.setAttribute("error", error);
+				RequestDispatcher rd = request
+						.getRequestDispatcher("/login.jsp");
+				
+				rd.forward(request, response);
+			}
+		}catch(ApiException e){
+			SalesforceError error = ServletHelper.handleAPIException(e.getMessage());
+			
+			if(error != null){
+				request.setAttribute("error", error);
+			}			
+			
+			RequestDispatcher rd = request
+					.getRequestDispatcher("/login.jsp");
+			
+			rd.forward(request, response);			
 		}
 	}
 

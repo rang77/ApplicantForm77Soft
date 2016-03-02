@@ -51,7 +51,8 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="mainNavbar">
 				<ul class="nav navbar-nav">
-					<li><a href="../index.html">Home</a></li>
+					<li><a href="/leave-management/getLeaveCredits">Home</a></li>
+					<li><a href="/leave-management/fileLeave.jsp">File Leave</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right navbar-right-custom">
 					<li class=""><a href="#" class="dropdown-toggle"
@@ -186,93 +187,6 @@
 						</div>
 					</c:otherwise>
 				</c:choose>
-			</div>
-			<div class="clearfix visible-xs-block"></div>
-		</div>
-		
-		<!-- File Leave Section -->
-		<div class="row container-fluid">
-			<div
-				class="container-fluid col-xs-12 col-sm-6 col-sm-offset-1 col-md-10">
-				<form role="form" class="form-horizontal" action="/leave-management/fileLeave"
-					method="POST">
-					<input type="hidden" name="recordId" value="${employee.recordID}">
-					<input type="hidden" name="idNumber" value="${employee.idNumber}">
-
-					<div class="form-group title" id="fileLeave">
-						<h2>Create New Leave Request</h2>
-					</div>
-					
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label class="col-sm-2 control-label" for="leaveType">Leave
-								Type: </label>
-							<div class="col-sm-10">
-								<div class="input-group">
-									<select id="leaveType" name="leaveType" class="form-control">
-										<option value="Vacation Leave">Vacation Leave</option>
-										<option value="Sick Leave">Sick Leave</option>
-									</select> <span class="input-group-addon"><span
-										class="glyphicon glyphicon-asterisk"></span></span>
-								</div>
-							</div>
-						</div>
-							
-						<div class="form-group">
-							<label class="col-sm-2 control-label" for="leaveReason">
-								Reason:
-							</label>
-							<div class="col-sm-10">
-								<div class="input-group">
-									<input id="leaveReason" name="leaveReason" placeholder="Reason"
-										class="form-control" type="text" required> <span
-										class="input-group-addon"> <span
-										class="glyphicon glyphicon-asterisk"></span>
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-sm-6">
-						<div class="form-group">
-							<label class="col-sm-2 control-label" for="startDate">Start
-								Date: </label>
-							<div class="col-sm-10">
-								<div class="input-group">
-									<input id="startDate" name="startDate" placeholder="Start Date"
-										class="form-control" type="text" onfocus="(this.type='date')"
-										onblur="(this.type='text')" required> <span
-										class="input-group-addon"> <span
-										class="glyphicon glyphicon-asterisk"></span>
-									</span>
-								</div>
-							</div>
-						</div>
-						
-						<div class="form-group">
-							<label class="col-sm-2 control-label" for="endDate">End
-								Date: </label>
-							<div class="col-sm-10">
-								<div class="input-group">
-									<input id="endDate" name="endDate" placeholder="End Date"
-										class="form-control" type="text" onfocus="(this.type='date')"
-										onblur="(this.type='text')" required> <span
-										class="input-group-addon"> <span
-										class="glyphicon glyphicon-asterisk"></span>
-									</span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="custom">
-							<button type="reset" class="btncustom">Clear</button>
-							<button type="submit" class="btncustom">Submit</button>
-						</div>
-					</div>
-				</form>
 			</div>
 			<div class="clearfix visible-xs-block"></div>
 		</div>
