@@ -18,8 +18,7 @@ import org.codehaus.jackson.type.TypeReference;
 
 import com.force.api.ApiException;
 
-import db.SalesforceDAO;
-import model.Resource;
+import db.LeaveRequestDAO;
 import model.LeaveRequest;
 import model.error.SalesforceError;
 
@@ -37,9 +36,7 @@ public class FileLeaveServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		SalesforceDAO<Resource> connector = new SalesforceDAO<>();
-		
-		connector.connect();
+		LeaveRequestDAO leaveRequestDAO = new LeaveRequestDAO();
 		
 		String recordId = request.getParameter("recordId");
 		String idNumber = request.getParameter("idNumber");
@@ -54,11 +51,11 @@ public class FileLeaveServlet extends HttpServlet {
 		leaveRequest.setLeaveType(leaveType);
 		leaveRequest.setStartDate(startDate);
 		leaveRequest.setEndDate(endDate);
-		leaveRequest.setEndDate(reason);
+		leaveRequest.setReason(reason);
 		
 		try{
 			
-			String requestID = connector.create("LeaveRequest__c", leaveRequest);
+			String requestID = leaveRequestDAO.createLeaveRequest(leaveRequest);
 			if(requestID != null){
 				response.sendRedirect("/leave-management/getLeaveCredits?idNumber="+idNumber);
 			}else{

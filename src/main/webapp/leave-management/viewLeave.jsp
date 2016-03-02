@@ -19,8 +19,8 @@
 
 <script>
 	$(function() {
-		$("#startDate").datepicker();
-		$("#endDate").datepicker();
+		$("#startDate").datepicker({ dateFormat: 'yy-mm-dd' }).val();
+		$("#endDate").datepicker({ dateFormat: 'yy-mm-dd' }).val();
 	});
 	$(document).ready(function() {
 		$('#myTable').DataTable({
@@ -219,7 +219,7 @@
 						</div>
 							
 						<div class="form-group">
-							<label class="col-sm-2 control-label" for="leaveType">
+							<label class="col-sm-2 control-label" for="leaveReason">
 								Reason:
 							</label>
 							<div class="col-sm-10">

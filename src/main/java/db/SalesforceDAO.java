@@ -18,7 +18,7 @@ public class SalesforceDAO<T> {
 	private ApiConfig config;
 	private ForceApi api;
 
-	public void connect() {
+	protected void connect() {
 		config = new ApiConfig();
 		
 		config.setUsername(USERNAME);
@@ -30,19 +30,19 @@ public class SalesforceDAO<T> {
 		api = new ForceApi(config);
 	}
 	
-	public List<T> retrieve(String query, Class<T> objectType) {
+	protected List<T> retrieve(String query, Class<T> objectType) {
 		return api.query(query, objectType).getRecords();
 	}
 	
-	public String create(String objectType, Object object) throws ApiException{
+	protected String create(String objectType, Object object) throws ApiException{
 		return api.createSObject(objectType, object);
 	}
 
-	public String update(String objectType, Object object) {
+	protected String update(String objectType, Object object) {
 		return objectType;
 	}
 
-	public String delete(String objectType, Object object) {
+	protected String delete(String objectType, Object object) {
 		return objectType;
 	}
 }
