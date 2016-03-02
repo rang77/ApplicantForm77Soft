@@ -46,21 +46,25 @@ public class SessionFilter implements Filter {
 
 		// pass the request along the filter chain
 		HttpServletRequest req = (HttpServletRequest) request;
-		HttpSession session = req.getSession(false);
-		RequestDispatcher dispatch = req.getRequestDispatcher("/login.jsp");
-
-		if (session != null) {
-/*			String uri = req.getRequestURI();
+		String resourceId = null;
+		
+		if(req.getSession(false) != null){
+			resourceId = (String) req.getSession(false).getAttribute("resourceId");
+		}
+		
+		if (resourceId != null) {
+			String uri = req.getRequestURI();
 			
 			String pageName = uri.substring(uri.lastIndexOf("/")+1);
 			
-			if(!pageName.equals("viewLeave.jsp")){
-				chain.doFilter(request, response);
+			if(pageName.equals("viewLeave.jsp") || pageName.equals("login.jsp")){
+				RequestDispatcher dispatch = req.getRequestDispatcher("/leave-management/getLeaveCredits");	
+				dispatch.forward(request, response);
 			}else{
-				dispatch = req.getRequestDispatcher("/leave-management/getLeaveCredits");				
-			}*/
-			chain.doFilter(request, response);
+				chain.doFilter(request, response);
+			}
 		}else{			
+			RequestDispatcher dispatch = req.getRequestDispatcher("/login.jsp");
 			dispatch.forward(request, response);
 		}
 		

@@ -13,8 +13,8 @@ import javax.servlet.http.HttpSession;
 import db.ResourceDAO;
 import model.Resource;
 
-//@WebServlet(name = "retrieveLeaveCreditServlet", urlPatterns = {"/leave-management/viewLeave", "/leave-management/getLeaveCredits/*", "/leave-management/getLeaveCredits" })
-@WebServlet(name = "/RetrieveLeaveCreditServlet")
+@WebServlet(name = "retrieveLeaveCreditServlet", urlPatterns = {"/leave-management/viewLeave", "/leave-management/getLeaveCredits/*", "/leave-management/getLeaveCredits" })
+//@WebServlet(name = "/RetrieveLeaveCreditServlet")
 public class RetrieveLeaveCreditServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -32,10 +32,10 @@ public class RetrieveLeaveCreditServlet extends HttpServlet {
 		Resource result = resourceDAO.retrieveResouce(idNumber);
 		
 		if (result != null) {
-//			RequestDispatcher rd = request
-//					.getRequestDispatcher("/leave-management/viewLeave.jsp");
+			RequestDispatcher rd = request
+					.getRequestDispatcher("/leave-management/viewLeave.jsp");
 			request.setAttribute("employee", result);
-//			rd.forward(request, response);
+			rd.forward(request, response);
 		} else {
 			response.sendRedirect("/leave-management/employeeNotFound.html");
 		}

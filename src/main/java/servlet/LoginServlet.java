@@ -51,7 +51,7 @@ public class LoginServlet extends HttpServlet {
 
 		if (result != null) {
 			RequestDispatcher rd = request
-					.getRequestDispatcher("/leave-management/viewLeave.jsp");
+					.getRequestDispatcher("/leave-management/getLeaveCredits");
 			session.setAttribute("resourceId", result.getIdNumber());
 //			request.setAttribute("employee", result);
 			rd.forward(request, response);
