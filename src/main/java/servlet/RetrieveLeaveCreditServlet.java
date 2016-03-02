@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import db.ResourceDAO;
 import model.Resource;
@@ -26,10 +27,13 @@ public class RetrieveLeaveCreditServlet extends HttpServlet {
 		String idNumber = request.getParameter("idNumber");
 
 		Resource result = resourceDAO.retrieveResouce(idNumber);
+		
+		HttpSession session = request.getSession();
 
 		if (result != null) {
 			RequestDispatcher rd = request
 					.getRequestDispatcher("/leave-management/viewLeave.jsp");
+			session.setAttribute("resourceId", result.getIdNumber());
 			request.setAttribute("employee", result);
 			rd.forward(request, response);
 		} else {
