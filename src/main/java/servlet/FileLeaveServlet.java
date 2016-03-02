@@ -49,7 +49,10 @@ public class FileLeaveServlet extends HttpServlet {
 		try{
 			String requestID = leaveRequestDAO.createLeaveRequest(leaveRequest);
 			if(requestID != null){
-				response.sendRedirect("/leave-management/getLeaveCredits");
+				RequestDispatcher rd = request.getRequestDispatcher("/leave-management/getLeaveCredits");
+				
+				request.setAttribute("smessage", "Request leave successful. Please wait while the request is pending for approval.");
+				rd.forward(request, response);
 			}else{
 				RequestDispatcher rd = request.getRequestDispatcher("/leave-management/fileLeave.jsp");
 				rd.forward(request, response);				

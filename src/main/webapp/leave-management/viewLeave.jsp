@@ -19,8 +19,12 @@
 
 <script>
 	$(function() {
-		$("#startDate").datepicker({ dateFormat: 'yy-mm-dd' }).val();
-		$("#endDate").datepicker({ dateFormat: 'yy-mm-dd' }).val();
+		$("#startDate").datepicker({
+			dateFormat : 'yy-mm-dd'
+		}).val();
+		$("#endDate").datepicker({
+			dateFormat : 'yy-mm-dd'
+		}).val();
 	});
 	$(document).ready(function() {
 		$('#myTable').DataTable({
@@ -35,40 +39,51 @@
 
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top inverse-dark">
-		<div class="container-fluid">
-			<div class="col-sm-1"></div>
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="../index.html"><img
-					src="../img/77logo-black.png" class="img-responsive" width="120px" /></a>
-			</div>
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="mainNavbar">
-				<ul class="nav navbar-nav">
-					<li><a href="/leave-management/getLeaveCredits">Home</a></li>
-					<li><a href="/leave-management/fileLeave.jsp">File Leave</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right navbar-right-custom">
-					<li class=""><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Account Settings <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Change Password</a></li>
-						</ul></li>
-					<li><a href="/LogoutServlet">Logout</a></li>
-				</ul>
-			</div>
+	<div class="container-fluid">
+		<div class="col-sm-1"></div>
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+				aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="../index.html"><img
+				src="../img/77logo-black.png" class="img-responsive" width="120px" /></a>
 		</div>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="mainNavbar">
+			<ul class="nav navbar-nav">
+				<li><a href="/leave-management/getLeaveCredits">Home</a></li>
+				<li><a href="/leave-management/fileLeave.jsp">File Leave</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right navbar-right-custom">
+				<li class=""><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">Account Settings <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Change Password</a></li>
+					</ul></li>
+				<li><a href="/LogoutServlet">Logout</a></li>
+			</ul>
+		</div>
+	</div>
 	</nav>
 
 	<div class="page-start container-fluid">
 		<!-- Employee Information Section -->
+		<div class="row-fluid container-fluid">
+			<div class="container-fluid col-sm-10 col-sm-offset-1">
+				<c:if test="${not empty smessage}">
+				<div class="alert-success alert">
+					<strong><c:out
+							value="${smessage}" /></strong>
+				</div>
+				</c:if>
+			</div>
+			<div class="clearfix visible-xs-block"></div>
+		</div>
 		<div class="row-fluid container-fluid">
 			<div class="container-fluid col-sm-5 col-sm-offset-1">
 				<div class="form-horizontal output-form">
