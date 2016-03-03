@@ -96,8 +96,8 @@
 							<div class="col-sm-10">
 								<div class="input-group">
 									<select id="leaveType" name="leaveType" class="form-control">
-										<option value="Vacation Leave">Vacation Leave</option>
-										<option value="Sick Leave">Sick Leave</option>
+										<option value="Vacation Leave" selected="${leaveType == 'Vacation Leave'}">Vacation Leave</option>
+										<option value="Sick Leave" selected="${leaveType == 'Sick Leave'}">Sick Leave</option>
 									</select> <span class="input-group-addon"><span
 										class="glyphicon glyphicon-asterisk"></span></span>
 								</div>
@@ -110,7 +110,7 @@
 							<div class="col-sm-10">
 								<div class="input-group">
 									<input id="leaveReason" name="leaveReason" placeholder="Reason"
-										class="form-control" type="text" required> <span
+										class="form-control" type="text" required value="${reason}"> <span
 										class="input-group-addon"> <span
 										class="glyphicon glyphicon-asterisk"></span>
 									</span>
@@ -124,7 +124,7 @@
 							<div class="col-sm-10">
 								<div class="input-group">
 									<input id="halfday" name="halfday" style="height: 30px"
-										 type="checkbox">
+										 type="checkbox" ${halfday? 'checked':''}>
 								</div>
 							</div>
 						</div>
@@ -137,7 +137,7 @@
 							<div class="col-sm-10">
 								<div class="input-group">
 									<input id="startDate" name="startDate" placeholder="Start Date"
-										class="form-control" type="text" required> <span
+										class="form-control" type="text" value="${startDate}" required> <span
 										class="input-group-addon"> <span
 										class="glyphicon glyphicon-asterisk"></span>
 									</span>
@@ -151,7 +151,7 @@
 							<div class="col-sm-10">
 								<div class="input-group">
 									<input id="endDate" name="endDate" placeholder="End Date"
-										class="form-control" type="text" required> <span
+										class="form-control" type="text" value="${endDate}" required> <span
 										class="input-group-addon"> <span
 										class="glyphicon glyphicon-asterisk"></span>
 									</span>
