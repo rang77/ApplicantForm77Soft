@@ -58,10 +58,14 @@ public class FileLeaveServlet extends HttpServlet {
 				rd.forward(request, response);
 			}else{
 				RequestDispatcher rd = request.getRequestDispatcher("/leave-management/fileLeave.jsp");
-				rd.forward(request, response);				
 				SalesforceError error = new SalesforceError();
 				error.setMessage("An error has occurred.");
 				
+				request.setAttribute("leaveType",leaveType);
+				request.setAttribute("startDate",startDate);
+				request.setAttribute("endDate",endDate);
+				request.setAttribute("reason",reason);
+				request.setAttribute("halfday",halfday);
 				request.setAttribute("error", error);
 				rd.forward(request, response);
 			}
@@ -72,6 +76,11 @@ public class FileLeaveServlet extends HttpServlet {
 				request.setAttribute("error", error);
 			}
 			
+			request.setAttribute("leaveType",leaveType);
+			request.setAttribute("startDate",startDate);
+			request.setAttribute("endDate",endDate);
+			request.setAttribute("reason",reason);
+			request.setAttribute("halfday",halfday);
 			RequestDispatcher rd = request.getRequestDispatcher("/leave-management/fileLeave.jsp");
 			rd.forward(request, response);
 		}
