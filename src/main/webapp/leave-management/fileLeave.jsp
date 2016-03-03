@@ -49,7 +49,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="../index.html"><img
+			<a class="navbar-brand" href="/"><img
 				src="../img/77logo-black.png" class="img-responsive" width="120px" /></a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -117,6 +117,17 @@
 								</div>
 							</div>
 						</div>
+						
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="halfday">
+								Halfday: </label>
+							<div class="col-sm-10">
+								<div class="input-group">
+									<input id="halfday" name="halfday" style="height: 30px"
+										 type="checkbox">
+								</div>
+							</div>
+						</div>
 					</div>
 
 					<div class="col-sm-6">
@@ -147,6 +158,7 @@
 								</div>
 							</div>
 						</div>
+						
 					</div>
 
 					<div class="form-group">

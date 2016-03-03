@@ -45,11 +45,13 @@
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
 				aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+<!-- 				<span class="icon-bar"></span> -->
+				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="../index.html"><img
+			<a class="navbar-brand" href="/"><img
 				src="../img/77logo-black.png" class="img-responsive" width="120px" /></a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -76,10 +78,10 @@
 		<div class="row-fluid container-fluid">
 			<div class="container-fluid col-sm-10 col-sm-offset-1">
 				<c:if test="${not empty smessage}">
-				<div class="alert-success alert">
-					<strong><c:out
-							value="${smessage}" /></strong>
-				</div>
+					<div class="alert-success alert">
+						<strong><c:out
+								value="${smessage}" /></strong>
+					</div>
 				</c:if>
 			</div>
 			<div class="clearfix visible-xs-block"></div>
@@ -182,8 +184,10 @@
 										<th>Leave Type</th>
 										<th>Start Date</th>
 										<th>End Date</th>
+										<th>Halfday</th>
 										<th>Days on Leave</th>
 										<th>Reason</th>
+										<th>Status</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -193,8 +197,19 @@
 											<td><c:out value="${leaveRequest.leaveType}" /></td>
 											<td><c:out value="${leaveRequest.startDate}" /></td>
 											<td><c:out value="${leaveRequest.endDate}" /></td>
+											<td>
+												<c:choose>
+													<c:when test="${leaveRequest.halfday}">
+														Yes
+													</c:when>
+													<c:otherwise>
+														No
+													</c:otherwise>												
+												</c:choose>
+											</td>
 											<td><c:out value="${leaveRequest.daysOnLeave}" /></td>
 											<td><c:out value="${leaveRequest.reason}" /></td>
+											<td><c:out value="${leaveRequest.leaveStatus}" /></td>
 										</tr>
 									</c:forEach>
 								</tbody>

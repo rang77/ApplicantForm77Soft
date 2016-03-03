@@ -28,7 +28,12 @@ public class LeaveRequest {
 	@JsonProperty(value = "Reason__c")
 	private String reason;
 
-	private int daysOnLeave;
+	@JsonProperty(value = "Halfday__c")
+	private boolean halfday;
+
+	private String leaveStatus;
+
+	private double daysOnLeave;
 
 	public String getId() {
 		return id;
@@ -87,13 +92,31 @@ public class LeaveRequest {
 	}
 
 	@JsonIgnore
-	public int getDaysOnLeave() {
+	public double getDaysOnLeave() {
 		return daysOnLeave;
 	}
 
 	@JsonProperty(value = "DaysOnLeave__c")
-	public void setDaysOnLeave(int daysOnLeave) {
+	public void setDaysOnLeave(double daysOnLeave) {
 		this.daysOnLeave = daysOnLeave;
+	}
+
+	@JsonProperty(value = "LeaveStatus__c")
+	public String getLeaveStatus() {
+		return leaveStatus;
+	}
+
+	@JsonIgnore
+	public void setLeaveStatus(String leaveStatus) {
+		this.leaveStatus = leaveStatus;
+	}
+
+	public boolean isHalfday() {
+		return halfday;
+	}
+
+	public void setHalfday(boolean halfday) {
+		this.halfday = halfday;
 	}
 
 }

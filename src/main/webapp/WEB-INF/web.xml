@@ -21,25 +21,6 @@
 		<filter-name>SessionFilter</filter-name>
 		<url-pattern>/leave-management/*</url-pattern>
 		<url-pattern>/login.jsp</url-pattern>
+		<url-pattern>/LoginServlet</url-pattern>
 	</filter-mapping>
-	
-	<servlet>
-		<servlet-name>LoginServlet</servlet-name>
-		<servlet-class>servlet.LoginServlet</servlet-class>
-	</servlet>
-	
-	<servlet>
-		<servlet-name>LogoutServlet</servlet-name>
-		<servlet-class>servlet.LogoutServlet</servlet-class>
-	</servlet>
-
-<!-- 	<servlet>
-		<servlet-name>RetrieveLeaveCreditServlet</servlet-name>
-		<servlet-class>servlet.RetrieveLeaveCreditServlet</servlet-class>
-	</servlet> -->
-	
-<!-- 	<servlet-mapping> -->
-<!-- 		<servlet-name>RetrieveLeaveCreditServlet</servlet-name> -->
-<!-- 		<url-pattern>/leave-management/*</url-pattern> -->
-<!-- 	</servlet-mapping> -->
 </web-app>

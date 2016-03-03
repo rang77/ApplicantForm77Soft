@@ -37,6 +37,7 @@ public class FileLeaveServlet extends HttpServlet {
 		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");
 		String reason = request.getParameter("leaveReason");
+		boolean halfday = request.getParameter("halfday") != null;
 		
 		LeaveRequest leaveRequest = new LeaveRequest();
 		
@@ -44,7 +45,9 @@ public class FileLeaveServlet extends HttpServlet {
 		leaveRequest.setLeaveType(leaveType);
 		leaveRequest.setStartDate(startDate);
 		leaveRequest.setEndDate(endDate);
+		leaveRequest.setEndDate(endDate);
 		leaveRequest.setReason(reason);
+		leaveRequest.setHalfday(halfday);
 		
 		try{
 			String requestID = leaveRequestDAO.createLeaveRequest(leaveRequest);
