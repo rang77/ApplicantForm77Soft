@@ -53,7 +53,7 @@
 				src="../img/77logo-black.png" class="img-responsive" width="120px" /></a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="mainNavbar">
+		<div class="collapse navbar-collapse" id="navbar">
 			<ul class="nav navbar-nav">
 				<li><a href="/leave-management/getLeaveCredits">Home</a></li>
 				<li><a href="/leave-management/fileLeave.jsp">File Leave</a></li>
