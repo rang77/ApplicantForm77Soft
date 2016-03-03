@@ -15,19 +15,24 @@ public class SalesforceDAO<T> {
 	private static final String PASSWORD = "77UltimateLeave";
 	private static final String SECURITY_TOKEN = "qTV4gyJXi7Du55xmqZXnQUahX";
 	
-	private ApiConfig config;
-	private ForceApi api;
+	private static ApiConfig config;
+	private static ForceApi api;
 
 	protected void connect() {
-		config = new ApiConfig();
 		
-		config.setUsername(USERNAME);
-		config.setPassword(PASSWORD+SECURITY_TOKEN);
-		config.setClientId(CLIENTID);
-		config.setClientSecret(CLIENTSECRET);
-		config.setLoginEndpoint(DOMAIN);
+		if(config == null){
+			config = new ApiConfig();
+			
+			config.setUsername(USERNAME);
+			config.setPassword(PASSWORD+SECURITY_TOKEN);
+			config.setClientId(CLIENTID);
+			config.setClientSecret(CLIENTSECRET);
+			config.setLoginEndpoint(DOMAIN);
+		}
 		
-		api = new ForceApi(config);
+		if(api == null){
+			api = new ForceApi(config);
+		}
 	}
 	
 	protected List<T> retrieve(String query, Class<T> objectType) {
