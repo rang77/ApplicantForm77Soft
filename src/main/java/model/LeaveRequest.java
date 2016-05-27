@@ -35,7 +35,7 @@ public class LeaveRequest {
 	private String approvalCode;
 	
 	@JsonProperty(value = "Remarks__c")
-	private boolean remarks;
+	private String remarks;
 	
 	private String leaveStatus;
 
@@ -133,11 +133,11 @@ public class LeaveRequest {
 		this.approvalCode = approvalCode;
 	}
 
-	public boolean isRemarks() {
+	public String Remarks() {
 		return remarks;
 	}
 
-	public void setRemarks(boolean remarks) {
+	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}	
 }
