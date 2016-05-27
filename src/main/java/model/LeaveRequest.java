@@ -30,7 +30,13 @@ public class LeaveRequest {
 
 	@JsonProperty(value = "Halfday__c")
 	private boolean halfday;
-
+	
+	@JsonProperty(value = "ApprovalCode__c")
+	private String approvalCode;
+	
+	@JsonProperty(value = "Remarks__c")
+	private boolean remarks;
+	
 	private String leaveStatus;
 
 	private double daysOnLeave;
@@ -119,4 +125,19 @@ public class LeaveRequest {
 		this.halfday = halfday;
 	}
 
+	public String getApprovalCode() {
+		return approvalCode;
+	}
+
+	public void setApprovalCode(String approvalCode) {
+		this.approvalCode = approvalCode;
+	}
+
+	public boolean isRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(boolean remarks) {
+		this.remarks = remarks;
+	}	
 }

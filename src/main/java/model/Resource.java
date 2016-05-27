@@ -52,6 +52,13 @@ public class Resource {
 	@JsonProperty(value = "LeaveRequest__r")
 	@JsonSerialize(include = Inclusion.NON_NULL)
 	private List<LeaveRequest> leaveRequests;
+	
+	@JsonProperty(value = "ImmediateManagerEmail__c")
+	@JsonSerialize(include = Inclusion.NON_NULL)
+	private String immediateManagerEmail;
+	
+	@JsonProperty(value = "ImmediateManagerName__c")
+	private String immediateManagerName;
 
 	public String getRecordID() {
 		return recordID;
@@ -141,4 +148,19 @@ public class Resource {
 		this.leaveRequests = leaveRequests;
 	}
 
+	public String getImmediateManagerEmail() {
+		return immediateManagerEmail;
+	}
+
+	public void setImmediateManagerEmail(String immediateManagerEmail) {
+		this.immediateManagerEmail = immediateManagerEmail;
+	}
+
+	public String getImmediateManagerName() {
+		return immediateManagerName;
+	}
+
+	public void setImmediateManagerName(String immediateManagerName) {
+		this.immediateManagerName = immediateManagerName;
+	}
 }
