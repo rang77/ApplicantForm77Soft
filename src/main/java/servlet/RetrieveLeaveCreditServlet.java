@@ -29,7 +29,7 @@ public class RetrieveLeaveCreditServlet extends HttpServlet {
 		
 		String resourceId = (String) session.getAttribute("resourceId");
 
-		Resource result = resourceDAO.retrieveResouce(resourceId);
+		Resource result = resourceDAO.retrieveResource(resourceId);
 		
 		if (result != null) {
 			RequestDispatcher rd = request

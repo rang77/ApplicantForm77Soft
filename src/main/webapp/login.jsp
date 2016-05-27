@@ -18,13 +18,13 @@
 <link rel="stylesheet" href="/css/lms.css" />
 
 <style>
-.alert-custom{
-    padding: 5px;
-    padding-left: 12px;
-    padding-right: 12px;
-    margin-bottom: 20px;
-	border:1px solid transparent;
-	border-radius:4px
+.alert-custom {
+	padding: 5px;
+	padding-left: 12px;
+	padding-right: 12px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px
 }
 </style>
 
@@ -41,16 +41,15 @@
 						LEAVE MANAGEMENT SYSTEM</div>
 					<c:if test="${not empty error}">
 						<div class="alert-danger alert-custom">
-							<strong><c:out value="${error.message}"/></strong>
+							<strong><c:out value="${error.message}" /></strong>
 						</div>
 					</c:if>
-					<div class="form-group" style="margin-top:22px">
-						<label class="col-xs-4 control-label" for="idNumber">Id
-							Number: </label>
+					<div class="form-group" style="margin-top: 22px">
+						<label class="col-xs-4 control-label" for="email">Email: </label>
 						<div class="col-xs-8">
 							<div class="input-group-xs">
-								<input type="text" class="form-control" name="idNumber"
-									id="idNumber" placeholder="Id Number" />
+								<input type="text" class="form-control" name="email" id="email"
+									placeholder="Email" />
 							</div>
 						</div>
 					</div>

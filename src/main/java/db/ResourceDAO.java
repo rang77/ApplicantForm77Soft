@@ -6,8 +6,9 @@ import model.Resource;
 
 public class ResourceDAO extends SalesforceDAO<Resource> {
 
-	public Resource retrieveResouce(String id) {
-		
+	public static final Class<Resource> DAOTABLE = Resource.class;	
+	
+	public Resource retrieveResource(String id){
 		connect();
 		
 		List<Resource> result = retrieve(
@@ -19,13 +20,12 @@ public class ResourceDAO extends SalesforceDAO<Resource> {
 								+ "CreatedDate FROM LeaveRequest__r ORDER BY CreatedDate DESC)"
 								+ " FROM Resource__c WHERE IDNumber__c LIKE '%s'",
 						id),
-				Resource.class);
+				DAOTABLE);
 		
 		if(!result.isEmpty()){
 			return result.get(0);
 		}
 		
-		return null;
+		return null;		
 	}
-
 }
