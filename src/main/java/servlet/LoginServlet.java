@@ -59,21 +59,22 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		try {
-			String salt = resourceLoginDAO.retrieveSalt(email);
+			ResourceLogin resourceLogin = resourceLoginDAO.retrieveLogin(email);
 
-			if (salt.isEmpty()) {
+			if (resourceLogin == null) {
 				SalesforceError error = new SalesforceError();
 				error.setMessage("Username or Password is incorrect. Please try again.");
 				request.setAttribute("error", error);
 				RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
 
 				rd.forward(request, response);
+				
+				return;
 			}
 
-			String hashedPassword = StringEncryptor.encryptString(password, salt);
-			ResourceLogin resourceLogin = resourceLoginDAO.retrieveLogin(email, hashedPassword);
+			String hashedPassword = StringEncryptor.encryptString(password, resourceLogin.getSalt());
 
-			if (resourceLogin != null) {
+			if (resourceLogin.getPassword().equals(hashedPassword)) {
 				Resource retrievedResource = resourceDAO.retrieveResource(resourceLogin.getResource());
 
 				RequestDispatcher rd = request.getRequestDispatcher("/leave-management/getLeaveCredits");
