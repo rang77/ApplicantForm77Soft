@@ -4,7 +4,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Attachment {
+public class Attachment implements SalesforceObject {
 	
 	public static final long MAX_FILE_SIZE = (1024*1024)*5;	
 	

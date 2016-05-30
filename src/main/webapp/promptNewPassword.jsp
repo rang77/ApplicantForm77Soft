@@ -36,7 +36,7 @@
 		<div class="container">
 			<div id="home" class="row">
 				<img src="/img/77NewLogo.jpg" class="img-responsive" width="240px" />
-				<form class="form-horizontal" action="PromptNewPasswordServlet" method="post">
+				<form class="form-horizontal" action="CreateNewPasswordServlet" method="post">
 					<div class="form-group title login-title-custom" id="formTitle">
 						LEAVE MANAGEMENT SYSTEM</div>
 					<c:if test="${not empty error}">
@@ -44,6 +44,26 @@
 							<strong><c:out value="${error.message}" /></strong>
 						</div>
 					</c:if>
+					<input type="hidden" name="loginid" value="${login.id}"/>
+					<div class="form-group" style="margin-top: 22px">
+						<label class="col-xs-4 control-label" for="newpassword1">New Password: </label>
+						<div class="col-xs-8">
+							<div class="input-group-xs">
+								<input type="password" class="form-control" name="newpassword1" id="newpassword1"
+									placeholder="Password" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-xs-4 control-label" for="newpassword2">Confirm New Password:
+						</label>
+						<div class="col-xs-8">
+							<div class="input-group-xs">
+								<input type="password" class="form-control" name="newpassword2"
+									id="newpassword2" placeholder="Password" />
+							</div>
+						</div>
+					</div>
 					<div class="form-group" style="margin-top: 22px">
 						<label class="col-xs-4 control-label" for="email">Activation Code: </label>
 						<div class="col-xs-8">
@@ -53,25 +73,6 @@
 							</div>
 						</div>
 					</div>					
-					<div class="form-group" style="margin-top: 22px">
-						<label class="col-xs-4 control-label" for="email">New Password: </label>
-						<div class="col-xs-8">
-							<div class="input-group-xs">
-								<input type="password" class="form-control" name="newpassword1" id="newpassword1"
-									placeholder="Password" />
-							</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-xs-4 control-label" for="password">Confirm New Password:
-						</label>
-						<div class="col-xs-8">
-							<div class="input-group-xs">
-								<input type="password" class="form-control" name="newpassword2"
-									id="newpassword2" placeholder="Password" />
-							</div>
-						</div>
-					</div>
 					<div class="btn-group">
 						<button type="submit" class="btn btn-danger">Confirm</button>
 					</div>

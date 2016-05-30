@@ -6,7 +6,10 @@ import com.force.api.ApiConfig;
 import com.force.api.ApiException;
 import com.force.api.ForceApi;
 
-public class SalesforceDAO<T> {
+import model.SalesforceObject;
+import model.error.PageError;
+
+public class SalesforceDAO<T extends SalesforceObject> {
 	
 	private static final String CLIENTID = "3MVG9PbQtiUzNgN4S79MiP7zmS6BZFASaVsqM23xscv4ZjTH0Mu0dyndwsWFmEmsoKnNgBAKt.xv2srlAjlwF";
 	private static final String CLIENTSECRET = "8479639149034290684";
@@ -39,12 +42,12 @@ public class SalesforceDAO<T> {
 		return api.query(query, objectType).getRecords();
 	}
 	
-	protected String create(String objectType, Object object) throws ApiException{
+	protected String create(String objectType, T object) throws ApiException{
 		return api.createSObject(objectType, object);
 	}
 
-	protected String update(String objectType, Object object) {
-		return objectType;
+	protected void update(String objectType, T sObject) {
+		api.updateSObject(objectType, sObject.getId(), sObject);
 	}
 
 	protected String delete(String objectType, Object object) {

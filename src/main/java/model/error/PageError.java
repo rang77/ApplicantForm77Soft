@@ -3,7 +3,7 @@ package model.error;
 import java.util.List;
 
 
-public class SalesforceError {
+public class PageError {
 
 	private String errorCode;
 	private List<String> fields;

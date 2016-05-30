@@ -8,10 +8,10 @@ public class LoginDAO extends SalesforceDAO<Login> {
 	
 	public static final Class<Login> DAOTABLE = Login.class;
 
-	public Login retrieveLogin(String email){
+	public Login retrieveLoginByEmail(String email){
 		connect();
 		
-		List<Login> result = retrieve(String.format("SELECT Email__c, Active__c, AskedForNewPassword__c, Resource__c, Salt__c" +
+		List<Login> result = retrieve(String.format("SELECT Id, Email__c, Password__c, Active__c, AskForNewPassword__c, Resource__c, Salt__c, ActivationCode__c" +
 											" FROM Login__c WHERE Email__c = '%s'"
 											,email), DAOTABLE);
 		
@@ -20,5 +20,24 @@ public class LoginDAO extends SalesforceDAO<Login> {
 		}
 		
 		return null;
+	}
+	
+	public Login retrieveLoginById(String id){
+		connect();
+		
+		List<Login> result = retrieve(String.format("SELECT Id, Email__c, Active__c, AskForNewPassword__c, Resource__c, Salt__c, ActivationCode__c" +
+				" FROM Login__c WHERE Id = '%s'"
+				,id), DAOTABLE);
+		
+		if(!result.isEmpty()){
+			return result.get(0);
+		}
+		
+		return null;
+	}
+	
+	public void updateLogin(Login login){
+		connect();
+		update("Login__c", login);
 	}
 }

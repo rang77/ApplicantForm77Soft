@@ -8,7 +8,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Resource {
+public class Resource implements SalesforceObject {
 
 	@JsonProperty(value = "Id")
 	private String recordID;
@@ -60,11 +60,11 @@ public class Resource {
 	@JsonProperty(value = "ImmediateManagerName__c")
 	private String immediateManagerName;
 
-	public String getRecordID() {
+	public String getId() {
 		return recordID;
 	}
 
-	public void setRecordID(String recordID) {
+	public void setId(String recordID) {
 		this.recordID = recordID;
 	}
 

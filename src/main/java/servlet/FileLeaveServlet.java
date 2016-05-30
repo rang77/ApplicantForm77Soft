@@ -15,7 +15,7 @@ import com.force.api.ApiException;
 import db.LeaveRequestDAO;
 import helper.ServletHelper;
 import model.LeaveRequest;
-import model.error.SalesforceError;
+import model.error.PageError;
 
 @WebServlet(name = "fileLeaveServlet", urlPatterns = {"/leave-management/fileLeave/*","/leave-management/fileLeave" })
 public class FileLeaveServlet extends HttpServlet {
@@ -58,7 +58,7 @@ public class FileLeaveServlet extends HttpServlet {
 				rd.forward(request, response);
 			}else{
 				RequestDispatcher rd = request.getRequestDispatcher("/leave-management/fileLeave.jsp");
-				SalesforceError error = new SalesforceError();
+				PageError error = new PageError();
 				error.setMessage("An error has occurred.");
 				
 				request.setAttribute("leaveType",leaveType);
@@ -71,7 +71,7 @@ public class FileLeaveServlet extends HttpServlet {
 			}
 			
 		}catch(ApiException e){
-			SalesforceError error = ServletHelper.handleAPIException(e.getMessage());
+			PageError error = ServletHelper.handleAPIException(e.getMessage());
 			if(error != null){
 				request.setAttribute("error", error);
 			}

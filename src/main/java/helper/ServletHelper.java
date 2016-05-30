@@ -9,7 +9,7 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 
-import model.error.SalesforceError;
+import model.error.PageError;
 
 public class ServletHelper {
 	
@@ -19,9 +19,9 @@ public class ServletHelper {
 		MAPPER.enable(DeserializationConfig.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
 	}
 	
-	public static SalesforceError handleAPIException(String message){
+	public static PageError handleAPIException(String message){
 		try {
-			List<SalesforceError> error = MAPPER.readValue(message, new TypeReference<List<SalesforceError>>(){});
+			List<PageError> error = MAPPER.readValue(message, new TypeReference<List<PageError>>(){});
 			return error.get(0);
 		} catch (JsonParseException e) {
 			e.printStackTrace();

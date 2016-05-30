@@ -4,7 +4,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Applicant {
+public class Applicant implements SalesforceObject{
 
 	@JsonProperty(value = "Id")
 	private String id;

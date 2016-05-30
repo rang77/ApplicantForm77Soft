@@ -20,7 +20,7 @@ import helper.ServletHelper;
 import model.Resource;
 
 import model.Login;
-import model.error.SalesforceError;
+import model.error.PageError;
 import utility.StringEncryptor;
 
 /**
@@ -62,10 +62,10 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		try {
-			Login resourceLogin = loginDAO.retrieveLogin(email);
+			Login resourceLogin = loginDAO.retrieveLoginByEmail(email);
 
 			if (resourceLogin == null) {
-				SalesforceError error = new SalesforceError();
+				PageError error = new PageError();
 				error.setMessage("Username or Password is incorrect. Please try again.");
 				request.setAttribute("error", error);
 				RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
@@ -81,11 +81,11 @@ public class LoginServlet extends HttpServlet {
 				Resource retrievedResource = resourceDAO.retrieveResource(resourceLogin.getResource());
 
 				RequestDispatcher rd = request.getRequestDispatcher("/leave-management/getLeaveCredits");
-				session.setAttribute("recordId", retrievedResource.getRecordID());
+				session.setAttribute("recordId", retrievedResource.getId());
 				session.setAttribute("resourceId", retrievedResource.getIdNumber());
 				rd.forward(request, response);
 			} else {
-				SalesforceError error = new SalesforceError();
+				PageError error = new PageError();
 				error.setMessage("Username or Password is incorrect. Please try again.");
 				request.setAttribute("error", error);
 				RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
@@ -93,7 +93,7 @@ public class LoginServlet extends HttpServlet {
 				rd.forward(request, response);
 			}
 		} catch (ApiException e) {
-			SalesforceError error = ServletHelper.handleAPIException(e.getMessage());
+			PageError error = ServletHelper.handleAPIException(e.getMessage());
 
 			if (error != null) {
 				request.setAttribute("error", error);

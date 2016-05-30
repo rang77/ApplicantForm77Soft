@@ -1,12 +1,14 @@
 package model;
 
+import java.util.Date;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Login {
+public class Login implements SalesforceObject {
 
-	@JsonProperty(value = "Id")
 	private String id;
 	
 	@JsonProperty(value = "Email__c")
@@ -25,7 +27,7 @@ public class Login {
 	private boolean forgotPassword;
 	
 	@JsonProperty(value = "ForgotPasswordDate__c")
-	private boolean forgotPasswordDate;
+	private Date forgotPasswordDate;
 	
 	@JsonProperty(value = "Active__c")
 	private boolean active;
@@ -34,12 +36,14 @@ public class Login {
 	private String activationCode;
 	
 	@JsonProperty(value = "AskForNewPassword__c")
-	private boolean askedForNewPassword;
+	private boolean askForNewPassword;
 	
+	@JsonIgnore
 	public String getId(){
 		return id;
 	}
 	
+	@JsonProperty(value = "Id")
 	public void setId(String id){
 		this.id = id;
 	}
@@ -74,10 +78,10 @@ public class Login {
 	public void setForgotPassword(boolean forgotPassword) {
 		this.forgotPassword = forgotPassword;
 	}
-	public boolean isForgotPasswordDate() {
+	public Date getForgotPasswordDate() {
 		return forgotPasswordDate;
 	}
-	public void setForgotPasswordDate(boolean forgotPasswordDate) {
+	public void setForgotPasswordDate(Date forgotPasswordDate) {
 		this.forgotPasswordDate = forgotPasswordDate;
 	}
 	public boolean isActive() {
@@ -92,10 +96,18 @@ public class Login {
 	public void setActivationCode(String activationCode) {
 		this.activationCode = activationCode;
 	}
-	public boolean isAskedForNewPassword() {
-		return askedForNewPassword;
+	public boolean isAskForNewPassword() {
+		return askForNewPassword;
 	}
-	public void setAskedForNewPassword(boolean askedForNewPassword) {
-		this.askedForNewPassword = askedForNewPassword;
+	public void setAskForNewPassword(boolean askForNewPassword) {
+		this.askForNewPassword = askForNewPassword;
+	}
+
+	@Override
+	public String toString() {
+		return "Login [id=" + id + ", email=" + email + ", password=" + password + ", salt=" + salt + ", resource="
+				+ resource + ", forgotPassword=" + forgotPassword + ", forgotPasswordDate=" + forgotPasswordDate
+				+ ", active=" + active + ", activationCode=" + activationCode + ", askedForNewPassword="
+				+ askForNewPassword + "]";
 	}
 }

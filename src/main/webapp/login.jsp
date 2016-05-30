@@ -44,6 +44,11 @@
 							<strong><c:out value="${error.message}" /></strong>
 						</div>
 					</c:if>
+					<c:if test="${not empty smessage}">
+						<div class="alert-success alert-custom">
+							<strong><c:out value="${smessage}" /></strong>
+						</div>
+					</c:if>
 					<div class="form-group" style="margin-top: 22px">
 						<label class="col-xs-4 control-label" for="email">Email: </label>
 						<div class="col-xs-8">

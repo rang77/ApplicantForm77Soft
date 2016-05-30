@@ -1,6 +1,8 @@
 package filter;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -13,7 +15,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.error.SalesforceError;
+import model.error.PageError;
 
 /**
  * Servlet Filter implementation class SessionFilter
@@ -21,6 +23,9 @@ import model.error.SalesforceError;
 @WebFilter("/SessionFilter")
 public class SessionFilter implements Filter {
 
+	private static Set<String> whiteListNoSession;
+	private static Set<String> whiteList;
+	
 	/**
 	 * Default constructor.
 	 */
@@ -62,12 +67,14 @@ public class SessionFilter implements Filter {
 		}else{			
 			RequestDispatcher dispatch = req.getRequestDispatcher("/login.jsp");
 			
+			System.out.println(pageName);
+			
 			if(!(pageName.equals("login.jsp") || pageName.isEmpty())){
-				if(pageName.equals("LoginServlet")){
+				if(whiteListNoSession.contains(pageName)){
 					chain.doFilter(request, response);
 					return;
 				}else{
-					SalesforceError error = new SalesforceError();
+					PageError error = new PageError();
 					error.setMessage("You need to login to access that page");
 					req.setAttribute("error", error);
 				}
@@ -82,6 +89,10 @@ public class SessionFilter implements Filter {
 	 * @see Filter#init(FilterConfig)
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
+		whiteListNoSession = new HashSet<>();
+		
+		whiteListNoSession.add("LoginServlet");
+		whiteListNoSession.add("promptNewPassword");
+		whiteListNoSession.add("CreateNewPasswordServlet");
 	}
-
 }

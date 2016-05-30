@@ -27,7 +27,7 @@ public class RetrieveLeaveCreditServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		String resourceId = (String) session.getAttribute("resourceId");
+		String resourceId = (String) session.getAttribute("recordId");
 
 		Resource result = resourceDAO.retrieveResource(resourceId);
 		
