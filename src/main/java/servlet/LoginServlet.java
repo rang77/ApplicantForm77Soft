@@ -14,9 +14,12 @@ import com.force.api.ApiException;
 
 import db.LoginDAO;
 import db.ResourceDAO;
+
+import db.LoginDAO;
 import helper.ServletHelper;
-import model.Login;
 import model.Resource;
+
+import model.Login;
 import model.error.SalesforceError;
 import utility.StringEncryptor;
 

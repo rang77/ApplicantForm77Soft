@@ -33,7 +33,7 @@ public class Login {
 	@JsonProperty(value = "ActivationCode__c")
 	private String activationCode;
 	
-	@JsonProperty(value = "AskedForNewPassword__c")
+	@JsonProperty(value = "AskForNewPassword__c")
 	private boolean askedForNewPassword;
 	
 	public String getId(){

@@ -12,7 +12,7 @@ public class LoginDAO extends SalesforceDAO<Login> {
 		connect();
 		
 		List<Login> result = retrieve(String.format("SELECT Email__c, Active__c, AskedForNewPassword__c, Resource__c, Salt__c" +
-											" FROM ResourceLogin__c WHERE Email__c = '%s'"
+											" FROM Login__c WHERE Email__c = '%s'"
 											,email), DAOTABLE);
 		
 		if(!result.isEmpty()){
