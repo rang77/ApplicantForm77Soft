@@ -31,17 +31,16 @@ public class PromptNewPasswordServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		LoginDAO loginDAO = new LoginDAO();
 		String id = request.getParameter("id");
-		RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
 		
 		if(id != null){
 			Login tempLogin = loginDAO.retrieveLoginById(id);
 			
-			if(tempLogin != null){
+			if(tempLogin != null && tempLogin.isAskForNewPassword()){
 				System.out.println(tempLogin.toString());
-				rd = request.getRequestDispatcher("/promptNewPassword.jsp");
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/promptNewPassword.jsp");
 				request.setAttribute("login", tempLogin);
 				rd.forward(request, response);
 				
@@ -56,8 +55,7 @@ public class PromptNewPasswordServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		response.sendRedirect("/login.jsp");
 	}
 
 }

@@ -28,6 +28,31 @@
 }
 </style>
 
+<script type="text/javascript">
+	function checkPassword(str) {
+		var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+		return re.test(str);
+	}
+
+	function checkForm(form) {
+		
+		re = /^\w+$/;
+		
+		if (form.newpassword1.value != "" && form.newpassword1.value == form.newpassword2.value) {
+			if (!checkPassword(form.newpassword1.value)) {
+				alert("The password you have entered is not valid!");
+				form.newpassword1.focus();
+				return false;
+			}
+		} else {
+			alert("Error: Please check that you've entered and confirmed your password!");
+			form.newpassword1.focus();
+			return false;
+		}
+		return true;
+	}
+</script>
+
 <title>Seven Seven GSI - Leave Management System</title>
 </head>
 
@@ -36,7 +61,8 @@
 		<div class="container">
 			<div id="home" class="row">
 				<img src="/img/77NewLogo.jpg" class="img-responsive" width="240px" />
-				<form class="form-horizontal" action="CreateNewPasswordServlet" method="post">
+				<form class="form-horizontal" action="CreateNewPasswordServlet"
+					method="post" onsubmit="return checkForm(this);">
 					<div class="form-group title login-title-custom" id="formTitle">
 						LEAVE MANAGEMENT SYSTEM</div>
 					<c:if test="${not empty error}">
@@ -44,19 +70,20 @@
 							<strong><c:out value="${error.message}" /></strong>
 						</div>
 					</c:if>
-					<input type="hidden" name="loginid" value="${login.id}"/>
+					<input type="hidden" name="loginid" value="${login.id}" />
 					<div class="form-group" style="margin-top: 22px">
-						<label class="col-xs-4 control-label" for="newpassword1">New Password: </label>
+						<label class="col-xs-4 control-label" for="newpassword1">New
+							Password: </label>
 						<div class="col-xs-8">
 							<div class="input-group-xs">
-								<input type="password" class="form-control" name="newpassword1" id="newpassword1"
-									placeholder="Password" />
+								<input type="password" class="form-control" name="newpassword1"
+									id="newpassword1" placeholder="Password" />
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-xs-4 control-label" for="newpassword2">Confirm New Password:
-						</label>
+						<label class="col-xs-4 control-label" for="newpassword2">Confirm
+							New Password: </label>
 						<div class="col-xs-8">
 							<div class="input-group-xs">
 								<input type="password" class="form-control" name="newpassword2"
@@ -65,14 +92,15 @@
 						</div>
 					</div>
 					<div class="form-group" style="margin-top: 22px">
-						<label class="col-xs-4 control-label" for="email">Activation Code: </label>
+						<label class="col-xs-4 control-label" for="email">Activation
+							Code: </label>
 						<div class="col-xs-8">
 							<div class="input-group-xs">
-								<input type="text" class="form-control" name="activation" id="activation"
-									placeholder="Activation Code" />
+								<input type="text" class="form-control" name="activation"
+									id="activation" placeholder="Activation Code" />
 							</div>
 						</div>
-					</div>					
+					</div>
 					<div class="btn-group">
 						<button type="submit" class="btn btn-danger">Confirm</button>
 					</div>

@@ -56,9 +56,12 @@ public class SessionFilter implements Filter {
 		
 		String uri = req.getRequestURI();
 		String pageName = uri.substring(uri.lastIndexOf("/")+1);
+		
+		System.out.println(pageName);
+		
 		if (resourceId != null) {
 			
-			if(pageName.equals("viewLeave.jsp") || pageName.equals("login.jsp") || pageName.equals("LoginServlet") || pageName.equals("")){
+			if(whiteList.contains(pageName)){
 				((HttpServletResponse)response).sendRedirect("/leave-management/getLeaveCredits");
 			}else{
 				chain.doFilter(request, response);
@@ -94,5 +97,12 @@ public class SessionFilter implements Filter {
 		whiteListNoSession.add("LoginServlet");
 		whiteListNoSession.add("promptNewPassword");
 		whiteListNoSession.add("CreateNewPasswordServlet");
+		
+		whiteList = new HashSet<>();
+		whiteList.add("viewLeave.jsp");
+		whiteList.add("login.jsp");
+		whiteList.add("promptNewPassword.jsp");
+		whiteList.add("LoginServlet");
+		whiteList.add("");
 	}
 }

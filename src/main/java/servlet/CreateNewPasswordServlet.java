@@ -33,8 +33,7 @@ public class CreateNewPasswordServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.sendRedirect("/login.jsp");
 	}
 
 	/**
@@ -44,13 +43,21 @@ public class CreateNewPasswordServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		LoginDAO loginDAO = new LoginDAO();
 		String id = request.getParameter("loginid");
+		
+		if(id == null){
+			response.sendRedirect("/login.jsp");
+			return;
+		}
+		
 		String activationCode = request.getParameter("activation");
 		String newpassword = request.getParameter("newpassword1");
 		
 		Login tempLogin = loginDAO.retrieveLoginById(id);
-		RequestDispatcher rd = request.getRequestDispatcher(request.getRequestURI());
+		RequestDispatcher rd = request.getRequestDispatcher("/leave-management/promptNewPassword?id="+id);
 		
+		System.out.println(request.getRequestURI());
 		if(tempLogin.getActivationCode().equals(activationCode)){
+			System.out.println("activation code ok");
 			newpassword = StringEncryptor.encryptString(newpassword, tempLogin.getSalt());
 			
 			tempLogin.setPassword(newpassword);
@@ -67,9 +74,10 @@ public class CreateNewPasswordServlet extends HttpServlet {
 				System.out.println(e.getMessage());
 			}
 		}else{
+			System.out.println("activation code not ok");
 			PageError error = new PageError();
-			
 			error.setMessage("Invalid Activation Code.");
+			request.setAttribute("error", error);
 		}
 		
 		rd.forward(request, response);
