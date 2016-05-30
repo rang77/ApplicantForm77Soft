@@ -48,6 +48,7 @@ public class FileLeaveServlet extends HttpServlet {
 		leaveRequest.setEndDate(endDate);
 		leaveRequest.setReason(reason);
 		leaveRequest.setHalfday(halfday);
+		leaveRequest.setLeaveStatus("Pending");
 		
 		try{
 			String requestID = leaveRequestDAO.createLeaveRequest(leaveRequest);

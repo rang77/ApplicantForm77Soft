@@ -94,6 +94,7 @@ public class SessionFilter implements Filter {
 	public void init(FilterConfig fConfig) throws ServletException {
 		whiteListNoSession = new HashSet<>();
 		
+		whiteListNoSession.add("leaveRequestApproval");
 		whiteListNoSession.add("LoginServlet");
 		whiteListNoSession.add("promptNewPassword");
 		whiteListNoSession.add("CreateNewPasswordServlet");

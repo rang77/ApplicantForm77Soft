@@ -5,7 +5,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class LeaveRequest implements SalesforceObject{
+public class LeaveRequest implements SalesforceObject {
 
 	@JsonProperty(value = "Id")
 	private String id;
@@ -30,13 +30,14 @@ public class LeaveRequest implements SalesforceObject{
 
 	@JsonProperty(value = "Halfday__c")
 	private boolean halfday;
-	
+
 	@JsonProperty(value = "ApprovalCode__c")
 	private String approvalCode;
-	
+
 	@JsonProperty(value = "Remarks__c")
 	private String remarks;
-	
+
+	@JsonProperty(value = "LeaveStatus__c")
 	private String leaveStatus;
 
 	private double daysOnLeave;
@@ -107,12 +108,10 @@ public class LeaveRequest implements SalesforceObject{
 		this.daysOnLeave = daysOnLeave;
 	}
 
-	@JsonProperty(value = "LeaveStatus__c")
 	public String getLeaveStatus() {
 		return leaveStatus;
 	}
 
-	@JsonIgnore
 	public void setLeaveStatus(String leaveStatus) {
 		this.leaveStatus = leaveStatus;
 	}
@@ -139,5 +138,17 @@ public class LeaveRequest implements SalesforceObject{
 
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
-	}	
+	}
+
+	@Override
+	public String toString() {
+		return "LeaveRequest [id=" + id + ", requestNumber=" + requestNumber
+				+ ", employeeID=" + employeeID + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", leaveType=" + leaveType
+				+ ", reason=" + reason + ", halfday=" + halfday
+				+ ", approvalCode=" + approvalCode + ", remarks=" + remarks
+				+ ", leaveStatus=" + leaveStatus + ", daysOnLeave="
+				+ daysOnLeave + "]";
+	}
+
 }
