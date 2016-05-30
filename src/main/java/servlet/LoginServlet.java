@@ -13,10 +13,10 @@ import javax.servlet.http.HttpSession;
 import com.force.api.ApiException;
 
 import db.ResourceDAO;
-import db.ResourceLoginDAO;
+import db.LoginDAO;
 import helper.ServletHelper;
 import model.Resource;
-import model.ResourceLogin;
+import model.Login;
 import model.error.SalesforceError;
 import utility.StringEncryptor;
 
@@ -52,14 +52,14 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		ResourceDAO resourceDAO = new ResourceDAO();
-		ResourceLoginDAO resourceLoginDAO = new ResourceLoginDAO();
+		LoginDAO resourceLoginDAO = new LoginDAO();
 		HttpSession session = request.getSession();
 
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
 		try {
-			ResourceLogin resourceLogin = resourceLoginDAO.retrieveLogin(email);
+			Login resourceLogin = resourceLoginDAO.retrieveLogin(email);
 
 			if (resourceLogin == null) {
 				SalesforceError error = new SalesforceError();
