@@ -70,7 +70,6 @@ public class SessionFilter implements Filter {
 		}else{			
 			RequestDispatcher dispatch = req.getRequestDispatcher("/login.jsp");
 			
-			
 			if(!(pageName.equals("login.jsp") || pageName.isEmpty())){
 				if(whiteListNoSession.contains(pageName)){
 					chain.doFilter(request, response);

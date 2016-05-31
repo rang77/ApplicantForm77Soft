@@ -89,22 +89,28 @@
 			<div class="container-fluid col-sm-5 col-sm-offset-1">
 				<div class="form-horizontal output-form">
 					<div class="form-group title" id="employeeInformation">
-						<h2>Employee Information</h2>
+						<h2>
+							<a data-toggle="collapse" href="#employeePanel"
+								style="color: black; text-decoration: none;">Employee
+								Information</a>
+						</h2>
 					</div>
-					<div class="form-group">
-						<label class="col-sm-3 control-label">ID Number: </label>
-						<div class="col-sm-9">
-							<div class="form-control">
-								<c:out value="${employee.idNumber}" />
+					<div id="employeePanel" class="panel-collapse collapse in">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">ID Number: </label>
+							<div class="col-sm-9">
+								<div class="form-control">
+									<c:out value="${employee.idNumber}" />
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-3 control-label">Full Name: </label>
-						<div class="col-sm-9">
-							<div class="form-control">
-								<c:out
-									value="${employee.lastName}, ${employee.firstName} ${employee.middleName}" />
+						<div class="form-group">
+							<label class="col-sm-3 control-label">Full Name: </label>
+							<div class="col-sm-9">
+								<div class="form-control">
+									<c:out
+										value="${employee.lastName}, ${employee.firstName} ${employee.middleName}" />
+								</div>
 							</div>
 						</div>
 					</div>
@@ -113,36 +119,42 @@
 			<div class="container-fluid col-sm-5">
 				<div class="form-horizontal output-form">
 					<div class="form-group title" id="leaveInformation">
-						<h2>Leave Information</h2>
+						<h2>
+							<a data-toggle="collapse" href="#leavePanel"
+								style="color: black; text-decoration: none;">Leave
+								Information</a>
+						</h2>
 					</div>
-					<div class="form-group">
-						<label class="col-sm-3 control-label">VL Credits: </label>
-						<div class="col-sm-9">
-							<div class="form-control">
-								<div class="progress">
-									<span class="progress-value">${employee.vacationLeavesUsed}
-										/ ${employee.vlCredits} used</span>
-									<div class="progress-bar progress-bar-danger"
-										role="progressbar"
-										aria-valuenow="${employee.vacationLeavesUsed}"
-										aria-valuemin="0" aria-valuemax="${employee.vlCredits}"
-										style="width:${(employee.vacationLeavesUsed / employee.vlCredits) * 100}%;">
+					<div id="leavePanel" class="panel-collapse collapse in">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">VL Credits: </label>
+							<div class="col-sm-9">
+								<div class="form-control">
+									<div class="progress">
+										<span class="progress-value">${employee.vacationLeavesUsed}
+											/ ${employee.vlCredits} used</span>
+										<div class="progress-bar progress-bar-danger"
+											role="progressbar"
+											aria-valuenow="${employee.vacationLeavesUsed}"
+											aria-valuemin="0" aria-valuemax="${employee.vlCredits}"
+											style="width:${(employee.vacationLeavesUsed / employee.vlCredits) * 100}%;">
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-sm-3 control-label">SL Credits: </label>
-						<div class="col-sm-9">
-							<div class="form-control">
-								<div class="progress">
-									<span class="progress-value">${employee.sickLeavesUsed}
-										/ ${employee.slCredits} used</span>
-									<div class="progress-bar progress-bar-danger"
-										role="progressbar" aria-valuenow="${employee.sickLeavesUsed}"
-										aria-valuemin="0" aria-valuemax="${employee.slCredits}"
-										style="width:${(employee.sickLeavesUsed / employee.slCredits) * 100}%;">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">SL Credits: </label>
+							<div class="col-sm-9">
+								<div class="form-control">
+									<div class="progress">
+										<span class="progress-value">${employee.sickLeavesUsed}
+											/ ${employee.slCredits} used</span>
+										<div class="progress-bar progress-bar-danger"
+											role="progressbar" aria-valuenow="${employee.sickLeavesUsed}"
+											aria-valuemin="0" aria-valuemax="${employee.slCredits}"
+											style="width:${(employee.sickLeavesUsed / employee.slCredits) * 100}%;">
+										</div>
 									</div>
 								</div>
 							</div>
@@ -160,7 +172,8 @@
 				class="container-fluid col-xs-12 col-sm-6 col-sm-offset-1 col-md-10">
 				<div class="title" id="leaveRequests">
 					<h2>
-						<!-- <a data-toggle="collapse" href="#collapse1">-->Requested Leaves<!-- </a>-->
+						<a data-toggle="collapse" href="#leavesTable"
+							style="color: black; text-decoration: none;">Requested Leaves</a>
 					</h2>
 				</div>
 				<c:choose>
@@ -177,7 +190,7 @@
 							href="http://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" />
 						<script type="text/javascript"
 							src="http://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-						<!-- <div id="collapse1" class="panel-collapse collapse">-->
+						<div id="leavesTable" class="panel-collapse collapse in">
 							<div class="table-responsive">
 								<table id="myTable" width="100%" class="table table-striped">
 									<thead>
@@ -216,7 +229,7 @@
 									</tbody>
 								</table>
 							</div>
-						<!-- </div>-->
+						</div>
 					</c:otherwise>
 				</c:choose>
 			</div>

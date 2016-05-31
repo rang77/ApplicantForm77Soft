@@ -55,7 +55,6 @@ public class ChangePasswordServlet extends HttpServlet {
 		try{
 			Login tempLogin = loginDAO.retrieveLoginByResource(resourceId);
 			oldpassword = StringEncryptor.encryptString(oldpassword, tempLogin.getSalt());
-			System.out.println("Hello");
 			
 			if(tempLogin.getPassword().equals(oldpassword)){
 				newpassword = StringEncryptor.encryptString(newpassword, tempLogin.getSalt());
@@ -64,9 +63,7 @@ public class ChangePasswordServlet extends HttpServlet {
 				loginDAO.updateLogin(tempLogin);
 				String smessage = "Password has been successfully updated.";
 				request.setAttribute("smessage", smessage);
-				System.out.println("Hello2");
 			}else{
-				System.out.println("Bye");
 				PageError error = new PageError();
 				
 				error.setMessage("Old Password is invalid. Please try again.");
