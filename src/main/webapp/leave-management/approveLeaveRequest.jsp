@@ -138,7 +138,6 @@
 
 						</div>
 
-
 						<c:if test="${leave.leaveStatus == 'Pending'}">
 							<input type="hidden" value="${id}" name="id" />
 							<input type="hidden" value="" name="response" id="responseInput" />

@@ -88,9 +88,6 @@ button.btncustom {
     -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
 }
 
-button.btncustom-success, button.btncustom-success:focus, button.btncustom-success:active:focus, button.btncustom-success.active:focus { background: #5cb85c; }
-button.btncustom-success:hover { opacity: 0.6; color: #fff; }
-
 button.btncustom:hover { opacity: 0.6; color: #fff; }
 
 button.btncustom:active { outline: 0; opacity: 0.6; color: #fff; -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none; }
@@ -98,6 +95,8 @@ button.btncustom:active { outline: 0; opacity: 0.6; color: #fff; -moz-box-shadow
 button.btncustom:focus { outline: 0; opacity: 0.6; background: #fd625e; color: #fff; }
 
 button.btncustom:active:focus, button.btncustom.active:focus { outline: 0; opacity: 0.6; background: #fd625e; color: #fff; }
+
+button.btncustom-success, button.btncustom-success:focus, button.btncustom-success:active:focus, button.btncustom-success.active:focus { background: #5cb85c; }
 
 .input-group-addon:last-child {
 	border-left: 0;

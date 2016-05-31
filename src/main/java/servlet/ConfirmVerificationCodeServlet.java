@@ -75,17 +75,20 @@ public class ConfirmVerificationCodeServlet extends HttpServlet {
 						
 						loginDao.updateLogin(login);
 						
-						request.setAttribute("smessage", "A message has been sent to your email. Please check your email to proceed.");
+						request.setAttribute("smessage", "Request for change of password successfully confirmed! "
+														+ "Please check your email for the instructions on how to set a new password.");
+						rd = request.getRequestDispatcher("/leave-management/message.jsp");
 					} else {
 						error.setMessage("Invalid verification code.");
 						request.setAttribute("error", error);
+						rd = request.getRequestDispatcher("/leave-management/confirmActivationCode.jsp");
 					}
 				} else {
 					error.setMessage("Invalid login account.");
 					request.setAttribute("error", error);
+					rd = request.getRequestDispatcher("/leave-management/confirmActivationCode.jsp");
 				}
 
-				rd = request.getRequestDispatcher("/leave-management/confirmActivationCode.jsp");
 			} else {
 				response.sendRedirect("/login.jsp");
 				return;

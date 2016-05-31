@@ -43,9 +43,9 @@ public class ForgotPasswordServlet extends HttpServlet {
 				loginDao.updateLogin(login);
 			}
 			
-			request.setAttribute("smessage", "Request for change of password confirmed. Instructions on how to proceed has been sent to your email.");
+			request.setAttribute("smessage", "Message sent! Please check your email for the instructions on how to confirm your request.");
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/leave-management/forgotPassword.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/leave-management/message.jsp");
 			rd.forward(request, response);
 		} else {
 			PageError error = new PageError();

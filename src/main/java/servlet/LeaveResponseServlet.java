@@ -44,7 +44,7 @@ public class LeaveResponseServlet extends HttpServlet {
 		String leaveStatus = request.getParameter("response");
 		
 		LeaveRequestDAO leaveRequestDAO = new LeaveRequestDAO();
-		RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
+		RequestDispatcher rd = null;
 		
 		if(id != null && leaveStatus != null){
 			
@@ -57,10 +57,12 @@ public class LeaveResponseServlet extends HttpServlet {
 			String smessage = "Your response has been submitted. Thank you! ü";
 			
 			request.setAttribute("smessage", smessage);
+			rd = request.getRequestDispatcher("/leave-management/message.jsp");
 		}else{
 			PageError error = new PageError();
 			error.setMessage("An error occured yea.");
 			request.setAttribute("error",error);
+			rd = request.getRequestDispatcher("/login.jsp");
 		}
 		rd.forward(request, response);
 	}

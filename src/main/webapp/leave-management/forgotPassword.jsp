@@ -64,8 +64,8 @@
 					<input type="hidden" name="id" value="${id}" />
 					<input type="hidden" name="type" value="${type}" />
 					<div class="form-group" style="margin-top: 22px">
-						<label class="col-xs-4 control-label" for="email">Email: </label>
-						<div class="col-xs-8">
+						<label class="col-xs-3 control-label" for="email">Email: </label>
+						<div class="col-xs-9">
 							<div class="input-group-xs">
 								<input type="email" class="form-control" name="email"
 									id="email" placeholder="Email" />
