@@ -51,7 +51,7 @@ public class SessionFilter implements Filter {
 		String resourceId = null;
 		
 		if(req.getSession(false) != null){
-			resourceId = (String) req.getSession(false).getAttribute("resourceId");
+			resourceId = (String) req.getSession(false).getAttribute("recordId");
 		}
 		
 		String uri = req.getRequestURI();

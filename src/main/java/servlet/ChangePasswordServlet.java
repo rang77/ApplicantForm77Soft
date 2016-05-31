@@ -18,7 +18,7 @@ import utility.StringEncryptor;
 /**
  * Servlet implementation class ChangePasswordServlet
  */
-@WebServlet("/ChangePasswordServlet")
+@WebServlet("/leave-management/ChangePasswordServlet")
 public class ChangePasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
