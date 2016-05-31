@@ -39,7 +39,7 @@ public class LoginDAO extends SalesforceDAO<Login> {
 	public Login retrieveLoginByResource(String resourceid){
 		connect();
 		
-		List<Login> result = retrieve(String.format("SELECT Id, Email__c, Active__c, AskForNewPassword__c, Resource__c, Salt__c, ActivationCode__c" +
+		List<Login> result = retrieve(String.format("SELECT Id, Email__c, Password__c, Active__c, AskForNewPassword__c, Resource__c, Salt__c, ActivationCode__c" +
 				" FROM Login__c WHERE Resource__c = '%s'"
 				,resourceid), DAOTABLE);
 		
