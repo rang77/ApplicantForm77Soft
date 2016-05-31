@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Date;
-
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
@@ -27,7 +25,7 @@ public class Login implements SalesforceObject {
 	private boolean forgotPassword;
 	
 	@JsonProperty(value = "ForgotPasswordDate__c")
-	private Date forgotPasswordDate;
+	private String forgotPasswordDate;
 	
 	@JsonProperty(value = "Active__c")
 	private boolean active;
@@ -78,10 +76,10 @@ public class Login implements SalesforceObject {
 	public void setForgotPassword(boolean forgotPassword) {
 		this.forgotPassword = forgotPassword;
 	}
-	public Date getForgotPasswordDate() {
+	public String getForgotPasswordDate() {
 		return forgotPasswordDate;
 	}
-	public void setForgotPasswordDate(Date forgotPasswordDate) {
+	public void setForgotPasswordDate(String forgotPasswordDate) {
 		this.forgotPasswordDate = forgotPasswordDate;
 	}
 	public boolean isActive() {

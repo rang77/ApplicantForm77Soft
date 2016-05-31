@@ -57,6 +57,11 @@
 							<strong><c:out value="${error.message}" /></strong>
 						</div>
 					</c:if>
+					<c:if test="${not empty smessage}">
+						<div class="alert-success alert-custom">
+							<strong><c:out value="${smessage}" /></strong>
+						</div>
+					</c:if>
 					<input type="hidden" name="id" value="${id}" />
 					<input type="hidden" name="type" value="${type}" />
 					<div class="form-group" style="margin-top: 22px">

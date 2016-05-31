@@ -89,6 +89,7 @@ button.btncustom {
 }
 
 button.btncustom-success, button.btncustom-success:focus, button.btncustom-success:active:focus, button.btncustom-success.active:focus { background: #5cb85c; }
+button.btncustom-success:hover { opacity: 0.6; color: #fff; }
 
 button.btncustom:hover { opacity: 0.6; color: #fff; }
 

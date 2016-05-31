@@ -72,6 +72,10 @@
 						<button type="submit" class="btn btn-danger">Login</button>
 					</div>
 				</form>
+				
+				<div style="text-align: center; margin-top: 5px;">
+					<a href="leave-management/forgotPassword.jsp"> Forgot Password? </a>
+				</div>
 			</div>
 		</div>
 	</div>

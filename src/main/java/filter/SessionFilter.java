@@ -98,6 +98,9 @@ public class SessionFilter implements Filter {
 		whiteListNoSession.add("promptNewPassword");
 		whiteListNoSession.add("CreateNewPasswordServlet");
 		whiteListNoSession.add("submitLeaveResponse");
+		whiteListNoSession.add("forgot-password");
+		whiteListNoSession.add("forgotPassword.jsp");
+		whiteListNoSession.add("forgot-password-confirmation");
 		
 		whiteList = new HashSet<>();
 		whiteList.add("viewLeave.jsp");

@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import db.LeaveRequestDAO;
+import db.LoginDAO;
 import db.ResourceDAO;
 import model.LeaveRequest;
+import model.Login;
 import model.Resource;
 import model.error.PageError;
 
@@ -43,8 +45,9 @@ public class ConfirmVerificationCodeServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String type = request.getParameter("type");
 		String code = request.getParameter("verification");
+		PageError error = new PageError();
 		
-		if(id != null && type != null && code != null){
+		if(id != null && type != null && code != null && !id.isEmpty() && !type.isEmpty() && !code.isEmpty()){
 			RequestDispatcher rd = null;
 			
 			if("LeaveRequest__c".equals(type)){
@@ -60,15 +63,36 @@ public class ConfirmVerificationCodeServlet extends HttpServlet {
 				request.setAttribute("id", id);
 				
 				rd = request.getRequestDispatcher("/leave-management/approveLeaveRequest.jsp");
+			} else if ("forgot-password".equals(type)) {
+				LoginDAO loginDao = new LoginDAO();
+				Login login = loginDao.retrieveLoginById(id);
 				
-			}else{
+				if (login != null) {
+					if (code.equals(login.getActivationCode())) {
+						login.setForgotPassword(false);
+						login.setForgotPasswordDate(null);
+						login.setAskForNewPassword(true);
+						
+						loginDao.updateLogin(login);
+						
+						request.setAttribute("smessage", "A message has been sent to your email. Please check your email to proceed.");
+					} else {
+						error.setMessage("Invalid verification code.");
+						request.setAttribute("error", error);
+					}
+				} else {
+					error.setMessage("Invalid login account.");
+					request.setAttribute("error", error);
+				}
+
+				rd = request.getRequestDispatcher("/leave-management/confirmActivationCode.jsp");
+			} else {
 				response.sendRedirect("/login.jsp");
+				return;
 			}
-			
+
 			rd.forward(request, response);
-			
 		}else{
-			PageError error = new PageError();
 			error.setMessage("Invalid code.");
 			request.setAttribute("error", error);
 			
