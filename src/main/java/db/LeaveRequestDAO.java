@@ -3,7 +3,6 @@ package db;
 import java.util.List;
 
 import model.LeaveRequest;
-import model.Login;
 
 public class LeaveRequestDAO extends SalesforceDAO<LeaveRequest> {
 

@@ -24,20 +24,18 @@
 	}
 
 	function checkForm(form) {
-		
-		re = /^\w+$/;
-		
-		if (form.newpassword1.value != "" && form.newpassword1.value == form.newpassword2.value) {
-			if (!checkPassword(form.newpassword1.value)) {
-				alert("The password you have entered is not valid!");
-				form.newpassword1.focus();
-				return false;
-			}
-		} else {
-			alert("Error: Please check that you've entered and confirmed your password!");
+		if (form.newpassword1.value == form.newpassword2.value) {
+			alert("The passwords you have entered do not match.");
+			form.newpassword1.focus();
+			return false;
+		} else if (!checkPassword(form.newpassword1.value)) {
+			alert("The password you have entered is not valid. Please make sure that your password "
+					+ "contains at least one number, one lowercase and one uppercase letter, and "
+					+ "must be at least six characters long.");
 			form.newpassword1.focus();
 			return false;
 		}
+		
 		return true;
 	}
 </script>

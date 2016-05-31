@@ -7,7 +7,6 @@ import com.force.api.ApiException;
 import com.force.api.ForceApi;
 
 import model.SalesforceObject;
-import model.error.PageError;
 
 public class SalesforceDAO<T extends SalesforceObject> {
 	
