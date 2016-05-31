@@ -36,6 +36,20 @@ public class LoginDAO extends SalesforceDAO<Login> {
 		return null;
 	}
 	
+	public Login retrieveLoginByResource(String resourceid){
+		connect();
+		
+		List<Login> result = retrieve(String.format("SELECT Id, Email__c, Active__c, AskForNewPassword__c, Resource__c, Salt__c, ActivationCode__c" +
+				" FROM Login__c WHERE Resource__c = '%s'"
+				,resourceid), DAOTABLE);
+		
+		if(!result.isEmpty()){
+			return result.get(0);
+		}
+		
+		return null;
+	}
+	
 	public void updateLogin(Login login){
 		connect();
 		update("Login__c", login);

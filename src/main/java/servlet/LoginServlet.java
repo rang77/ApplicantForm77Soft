@@ -82,7 +82,7 @@ public class LoginServlet extends HttpServlet {
 
 				RequestDispatcher rd = request.getRequestDispatcher("/leave-management/getLeaveCredits");
 				session.setAttribute("recordId", retrievedResource.getId());
-				session.setAttribute("resourceId", retrievedResource.getIdNumber());
+//				session.setAttribute("resourceId", retrievedResource.getIdNumber());
 				rd.forward(request, response);
 			} else {
 				PageError error = new PageError();
