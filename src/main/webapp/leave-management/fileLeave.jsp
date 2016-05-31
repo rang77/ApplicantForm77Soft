@@ -78,8 +78,7 @@
 				class="container-fluid col-xs-12 col-sm-6 col-sm-offset-1 col-md-10">
 				<form role="form" class="form-horizontal"
 					action="/leave-management/fileLeave" method="POST">
-					<input type="hidden" name="recordId" value="${employee.recordID}">
-					<input type="hidden" name="idNumber" value="${employee.idNumber}">
+					<input type="hidden" name="recordId" value="${employee.id}">
 
 					<div class="form-group title" id="fileLeave">
 						<h2>Create New Leave Request</h2>

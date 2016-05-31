@@ -8,11 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import db.LeaveRequestDAO;
-import db.ResourceDAO;
-import model.LeaveRequest;
-import model.Resource;
-
 /**
  * Servlet implementation class LeaveRequestApprovalServlet
  */
@@ -32,22 +27,13 @@ public class LeaveRequestApprovalServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		LeaveRequestDAO leaveRequestDAO = new LeaveRequestDAO();
-		ResourceDAO resourceDAO = new ResourceDAO();
 		String id = request.getParameter("id");
 		
 		if(id != null){
-			LeaveRequest leaveRequest = leaveRequestDAO.retrieveRequestById(id);
-			
-			if(leaveRequest != null){
-				
-				Resource resource = resourceDAO.retrieveResourceApprovalDetails(leaveRequest.getEmployeeID(), leaveRequest);
-				
-				request.setAttribute("employee", resource);
-				request.setAttribute("leave", leaveRequest);
-				request.getRequestDispatcher("/leave-management/approveLeaveRequest.jsp").forward(request, response);
-				return;
-			}
+			request.setAttribute("id", id);
+			request.setAttribute("type", "LeaveRequest__c");
+			request.getRequestDispatcher("/leave-management/confirmActivationCode.jsp").forward(request, response);
+			return;
 		}
 		
 		response.sendRedirect("/login.jsp");

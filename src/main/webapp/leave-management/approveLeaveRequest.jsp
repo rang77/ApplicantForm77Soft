@@ -18,19 +18,10 @@
 <link rel="stylesheet" href="/css/form-elements-new.css" />
 
 <script>
-	$(function() {
-		$("#startDate").datepicker({
-			dateFormat : 'yy-mm-dd'
-		}).val();
-		$("#endDate").datepicker({
-			dateFormat : 'yy-mm-dd'
-		}).val();
-	});
-	$(document).ready(function() {
-		$('#myTable').DataTable({
-			"order" : [ [ 0, "desc" ] ]
-		});
-	});
+	function copyResponse(response){
+		$("#responseInput").val(response);
+	}
+	
 </script>
 
 <title>Seven Seven GSI | Leave Management</title>
@@ -50,6 +41,92 @@
 
 	<div class="page-start container-fluid">
 	
+		<!-- Leave Detail Section -->
+		<div class="row container-fluid">
+			<form action="submitLeaveResponse" method="POST">
+				<div class="container-fluid col-xs-12 col-sm-6 col-sm-offset-1 col-md-10">
+					<div class="form-horizontal output-form">
+						<div class="form-group title" id="fileLeave">
+							<h2>Leave Request Details</h2>
+						</div>
+						<c:if test="${not empty error}">
+							<div class="alert-danger alert">
+								<strong><c:out value="${error.message}"/></strong>
+							</div>
+						</c:if>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Leave Type: </label>
+								<div class="col-sm-9">
+									<div class="form-control">
+										<c:out value="${leave.leaveType}" />
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Reason: </label>
+								<div class="col-sm-9">
+									<div class="form-control">
+										<c:out value="${leave.reason}" />
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Halfday: </label>
+								<div class="col-sm-9">
+									<div class="form-control">
+										<input type="checkbox" disabled <c:if test="${leave.halfday}">checked="checked"</c:if>/>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Start Date: </label>
+								<div class="col-sm-9">
+									<div class="form-control">
+										<c:out value="${leave.startDate}" />
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-sm-3 control-label">End Date: </label>
+								<div class="col-sm-9">
+									<div class="form-control">
+										<c:out value="${leave.endDate}" />
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label class="col-sm-3 control-label" for="remarks">Remarks: </label>
+								<div class="col-sm-9">
+									<input type="text" class="form-control" name="remarks" style="background-color: white;" id="remarks"/>
+								</div>
+							</div>
+						</div>
+						
+						<input type="hidden" value="${id}" name="id"/>
+						<input type="hidden" value="" name="response" id="responseInput"/>
+						
+						
+						<div class="form-group">
+							<div class="custom">
+								<button type="submit" class="btncustom" onclick="copyResponse('Denied')">Denied</button>
+								<button type="submit" class="btncustom btncustom-success" onclick="copyResponse('Approved')">Approved</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+			
+			<div class="clearfix visible-xs-block"></div>
+		</div>
+		
 		<!-- Employee Information Section -->
 		<div class="row-fluid container-fluid">
 			<div class="container-fluid col-sm-10 col-sm-offset-1">

@@ -7,13 +7,10 @@ import org.codehaus.jackson.annotate.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class LeaveRequest implements SalesforceObject {
 
-	@JsonProperty(value = "Id")
 	private String id;
 
-	@JsonProperty(value = "Name")
 	private String requestNumber;
 
-	@JsonProperty(value = "Resource__c")
 	private String employeeID;
 
 	@JsonProperty(value = "StartDate__c")
@@ -42,26 +39,32 @@ public class LeaveRequest implements SalesforceObject {
 
 	private double daysOnLeave;
 
+	@JsonIgnore
 	public String getId() {
 		return id;
 	}
 
+	@JsonProperty(value = "Id")
 	public void setId(String id) {
 		this.id = id;
 	}
 
+	@JsonIgnore
 	public String getRequestNumber() {
 		return requestNumber;
 	}
 
+	@JsonProperty(value = "Name")
 	public void setRequestNumber(String requestNumber) {
 		this.requestNumber = requestNumber;
 	}
 
+	@JsonIgnore
 	public String getEmployeeID() {
 		return employeeID;
 	}
 
+	@JsonProperty(value = "Resource__c")
 	public void setEmployeeID(String employeeID) {
 		this.employeeID = employeeID;
 	}

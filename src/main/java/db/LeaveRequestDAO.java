@@ -3,6 +3,7 @@ package db;
 import java.util.List;
 
 import model.LeaveRequest;
+import model.Login;
 
 public class LeaveRequestDAO extends SalesforceDAO<LeaveRequest> {
 
@@ -11,6 +12,11 @@ public class LeaveRequestDAO extends SalesforceDAO<LeaveRequest> {
 	public String createLeaveRequest(LeaveRequest leaveRequest){
 		connect();
 		return create("LeaveRequest__c", leaveRequest);
+	}
+	
+	public void updateLeaveRequest(LeaveRequest request){
+		connect();
+		update("LeaveRequest__c", request);
 	}
 	
 	public LeaveRequest retrieveRequestById(String id){

@@ -70,7 +70,6 @@ public class SessionFilter implements Filter {
 		}else{			
 			RequestDispatcher dispatch = req.getRequestDispatcher("/login.jsp");
 			
-			System.out.println(pageName);
 			
 			if(!(pageName.equals("login.jsp") || pageName.isEmpty())){
 				if(whiteListNoSession.contains(pageName)){
@@ -95,9 +94,11 @@ public class SessionFilter implements Filter {
 		whiteListNoSession = new HashSet<>();
 		
 		whiteListNoSession.add("leaveRequestApproval");
+		whiteListNoSession.add("ConfirmVerificationCode");
 		whiteListNoSession.add("LoginServlet");
 		whiteListNoSession.add("promptNewPassword");
 		whiteListNoSession.add("CreateNewPasswordServlet");
+		whiteListNoSession.add("submitLeaveResponse");
 		
 		whiteList = new HashSet<>();
 		whiteList.add("viewLeave.jsp");
