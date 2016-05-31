@@ -63,7 +63,7 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Account Settings <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="#">Change Password</a></li>
+						<li><a href="/leave-management/changePassword.jsp">Change Password</a></li>
 					</ul></li>
 				<li><a href="/LogoutServlet">Logout</a></li>
 			</ul>

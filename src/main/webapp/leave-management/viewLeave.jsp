@@ -45,10 +45,9 @@
 			<button type="button" class="navbar-toggle collapsed"
 				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
 				aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-<!-- 				<span class="icon-bar"></span> -->
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span>
+				<!-- 				<span class="icon-bar"></span> -->
 				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="/"><img
@@ -65,7 +64,8 @@
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">Account Settings <span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="/leave-management/changePassword.jsp">Change Password</a></li>
+						<li><a href="/leave-management/changePassword.jsp">Change
+								Password</a></li>
 					</ul></li>
 				<li><a href="/LogoutServlet">Logout</a></li>
 			</ul>
@@ -79,8 +79,7 @@
 			<div class="container-fluid col-sm-10 col-sm-offset-1">
 				<c:if test="${not empty smessage}">
 					<div class="alert-success alert">
-						<strong><c:out
-								value="${smessage}" /></strong>
+						<strong><c:out value="${smessage}" /></strong>
 					</div>
 				</c:if>
 			</div>
@@ -160,7 +159,9 @@
 			<div
 				class="container-fluid col-xs-12 col-sm-6 col-sm-offset-1 col-md-10">
 				<div class="title" id="leaveRequests">
-					<h2>Requested Leaves</h2>
+					<h2>
+						<!-- <a data-toggle="collapse" href="#collapse1">-->Requested Leaves<!-- </a>-->
+					</h2>
 				</div>
 				<c:choose>
 					<c:when test="${empty employee.leaveRequests}">
@@ -176,45 +177,46 @@
 							href="http://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" />
 						<script type="text/javascript"
 							src="http://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
-						<div class="table-responsive">
-							<table id="myTable" width="100%" class="table table-striped">
-								<thead>
-									<tr>
-										<th>#</th>
-										<th>Leave Type</th>
-										<th>Start Date</th>
-										<th>End Date</th>
-										<th>Halfday</th>
-										<th>Days on Leave</th>
-										<th>Reason</th>
-										<th>Status</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${employee.leaveRequests}" var="leaveRequest">
+						<!-- <div id="collapse1" class="panel-collapse collapse">-->
+							<div class="table-responsive">
+								<table id="myTable" width="100%" class="table table-striped">
+									<thead>
 										<tr>
-											<td><c:out value="${leaveRequest.requestNumber}" /></td>
-											<td><c:out value="${leaveRequest.leaveType}" /></td>
-											<td><c:out value="${leaveRequest.startDate}" /></td>
-											<td><c:out value="${leaveRequest.endDate}" /></td>
-											<td>
-												<c:choose>
-													<c:when test="${leaveRequest.halfday}">
+											<th>#</th>
+											<th>Leave Type</th>
+											<th>Start Date</th>
+											<th>End Date</th>
+											<th>Halfday</th>
+											<th>Days on Leave</th>
+											<th>Reason</th>
+											<th>Status</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${employee.leaveRequests}"
+											var="leaveRequest">
+											<tr>
+												<td><c:out value="${leaveRequest.requestNumber}" /></td>
+												<td><c:out value="${leaveRequest.leaveType}" /></td>
+												<td><c:out value="${leaveRequest.startDate}" /></td>
+												<td><c:out value="${leaveRequest.endDate}" /></td>
+												<td><c:choose>
+														<c:when test="${leaveRequest.halfday}">
 														Yes
 													</c:when>
-													<c:otherwise>
+														<c:otherwise>
 														No
-													</c:otherwise>												
-												</c:choose>
-											</td>
-											<td><c:out value="${leaveRequest.daysOnLeave}" /></td>
-											<td><c:out value="${leaveRequest.reason}" /></td>
-											<td><c:out value="${leaveRequest.leaveStatus}" /></td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
+													</c:otherwise>
+													</c:choose></td>
+												<td><c:out value="${leaveRequest.daysOnLeave}" /></td>
+												<td><c:out value="${leaveRequest.reason}" /></td>
+												<td><c:out value="${leaveRequest.leaveStatus}" /></td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+						<!-- </div>-->
 					</c:otherwise>
 				</c:choose>
 			</div>
