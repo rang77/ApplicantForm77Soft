@@ -10,7 +10,8 @@ public class LeaveRequest implements SalesforceObject {
 	private String id;
 
 	private String requestNumber;
-
+	
+	@JsonProperty(value = "Resource__c")
 	private String employeeID;
 
 	@JsonProperty(value = "StartDate__c")
@@ -59,12 +60,10 @@ public class LeaveRequest implements SalesforceObject {
 		this.requestNumber = requestNumber;
 	}
 
-	@JsonIgnore
 	public String getEmployeeID() {
 		return employeeID;
 	}
 
-	@JsonProperty(value = "Resource__c")
 	public void setEmployeeID(String employeeID) {
 		this.employeeID = employeeID;
 	}
@@ -135,7 +134,7 @@ public class LeaveRequest implements SalesforceObject {
 		this.approvalCode = approvalCode;
 	}
 
-	public String Remarks() {
+	public String getRemarks() {
 		return remarks;
 	}
 

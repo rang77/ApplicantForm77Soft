@@ -81,6 +81,18 @@
 									</div>
 								</div>
 							</div>
+							
+							<c:if test="${leave.leaveStatus != 'Pending'}">
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Status: </label>
+									<div class="col-sm-9">
+										<div class="form-control">
+											<c:out value="${leave.leaveStatus}" />
+										</div>
+									</div>
+								</div>
+							</c:if>
+							
 						</div>
 						
 						<div class="col-sm-6">
@@ -102,24 +114,38 @@
 								</div>
 							</div>
 							
+							<c:if test="${leave.leaveStatus == 'Pending'}">
+								<div class="form-group">
+									<label class="col-sm-3 control-label" for="remarks">Remarks: </label>
+									<div class="col-sm-9">
+										<input type="text" class="form-control" name="remarks" style="background-color: white;" id="remarks"/>
+									</div>
+								</div>
+							</c:if>
+							<c:if test="${leave.leaveStatus != 'Pending'}">
+								<div class="form-group">
+									<label class="col-sm-3 control-label">Remarks: </label>
+									<div class="col-sm-9">
+										<div class="form-control">
+											<c:out value="${leave.remarks}" />
+										</div>
+									</div>
+								</div>
+							</c:if>
+							
+						</div>
+						
+						
+						<c:if test="${leave.leaveStatus == 'Pending'}">
+							<input type="hidden" value="${id}" name="id"/>
+							<input type="hidden" value="" name="response" id="responseInput"/>
 							<div class="form-group">
-								<label class="col-sm-3 control-label" for="remarks">Remarks: </label>
-								<div class="col-sm-9">
-									<input type="text" class="form-control" name="remarks" style="background-color: white;" id="remarks"/>
+								<div class="custom">
+									<button type="submit" class="btncustom" onclick="copyResponse('Denied')">Denied</button>
+									<button type="submit" class="btncustom btncustom-success" onclick="copyResponse('Approved')">Approved</button>
 								</div>
 							</div>
-						</div>
-						
-						<input type="hidden" value="${id}" name="id"/>
-						<input type="hidden" value="" name="response" id="responseInput"/>
-						
-						
-						<div class="form-group">
-							<div class="custom">
-								<button type="submit" class="btncustom" onclick="copyResponse('Denied')">Denied</button>
-								<button type="submit" class="btncustom btncustom-success" onclick="copyResponse('Approved')">Approved</button>
-							</div>
-						</div>
+						</c:if>
 					</div>
 				</div>
 			</form>
