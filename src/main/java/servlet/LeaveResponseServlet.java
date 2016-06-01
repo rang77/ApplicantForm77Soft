@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import db.LeaveRequestDAO;
 import model.LeaveRequest;
 import model.error.PageError;
+import utility.ContextKeys;
 
 /**
  * Servlet implementation class LeaveResponseServlet
@@ -43,7 +44,7 @@ public class LeaveResponseServlet extends HttpServlet {
 		String remarks = request.getParameter("remarks");
 		String leaveStatus = request.getParameter("response");
 		
-		LeaveRequestDAO leaveRequestDAO = new LeaveRequestDAO();
+		LeaveRequestDAO leaveRequestDAO = (LeaveRequestDAO) request.getServletContext().getAttribute(ContextKeys.LEAVE_REQUEST_DAO);
 		RequestDispatcher rd = null;
 		
 		if(id != null && leaveStatus != null){

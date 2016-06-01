@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import db.LoginDAO;
 import model.Login;
 import model.error.PageError;
+import utility.ContextKeys;
 import utility.StringEncryptor;
 
 /**
@@ -42,8 +43,7 @@ public class ChangePasswordServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		LoginDAO loginDAO = new LoginDAO();
+		LoginDAO loginDAO = (LoginDAO) request.getServletContext().getAttribute(ContextKeys.LOGIN_DAO);
 		HttpSession session = request.getSession();
 		
 		String resourceId = (String)session.getAttribute("recordId");

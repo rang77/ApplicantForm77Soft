@@ -16,6 +16,7 @@ import model.LeaveRequest;
 import model.Login;
 import model.Resource;
 import model.error.PageError;
+import utility.ContextKeys;
 
 /**
  * Servlet implementation class ConfirmApprovalCodeServlet
@@ -51,8 +52,8 @@ public class ConfirmVerificationCodeServlet extends HttpServlet {
 			RequestDispatcher rd = null;
 			
 			if("LeaveRequest__c".equals(type)){
-				LeaveRequestDAO leaveRequestDao = new LeaveRequestDAO();
-				ResourceDAO resourceDao = new ResourceDAO();
+				LeaveRequestDAO leaveRequestDao = (LeaveRequestDAO) request.getServletContext().getAttribute(ContextKeys.LEAVE_REQUEST_DAO);
+				ResourceDAO resourceDao = (ResourceDAO) request.getServletContext().getAttribute(ContextKeys.RESOURCE_DAO);
 				
 				LeaveRequest leaveRequest = leaveRequestDao.retrieveRequestById(id);
 				
@@ -64,7 +65,7 @@ public class ConfirmVerificationCodeServlet extends HttpServlet {
 				
 				rd = request.getRequestDispatcher("/leave-management/approveLeaveRequest.jsp");
 			} else if ("forgot-password".equals(type)) {
-				LoginDAO loginDao = new LoginDAO();
+				LoginDAO loginDao = (LoginDAO) request.getServletContext().getAttribute(ContextKeys.LOGIN_DAO);
 				Login login = loginDao.retrieveLoginById(id);
 				
 				if (login != null) {

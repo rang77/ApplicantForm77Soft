@@ -16,6 +16,12 @@
 		<filter-name>SessionFilter</filter-name>
 		<filter-class>filter.SessionFilter</filter-class>
 	</filter>
+	
+	<listener>
+		<listener-class>
+			listener.InitializerServletContextListener
+		</listener-class>
+	</listener>
 
 	<filter-mapping>
 		<filter-name>SessionFilter</filter-name>

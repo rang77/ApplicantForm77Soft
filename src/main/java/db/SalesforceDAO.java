@@ -9,39 +9,75 @@ import com.force.api.ForceApi;
 import model.SalesforceObject;
 
 public class SalesforceDAO<T extends SalesforceObject> {
-	
-	private static final String CLIENTID = "3MVG9PbQtiUzNgN4S79MiP7zmS6BZFASaVsqM23xscv4ZjTH0Mu0dyndwsWFmEmsoKnNgBAKt.xv2srlAjlwF";
-	private static final String CLIENTSECRET = "8479639149034290684";
-	private static final String DOMAIN = "https://test.salesforce.com";
-	private static final String USERNAME = "sfadmin@77soft.com.leave";
-	private static final String PASSWORD = "77UltimateLeave";
-	private static final String SECURITY_TOKEN = "qTV4gyJXi7Du55xmqZXnQUahX";
-	
+
+	private static String clientId = null;
+	private static String clientSecret = null;
+	private static String domain = null;
+	private static String username = null;
+	private static String password = null;
+	private static String securityToken = null;
+
 	private static ApiConfig config;
 	private static ForceApi api;
 
-	protected void connect() {
-		
-		if(config == null){
-			config = new ApiConfig();
-			
-			config.setUsername(USERNAME);
-			config.setPassword(PASSWORD+SECURITY_TOKEN);
-			config.setClientId(CLIENTID);
-			config.setClientSecret(CLIENTSECRET);
-			config.setLoginEndpoint(DOMAIN);
+	public static void setClientID(String theClientID) {
+		if (clientId == null) {
+			clientId = theClientID;
 		}
-		
-		if(api == null){
+	}
+
+	public static void setClientSecret(String theClientSecret) {
+		if (clientSecret == null) {
+			clientSecret = theClientSecret;
+		}
+	}
+
+	public static void setDomain(String theDomain) {
+		if (domain == null) {
+			domain = theDomain;
+		}
+	}
+
+	public static void setUsername(String theUsername) {
+		if (username == null) {
+			username = theUsername;
+		}
+	}
+
+	public static void setPassword(String thePassword) {
+		if (password == null) {
+			password = thePassword;
+		}
+	}
+
+	public static void setSecurityToken(String theToken) {
+		if (securityToken == null) {
+			securityToken = theToken;
+		}
+	}
+
+	protected void connect() {
+
+		if (config == null) {
+			config = new ApiConfig();
+
+			config.setUsername(username);
+			config.setPassword(password + securityToken);
+			config.setClientId(clientId);
+			config.setClientSecret(clientSecret);
+			config.setLoginEndpoint(domain);
+		}
+
+		if (api == null) {
 			api = new ForceApi(config);
 		}
 	}
-	
+
 	protected List<T> retrieve(String query, Class<T> objectType) {
 		return api.query(query, objectType).getRecords();
 	}
-	
-	protected String create(String objectType, T object) throws ApiException{
+
+	protected String create(String objectType, T object) throws ApiException {
 		return api.createSObject(objectType, object);
 	}
 

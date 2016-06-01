@@ -16,6 +16,7 @@ import db.LeaveRequestDAO;
 import helper.ServletHelper;
 import model.LeaveRequest;
 import model.error.PageError;
+import utility.ContextKeys;
 
 @WebServlet(name = "fileLeaveServlet", urlPatterns = {"/leave-management/fileLeave/*","/leave-management/fileLeave" })
 public class FileLeaveServlet extends HttpServlet {
@@ -28,7 +29,7 @@ public class FileLeaveServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		LeaveRequestDAO leaveRequestDAO = new LeaveRequestDAO();
+		LeaveRequestDAO leaveRequestDAO = (LeaveRequestDAO) request.getServletContext().getAttribute(ContextKeys.LEAVE_REQUEST_DAO);
 		
 		HttpSession session = request.getSession();
 		

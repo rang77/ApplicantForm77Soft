@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import db.LoginDAO;
 import model.Login;
+import utility.ContextKeys;
 
 /**
  * Servlet implementation class PromptNewPassword
@@ -31,7 +32,7 @@ public class PromptNewPasswordServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		LoginDAO loginDAO = new LoginDAO();
+		LoginDAO loginDAO = (LoginDAO) request.getServletContext().getAttribute(ContextKeys.LOGIN_DAO);
 		String id = request.getParameter("id");
 		
 		if(id != null){

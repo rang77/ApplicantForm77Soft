@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import db.LoginDAO;
 import model.Login;
 import model.error.PageError;
+import utility.ContextKeys;
 
 /**
  * Servlet implementation class ForgotPasswordServlet
@@ -34,7 +35,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		
 		if (email != null && !email.isEmpty()) {
-			LoginDAO loginDao = new LoginDAO();
+			LoginDAO loginDao = (LoginDAO) request.getServletContext().getAttribute(ContextKeys.LOGIN_DAO);
 			
 			Login login = loginDao.retrieveLoginByEmail(email);
 			

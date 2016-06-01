@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import db.ResourceDAO;
 import model.Resource;
+import utility.ContextKeys;
 
 @WebServlet(name = "retrieveLeaveCreditServlet", urlPatterns = {"/leave-management/viewLeave", "/leave-management/getLeaveCredits/*", "/leave-management/getLeaveCredits" })
 //@WebServlet(name = "/RetrieveLeaveCreditServlet")
@@ -23,7 +24,7 @@ public class RetrieveLeaveCreditServlet extends HttpServlet {
 	}
 	
 	private void getLeaveDetails(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-		ResourceDAO resourceDAO = new ResourceDAO();
+		ResourceDAO resourceDAO = (ResourceDAO) request.getServletContext().getAttribute(ContextKeys.RESOURCE_DAO);
 		
 		HttpSession session = request.getSession();
 		

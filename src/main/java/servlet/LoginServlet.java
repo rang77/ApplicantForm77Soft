@@ -18,6 +18,7 @@ import helper.ServletHelper;
 import model.Login;
 import model.Resource;
 import model.error.PageError;
+import utility.ContextKeys;
 import utility.StringEncryptor;
 
 /**
@@ -50,9 +51,8 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		ResourceDAO resourceDAO = new ResourceDAO();
-		LoginDAO loginDAO = new LoginDAO();
+		ResourceDAO resourceDAO = (ResourceDAO) request.getServletContext().getAttribute(ContextKeys.RESOURCE_DAO);
+		LoginDAO loginDAO = (LoginDAO) request.getServletContext().getAttribute(ContextKeys.LOGIN_DAO);
 		HttpSession session = request.getSession();
 
 		String email = request.getParameter("email");
