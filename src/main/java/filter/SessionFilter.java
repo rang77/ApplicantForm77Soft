@@ -96,7 +96,7 @@ public class SessionFilter implements Filter {
 		whiteListNoSession.add("ConfirmVerificationCode");
 		whiteListNoSession.add("LoginServlet");
 		whiteListNoSession.add("promptNewPassword");
-		whiteListNoSession.add("CreateNewPasswordServlet");
+		whiteListNoSession.add("createNewPassword");
 		whiteListNoSession.add("submitLeaveResponse");
 		whiteListNoSession.add("forgot-password");
 		whiteListNoSession.add("forgotPassword.jsp");
@@ -107,6 +107,10 @@ public class SessionFilter implements Filter {
 		whiteList.add("login.jsp");
 		whiteList.add("promptNewPassword.jsp");
 		whiteList.add("LoginServlet");
+		whiteList.add("confirmActivationCode.jsp");
+		whiteList.add("approveLeaveRequest.jsp");
+		whiteList.add("forgot-password-confirmation");
+		whiteList.add("confirmActivationCode.jsp");
 		whiteList.add("");
 	}
 }

@@ -27,6 +27,10 @@ public class ForgotPasswordServlet extends HttpServlet {
     public ForgotPasswordServlet() {
         super();
     }
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	response.sendRedirect("/login.jsp");
+    }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
