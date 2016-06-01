@@ -65,7 +65,7 @@
 				</form>
 				
 				<div style="text-align: center; margin-top: 15px;">
-					<a href="leave-management/forgotPassword.jsp" style="color: #717171"> Forgot Password? </a>
+					<a href="/leave-management/forgotPassword.jsp" style="color: #717171"> Forgot Password? </a>
 				</div>
 			</div>
 		</div>

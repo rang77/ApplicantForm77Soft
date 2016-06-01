@@ -69,7 +69,7 @@ public class ResourceDAO extends SalesforceDAO<Resource> {
 				return result.get(0);
 			}
 		} catch (ParseException e) {
-			System.out.println(e.getMessage());
+			System.err.println(e.getMessage());
 		}
 
 		return null;

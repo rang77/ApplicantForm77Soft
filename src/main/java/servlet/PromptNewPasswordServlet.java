@@ -38,8 +38,6 @@ public class PromptNewPasswordServlet extends HttpServlet {
 			Login tempLogin = loginDAO.retrieveLoginById(id);
 			
 			if(tempLogin != null && tempLogin.isAskForNewPassword()){
-				System.out.println(tempLogin.toString());
-				
 				RequestDispatcher rd = request.getRequestDispatcher("/leave-management/promptNewPassword.jsp");
 				request.setAttribute("login", tempLogin);
 				rd.forward(request, response);

@@ -54,13 +54,10 @@ public class CreateNewPasswordServlet extends HttpServlet {
 		Login tempLogin = loginDAO.retrieveLoginById(id);
 		RequestDispatcher rd = request.getRequestDispatcher("/leave-management/prompt-new-password?id="+id);
 		
-		System.out.println(request.getRequestURI());
-		
 		PageMessages messages = new PageMessages();
 		request.setAttribute("messages", messages);
 		
 		if(tempLogin.getActivationCode().equals(activationCode)){
-			System.out.println("activation code ok");
 			newpassword = StringEncryptor.encryptString(newpassword, tempLogin.getSalt());
 			
 			tempLogin.setPassword(newpassword);
@@ -71,10 +68,9 @@ public class CreateNewPasswordServlet extends HttpServlet {
 				messages.addSuccessMessage("Update Successful. Please try logging in with your new credentials.");
 				rd = request.getRequestDispatcher("/login.jsp");
 			}catch(Exception e){
-				System.out.println(e.getMessage());
+				System.err.println(e.getMessage());
 			}
 		}else{
-			System.out.println("activation code not ok");
 			messages.addErrorMessage("Invalid Activation Code.");
 		}
 		

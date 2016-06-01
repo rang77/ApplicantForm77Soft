@@ -33,6 +33,10 @@
 						<jsp:include page="/leave-management/pageMessages.jsp"/>
 					</div>
 				</div>
+				
+				<div style="text-align: center; margin-top: 15px;">
+					<a href="/" class="btn btn-danger"> Home </a>
+				</div>
 			</div>
 		</div>
 	</div>

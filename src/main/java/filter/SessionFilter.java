@@ -53,8 +53,6 @@ public class SessionFilter implements Filter {
 		String uri = req.getRequestURI();
 		String pageName = uri.substring(uri.lastIndexOf("/")+1);
 		
-		System.out.println(pageName);
-		
 		if (resourceId != null) {
 			
 			if(sessionBlackList.contains(pageName)){
