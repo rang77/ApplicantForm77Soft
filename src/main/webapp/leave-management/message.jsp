@@ -17,17 +17,6 @@
 <link rel="stylesheet" href="/css/neotheme.css" />
 <link rel="stylesheet" href="/css/lms.css" />
 
-<style>
-.alert-custom {
-	padding: 5px;
-	padding-left: 12px;
-	padding-right: 12px;
-	margin-top: 20px;
-	border: 1px solid transparent;
-	border-radius: 4px
-}
-</style>
-
 <title>Seven Seven GSI - Leave Management System</title>
 </head>
 
@@ -39,7 +28,10 @@
 				<div class="form-horizontal">
 					<div class="form-group title login-title-custom" id="formTitle">
 						LEAVE MANAGEMENT SYSTEM</div>
-					<jsp:include page="/leave-management/pageMessages.jsp"/>
+						
+					<div style="margin-top: 20px">
+						<jsp:include page="/leave-management/pageMessages.jsp"/>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import db.LoginDAO;
 import model.Login;
-import model.error.PageError;
+import model.messages.PageMessages;
 import utility.ContextKeys;
 import utility.StringEncryptor;
 
@@ -50,6 +50,9 @@ public class ChangePasswordServlet extends HttpServlet {
 		String newpassword = request.getParameter("newpassword1");
 		RequestDispatcher rd = request.getRequestDispatcher("/leave-management/changePassword.jsp");
 		
+		PageMessages messages = new PageMessages();
+		request.setAttribute("messages", messages);
+		
 		try{
 			Login tempLogin = loginDAO.retrieveLoginByResource(resourceId);
 			oldpassword = StringEncryptor.encryptString(oldpassword, tempLogin.getSalt());
@@ -59,21 +62,14 @@ public class ChangePasswordServlet extends HttpServlet {
 				
 				tempLogin.setPassword(newpassword);
 				loginDAO.updateLogin(tempLogin);
-				String smessage = "Password has been successfully updated.";
-				request.setAttribute("smessage", smessage);
+				messages.addSuccessMessage("Password has been successfully updated.");
 
 				rd = request.getRequestDispatcher("/leave-management/get-leave-credits");
 			}else{
-				PageError error = new PageError();
-				
-				error.setMessage("Old Password is invalid. Please try again.");
-				request.setAttribute("error", error);
+				messages.addErrorMessage("Old Password is invalid. Please try again.");
 			}
 		}catch(Exception e){
-			PageError error = new PageError();
-			error.setMessage("Error 500: " + e.getMessage());
-			
-			request.setAttribute("error", error);
+			messages.addErrorMessage("Error 500: " + e.getMessage());
 		}
 		
 		rd.forward(request, response);

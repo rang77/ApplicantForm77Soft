@@ -89,16 +89,7 @@
 					<div class="form-group title" id="fileLeave">
 						<h2>Change Password</h2>
 					</div>
-					<c:if test="${not empty error}">
-						<div class="alert-danger alert">
-							<strong><c:out value="${error.message}" /></strong>
-						</div>
-					</c:if>
-					<c:if test="${not empty smessage}">
-						<div class="alert-success alert">
-							<strong><c:out value="${smessage}" /></strong>
-						</div>
-					</c:if>
+					<jsp:include page="/leave-management/pageMessages.jsp"/>
 					<div class="col-sm-12">
 						<div class="form-group">
 							<label class="col-sm-2 control-label" for="oldpassword">Old

@@ -15,7 +15,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.error.PageError;
+import model.messages.PageMessages;
 
 /**
  * Servlet Filter implementation class SessionFilter
@@ -23,8 +23,8 @@ import model.error.PageError;
 @WebFilter("/SessionFilter")
 public class SessionFilter implements Filter {
 
-	private static Set<String> whiteListNoSession;
-	private static Set<String> whiteList;
+	private static Set<String> noSessionWhiteList;
+	private static Set<String> sessionBlackList;
 	
 	/**
 	 * Default constructor.
@@ -57,7 +57,7 @@ public class SessionFilter implements Filter {
 		
 		if (resourceId != null) {
 			
-			if(whiteList.contains(pageName)){
+			if(sessionBlackList.contains(pageName)){
 				((HttpServletResponse)response).sendRedirect("/leave-management/get-leave-credits");
 			}else{
 				chain.doFilter(request, response);
@@ -67,13 +67,13 @@ public class SessionFilter implements Filter {
 			RequestDispatcher dispatch = req.getRequestDispatcher("/login.jsp");
 			
 			if(!(pageName.equals("login.jsp") || pageName.isEmpty())){
-				if(whiteListNoSession.contains(pageName)){
+				if(noSessionWhiteList.contains(pageName)){
 					chain.doFilter(request, response);
 					return;
 				}else{
-					PageError error = new PageError();
-					error.setMessage("You need to login to access that page");
-					req.setAttribute("error", error);
+					PageMessages messages = new PageMessages();
+					messages.addErrorMessage("You need to login to access that page");
+					req.setAttribute("messages", messages);
 				}
 			}
 			
@@ -86,27 +86,27 @@ public class SessionFilter implements Filter {
 	 * @see Filter#init(FilterConfig)
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
-		whiteListNoSession = new HashSet<>();
+		noSessionWhiteList = new HashSet<>();
 		
-		whiteListNoSession.add("leave-request-approval");
-		whiteListNoSession.add("confirm-verification-code");
-		whiteListNoSession.add("login");
-		whiteListNoSession.add("prompt-new-password");
-		whiteListNoSession.add("create-new-password");
-		whiteListNoSession.add("submit-leave-response");
-		whiteListNoSession.add("forgot-password");
-		whiteListNoSession.add("forgotPassword.jsp");
-		whiteListNoSession.add("forgot-password-confirmation");
+		noSessionWhiteList.add("leave-request-approval");
+		noSessionWhiteList.add("confirm-verification-code");
+		noSessionWhiteList.add("login");
+		noSessionWhiteList.add("prompt-new-password");
+		noSessionWhiteList.add("create-new-password");
+		noSessionWhiteList.add("submit-leave-response");
+		noSessionWhiteList.add("forgot-password");
+		noSessionWhiteList.add("forgotPassword.jsp");
+		noSessionWhiteList.add("forgot-password-confirmation");
 		
-		whiteList = new HashSet<>();
-		whiteList.add("viewLeave.jsp");
-		whiteList.add("login.jsp");
-		whiteList.add("promptNewPassword.jsp");
-		whiteList.add("login");
-		whiteList.add("confirmActivationCode.jsp");
-		whiteList.add("approveLeaveRequest.jsp");
-		whiteList.add("forgot-password-confirmation");
-		whiteList.add("confirmActivationCode.jsp");
-		whiteList.add("");
+		sessionBlackList = new HashSet<>();
+		sessionBlackList.add("viewLeave.jsp");
+		sessionBlackList.add("login.jsp");
+		sessionBlackList.add("promptNewPassword.jsp");
+		sessionBlackList.add("login");
+		sessionBlackList.add("confirmActivationCode.jsp");
+		sessionBlackList.add("approveLeaveRequest.jsp");
+		sessionBlackList.add("forgotPassword.jsp");
+		sessionBlackList.add("forgot-password-confirmation");
+		sessionBlackList.add("");
 	}
 }

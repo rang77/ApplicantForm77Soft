@@ -28,7 +28,7 @@
 	});
 	$(document).ready(function() {
 		$('#myTable').DataTable({
-			"order" : [ [ 0, "desc" ] ]
+			"order" : [ [ 2, "desc" ] ]
 		});
 	});
 </script>
@@ -77,11 +77,7 @@
 		<!-- Employee Information Section -->
 		<div class="row-fluid container-fluid">
 			<div class="container-fluid col-sm-10 col-sm-offset-1">
-				<c:if test="${not empty smessage}">
-					<div class="alert-success alert">
-						<strong><c:out value="${smessage}" /></strong>
-					</div>
-				</c:if>
+				<jsp:include page="/leave-management/pageMessages.jsp"/>
 			</div>
 			<div class="clearfix visible-xs-block"></div>
 		</div>
@@ -133,11 +129,19 @@
 									<div class="progress">
 										<span class="progress-value">${employee.vacationLeavesUsed}
 											/ ${employee.vlCredits} used</span>
+										<c:choose>
+											<c:when test="${employee.vacationLeavesUsed > employee.vlCredits}">
+												<c:set var="vlBarWidth" value="100"/>
+											</c:when>
+											<c:otherwise>
+												<c:set var="vlBarWidth" value="${(employee.vacationLeavesUsed / employee.vlCredits) * 100}"/>
+											</c:otherwise>
+										</c:choose>
 										<div class="progress-bar progress-bar-danger"
 											role="progressbar"
 											aria-valuenow="${employee.vacationLeavesUsed}"
 											aria-valuemin="0" aria-valuemax="${employee.vlCredits}"
-											style="width:${(employee.vacationLeavesUsed / employee.vlCredits) * 100}%;">
+											style="width:${vlBarWidth}%;">
 										</div>
 									</div>
 								</div>
@@ -150,10 +154,18 @@
 									<div class="progress">
 										<span class="progress-value">${employee.sickLeavesUsed}
 											/ ${employee.slCredits} used</span>
+										<c:choose>
+											<c:when test="${employee.sickLeavesUsed > employee.slCredits}">
+												<c:set var="slBarWidth" value="100"/>
+											</c:when>
+											<c:otherwise>
+												<c:set var="slBarWidth" value="${(employee.sickLeavesUsed / employee.slCredits) * 100}"/>
+											</c:otherwise>
+										</c:choose>
 										<div class="progress-bar progress-bar-danger"
 											role="progressbar" aria-valuenow="${employee.sickLeavesUsed}"
 											aria-valuemin="0" aria-valuemax="${employee.slCredits}"
-											style="width:${(employee.sickLeavesUsed / employee.slCredits) * 100}%;">
+											style="width:${slBarWidth}%;">
 										</div>
 									</div>
 								</div>

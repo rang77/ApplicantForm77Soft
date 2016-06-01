@@ -49,11 +49,7 @@
 						<div class="form-group title" id="fileLeave">
 							<h2>Leave Request Details</h2>
 						</div>
-						<c:if test="${not empty error}">
-							<div class="alert-danger alert">
-								<strong><c:out value="${error.message}" /></strong>
-							</div>
-						</c:if>
+						<jsp:include page="/leave-management/pageMessages.jsp"/>
 						<div class="col-sm-6">
 							<div class="form-group">
 								<label class="col-sm-3 control-label">Leave Type: </label>
@@ -160,11 +156,7 @@
 		<!-- Employee Information Section -->
 		<div class="row-fluid container-fluid">
 			<div class="container-fluid col-sm-10 col-sm-offset-1">
-				<c:if test="${not empty smessage}">
-					<div class="alert-success alert">
-						<strong><c:out value="${smessage}" /></strong>
-					</div>
-				</c:if>
+				<jsp:include page="/leave-management/pageMessages.jsp"/>
 			</div>
 			<div class="clearfix visible-xs-block"></div>
 		</div>

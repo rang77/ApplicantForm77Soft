@@ -20,7 +20,6 @@ public class LeaveRequestApprovalServlet extends HttpServlet {
      */
     public LeaveRequestApprovalServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**

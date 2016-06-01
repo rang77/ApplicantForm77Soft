@@ -3,6 +3,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<style>
+.alert-custom {
+	padding: 5px;
+	padding-left: 12px;
+	padding-right: 12px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+</style>
+
 <c:if test="${not empty messages}">
 	<c:forEach var="message" items="${messages.pageMessages}">
 		<c:choose>

@@ -25,7 +25,6 @@ public class PromptNewPasswordServlet extends HttpServlet {
      */
     public PromptNewPasswordServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**

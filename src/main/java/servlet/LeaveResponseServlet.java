@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import db.LeaveRequestDAO;
 import model.LeaveRequest;
-import model.error.PageError;
+import model.messages.PageMessages;
 import utility.ContextKeys;
 
 /**
@@ -26,7 +26,6 @@ public class LeaveResponseServlet extends HttpServlet {
      */
     public LeaveResponseServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -46,6 +45,9 @@ public class LeaveResponseServlet extends HttpServlet {
 		
 		LeaveRequestDAO leaveRequestDAO = (LeaveRequestDAO) request.getServletContext().getAttribute(ContextKeys.LEAVE_REQUEST_DAO);
 		RequestDispatcher rd = null;
+
+		PageMessages messages = new PageMessages();
+		request.setAttribute("messages", messages);
 		
 		if(id != null && leaveStatus != null){
 			
@@ -55,14 +57,10 @@ public class LeaveResponseServlet extends HttpServlet {
 			
 			leaveRequestDAO.updateLeaveRequest(leaveRequest);
 			
-			String smessage = "Your response has been submitted. Thank you! ü";
-			
-			request.setAttribute("smessage", smessage);
+			messages.addSuccessMessage("Your response has been submitted. Thank you! ü");
 			rd = request.getRequestDispatcher("/leave-management/message.jsp");
 		}else{
-			PageError error = new PageError();
-			error.setMessage("An error occured yea.");
-			request.setAttribute("error",error);
+			messages.addErrorMessage("An error occured.");
 			rd = request.getRequestDispatcher("/login.jsp");
 		}
 		rd.forward(request, response);

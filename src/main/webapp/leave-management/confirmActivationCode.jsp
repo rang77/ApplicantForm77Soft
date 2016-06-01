@@ -52,16 +52,7 @@
 					method="post" onsubmit="return checkForm(this);">
 					<div class="form-group title login-title-custom" id="formTitle">
 						LEAVE MANAGEMENT SYSTEM</div>
-					<c:if test="${not empty error}">
-						<div class="alert-danger alert-custom">
-							<strong><c:out value="${error.message}" /></strong>
-						</div>
-					</c:if>
-					<c:if test="${not empty smessage}">
-						<div class="alert-success alert-custom">
-							<strong><c:out value="${smessage}" /></strong>
-						</div>
-					</c:if>
+					<jsp:include page="/leave-management/pageMessages.jsp"/>
 					<input type="hidden" name="id" value="${id}" />
 					<input type="hidden" name="type" value="${type}" />
 					<div class="form-group" style="margin-top: 22px">

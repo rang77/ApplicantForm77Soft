@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import db.LoginDAO;
 import model.Login;
-import model.error.PageError;
+import model.messages.PageMessages;
 import utility.ContextKeys;
 import utility.StringEncryptor;
 
@@ -27,7 +27,6 @@ public class CreateNewPasswordServlet extends HttpServlet {
      */
     public CreateNewPasswordServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -56,6 +55,10 @@ public class CreateNewPasswordServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/leave-management/prompt-new-password?id="+id);
 		
 		System.out.println(request.getRequestURI());
+		
+		PageMessages messages = new PageMessages();
+		request.setAttribute("messages", messages);
+		
 		if(tempLogin.getActivationCode().equals(activationCode)){
 			System.out.println("activation code ok");
 			newpassword = StringEncryptor.encryptString(newpassword, tempLogin.getSalt());
@@ -65,19 +68,14 @@ public class CreateNewPasswordServlet extends HttpServlet {
 			
 			try{
 				loginDAO.updateLogin(tempLogin);
-				
-				String smessage = "Update Successful. Please try logging in with your new credentials.";
-				request.setAttribute("smessage", smessage);
-				
+				messages.addSuccessMessage("Update Successful. Please try logging in with your new credentials.");
 				rd = request.getRequestDispatcher("/login.jsp");
 			}catch(Exception e){
 				System.out.println(e.getMessage());
 			}
 		}else{
 			System.out.println("activation code not ok");
-			PageError error = new PageError();
-			error.setMessage("Invalid Activation Code.");
-			request.setAttribute("error", error);
+			messages.addErrorMessage("Invalid Activation Code.");
 		}
 		
 		rd.forward(request, response);

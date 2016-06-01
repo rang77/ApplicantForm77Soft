@@ -83,11 +83,7 @@
 					<div class="form-group title" id="fileLeave">
 						<h2>Create New Leave Request</h2>
 					</div>
-					<c:if test="${not empty error}">
-						<div class="alert-danger alert">
-							<strong><c:out value="${error.message}"/></strong>
-						</div>
-					</c:if>
+					<jsp:include page="/leave-management/pageMessages.jsp"/>
 					<div class="col-sm-6">
 						<div class="form-group">
 							<label class="col-sm-2 control-label" for="leaveType">Leave

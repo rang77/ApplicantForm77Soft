@@ -16,6 +16,7 @@ import db.LeaveRequestDAO;
 import helper.ServletHelper;
 import model.LeaveRequest;
 import model.error.PageError;
+import model.messages.PageMessages;
 import utility.ContextKeys;
 
 @WebServlet(name = "file-leave", urlPatterns = {"/leave-management/file-leave/*","/leave-management/file-leave" })
@@ -55,31 +56,34 @@ public class FileLeaveServlet extends HttpServlet {
 		leaveRequest.setHalfday(halfday);
 		leaveRequest.setLeaveStatus("Pending");
 		
+		PageMessages messages = new PageMessages();
+		request.setAttribute("messages", messages);
+		
 		try{
 			String requestID = leaveRequestDAO.createLeaveRequest(leaveRequest);
 			if(requestID != null){
 				RequestDispatcher rd = request.getRequestDispatcher("/leave-management/get-leave-credits");
 				
-				request.setAttribute("smessage", "Request leave successful. Please wait while the request is pending for approval.");
+				messages.addSuccessMessage("Request leave successful. Please wait while the request is pending for approval.");
 				rd.forward(request, response);
 			}else{
 				RequestDispatcher rd = request.getRequestDispatcher("/leave-management/fileLeave.jsp");
-				PageError error = new PageError();
-				error.setMessage("An error has occurred.");
+				
+				messages.addErrorMessage("An error has occurred.");
 				
 				request.setAttribute("leaveType",leaveType);
 				request.setAttribute("startDate",startDate);
 				request.setAttribute("endDate",endDate);
 				request.setAttribute("reason",reason);
 				request.setAttribute("halfday",halfday);
-				request.setAttribute("error", error);
+				
 				rd.forward(request, response);
 			}
 			
 		}catch(ApiException e){
 			PageError error = ServletHelper.handleAPIException(e.getMessage());
 			if(error != null){
-				request.setAttribute("error", error);
+				messages.addErrorMessage(error.getMessage());
 			}
 			
 			request.setAttribute("leaveType",leaveType);

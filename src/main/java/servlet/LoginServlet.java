@@ -18,6 +18,7 @@ import helper.ServletHelper;
 import model.Login;
 import model.Resource;
 import model.error.PageError;
+import model.messages.PageMessages;
 import utility.ContextKeys;
 import utility.StringEncryptor;
 
@@ -57,13 +58,14 @@ public class LoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
+		PageMessages messages = new PageMessages();
+		request.setAttribute("messages", messages);
+		
 		try {
 			Login resourceLogin = loginDAO.retrieveLoginByEmail(email);
 
 			if (resourceLogin == null) {
-				PageError error = new PageError();
-				error.setMessage("Username or Password is incorrect. Please try again.");
-				request.setAttribute("error", error);
+				messages.addErrorMessage("Username or Password is incorrect. Please try again.");
 				
 				RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
 
@@ -81,9 +83,7 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("recordId", retrievedResource.getId());
 				response.sendRedirect("/leave-management/get-leave-credits");
 			} else {
-				PageError error = new PageError();
-				error.setMessage("Username or Password is incorrect. Please try again.");
-				request.setAttribute("error", error);
+				messages.addErrorMessage("Username or Password is incorrect. Please try again.");
 				RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
 
 				rd.forward(request, response);
@@ -92,7 +92,7 @@ public class LoginServlet extends HttpServlet {
 			PageError error = ServletHelper.handleAPIException(e.getMessage());
 
 			if (error != null) {
-				request.setAttribute("error", error);
+				messages.addErrorMessage(error.getMessage());
 			}
 
 			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");

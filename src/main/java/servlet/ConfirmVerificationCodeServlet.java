@@ -15,7 +15,7 @@ import db.ResourceDAO;
 import model.LeaveRequest;
 import model.Login;
 import model.Resource;
-import model.error.PageError;
+import model.messages.PageMessages;
 import utility.ContextKeys;
 
 /**
@@ -46,7 +46,9 @@ public class ConfirmVerificationCodeServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String type = request.getParameter("type");
 		String code = request.getParameter("verification");
-		PageError error = new PageError();
+		
+		PageMessages messages = new PageMessages();
+		request.setAttribute("messages", messages);
 		
 		if(id != null && type != null && code != null && !id.isEmpty() && !type.isEmpty() && !code.isEmpty()){
 			RequestDispatcher rd = null;
@@ -76,17 +78,15 @@ public class ConfirmVerificationCodeServlet extends HttpServlet {
 						
 						loginDao.updateLogin(login);
 						
-						request.setAttribute("smessage", "Request for change of password successfully confirmed! "
-														+ "Please check your email for the instructions on how to set a new password.");
+						messages.addSuccessMessage("Request for change of password successfully confirmed! "
+												+ "Please check your email for the instructions on how to set a new password.");
 						rd = request.getRequestDispatcher("/leave-management/message.jsp");
 					} else {
-						error.setMessage("Invalid verification code.");
-						request.setAttribute("error", error);
+						messages.addErrorMessage("Invalid verification code.");
 						rd = request.getRequestDispatcher("/leave-management/confirmActivationCode.jsp");
 					}
 				} else {
-					error.setMessage("Invalid login account.");
-					request.setAttribute("error", error);
+					messages.addErrorMessage("Invalid login account.");
 					rd = request.getRequestDispatcher("/leave-management/confirmActivationCode.jsp");
 				}
 
@@ -97,8 +97,7 @@ public class ConfirmVerificationCodeServlet extends HttpServlet {
 
 			rd.forward(request, response);
 		}else{
-			error.setMessage("Invalid code.");
-			request.setAttribute("error", error);
+			messages.addErrorMessage("Invalid code.");
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/leave-management/confirmActivationCode.jsp");
 			rd.forward(request, response);

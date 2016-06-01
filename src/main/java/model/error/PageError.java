@@ -2,7 +2,6 @@ package model.error;
 
 import java.util.List;
 
-
 public class PageError {
 
 	private String errorCode;
