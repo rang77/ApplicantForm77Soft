@@ -56,7 +56,7 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="navbar">
 			<ul class="nav navbar-nav">
-				<li><a href="/leave-management/getLeaveCredits">Home</a></li>
+				<li><a href="/leave-management/get-leave-credits">Home</a></li>
 				<li><a href="/leave-management/fileLeave.jsp">File Leave</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right navbar-right-custom">
@@ -67,7 +67,7 @@
 						<li><a href="/leave-management/changePassword.jsp">Change
 								Password</a></li>
 					</ul></li>
-				<li><a href="/LogoutServlet">Logout</a></li>
+				<li><a href="/logout">Logout</a></li>
 			</ul>
 		</div>
 	</div>

@@ -55,7 +55,7 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="navbar">
 			<ul class="nav navbar-nav">
-				<li><a href="/leave-management/getLeaveCredits">Home</a></li>
+				<li><a href="/leave-management/get-leave-credits">Home</a></li>
 				<li><a href="/leave-management/fileLeave.jsp">File Leave</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right navbar-right-custom">
@@ -65,7 +65,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="/leave-management/changePassword.jsp">Change Password</a></li>
 					</ul></li>
-				<li><a href="/LogoutServlet">Logout</a></li>
+				<li><a href="/logout">Logout</a></li>
 			</ul>
 		</div>
 	</div>
@@ -77,7 +77,7 @@
 			<div
 				class="container-fluid col-xs-12 col-sm-6 col-sm-offset-1 col-md-10">
 				<form role="form" class="form-horizontal"
-					action="/leave-management/fileLeave" method="POST">
+					action="/leave-management/file-leave" method="POST">
 					<input type="hidden" name="recordId" value="${employee.id}">
 
 					<div class="form-group title" id="fileLeave">

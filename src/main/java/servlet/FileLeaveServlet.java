@@ -18,7 +18,7 @@ import model.LeaveRequest;
 import model.error.PageError;
 import utility.ContextKeys;
 
-@WebServlet(name = "fileLeaveServlet", urlPatterns = {"/leave-management/fileLeave/*","/leave-management/fileLeave" })
+@WebServlet(name = "file-leave", urlPatterns = {"/leave-management/file-leave/*","/leave-management/file-leave" })
 public class FileLeaveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -58,7 +58,7 @@ public class FileLeaveServlet extends HttpServlet {
 		try{
 			String requestID = leaveRequestDAO.createLeaveRequest(leaveRequest);
 			if(requestID != null){
-				RequestDispatcher rd = request.getRequestDispatcher("/leave-management/getLeaveCredits");
+				RequestDispatcher rd = request.getRequestDispatcher("/leave-management/get-leave-credits");
 				
 				request.setAttribute("smessage", "Request leave successful. Please wait while the request is pending for approval.");
 				rd.forward(request, response);

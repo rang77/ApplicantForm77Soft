@@ -24,7 +24,7 @@ import utility.StringEncryptor;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet(name = "/LoginServlet", urlPatterns = { "/LoginServlet", "/leave-management/LoginServlet" })
+@WebServlet(name = "/login", urlPatterns = { "/login", "/leave-management/login" })
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -33,7 +33,6 @@ public class LoginServlet extends HttpServlet {
 	 */
 	public LoginServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -65,6 +64,7 @@ public class LoginServlet extends HttpServlet {
 				PageError error = new PageError();
 				error.setMessage("Username or Password is incorrect. Please try again.");
 				request.setAttribute("error", error);
+				
 				RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
 
 				rd.forward(request, response);
@@ -79,13 +79,7 @@ public class LoginServlet extends HttpServlet {
 				Resource retrievedResource = resourceDAO.retrieveResource(resourceLogin.getResource());
 				
 				session.setAttribute("recordId", retrievedResource.getId());
-				response.sendRedirect("/leave-management/getLeaveCredits");
-				
-//
-//				RequestDispatcher rd = request.getRequestDispatcher("/leave-management/getLeaveCredits");
-//				session.setAttribute("recordId", retrievedResource.getId());
-//				session.setAttribute("resourceId", retrievedResource.getIdNumber());
-//				rd.forward(request, response);
+				response.sendRedirect("/leave-management/get-leave-credits");
 			} else {
 				PageError error = new PageError();
 				error.setMessage("Username or Password is incorrect. Please try again.");

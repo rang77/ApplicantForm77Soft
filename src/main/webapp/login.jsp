@@ -36,24 +36,15 @@
 		<div class="container">
 			<div id="home" class="row">
 				<img src="/img/77NewLogo.jpg" class="img-responsive" width="240px" />
-				<form class="form-horizontal" action="LoginServlet" method="post">
+				<form class="form-horizontal" action="login" method="post">
 					<div class="form-group title login-title-custom" id="formTitle">
 						LEAVE MANAGEMENT SYSTEM</div>
-					<c:if test="${not empty error}">
-						<div class="alert-danger alert-custom">
-							<strong><c:out value="${error.message}" /></strong>
-						</div>
-					</c:if>
-					<c:if test="${not empty smessage}">
-						<div class="alert-success alert-custom">
-							<strong><c:out value="${smessage}" /></strong>
-						</div>
-					</c:if>
+					<jsp:include page="/leave-management/pageMessages.jsp"></jsp:include>
 					<div class="form-group" style="margin-top: 22px">
 						<label class="col-xs-4 control-label" for="email">Email: </label>
 						<div class="col-xs-8">
 							<div class="input-group-xs">
-								<input type="text" class="form-control" name="email" id="email"
+								<input type="email" class="form-control" name="email" id="email"
 									placeholder="Email" />
 							</div>
 						</div>

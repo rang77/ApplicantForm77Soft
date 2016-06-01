@@ -19,7 +19,7 @@ import utility.StringEncryptor;
 /**
  * Servlet implementation class ChangePasswordServlet
  */
-@WebServlet("/leave-management/changePassword")
+@WebServlet("/leave-management/change-password")
 public class ChangePasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -28,7 +28,6 @@ public class ChangePasswordServlet extends HttpServlet {
      */
     public ChangePasswordServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -62,6 +61,8 @@ public class ChangePasswordServlet extends HttpServlet {
 				loginDAO.updateLogin(tempLogin);
 				String smessage = "Password has been successfully updated.";
 				request.setAttribute("smessage", smessage);
+
+				rd = request.getRequestDispatcher("/leave-management/get-leave-credits");
 			}else{
 				PageError error = new PageError();
 				

@@ -14,8 +14,7 @@ import db.ResourceDAO;
 import model.Resource;
 import utility.ContextKeys;
 
-@WebServlet(name = "retrieveLeaveCreditServlet", urlPatterns = {"/leave-management/viewLeave", "/leave-management/getLeaveCredits/*", "/leave-management/getLeaveCredits" })
-//@WebServlet(name = "/RetrieveLeaveCreditServlet")
+@WebServlet(name = "retrieve-leave-credit-servlet", urlPatterns = {"/leave-management/get-leave-credits/*", "/leave-management/get-leave-credits" })
 public class RetrieveLeaveCreditServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;

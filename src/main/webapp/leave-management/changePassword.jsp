@@ -24,11 +24,11 @@
 	}
 
 	function checkForm(form) {
-		if (form.newpassword1.value == form.newpassword2.value) {
+		if (form.newpassword1.value != form.newpassword2.value) {
 			alert("The passwords you have entered do not match.");
 			form.newpassword1.focus();
 			return false;
-		} else if (!checkPassword(form.newpassword1.value)) {
+		} else if (form.newpassword1.value == "" || !checkPassword(form.newpassword1.value)) {
 			alert("The password you have entered is not valid. Please make sure that your password "
 					+ "contains at least one number, one lowercase and one uppercase letter, and "
 					+ "must be at least six characters long.");
@@ -62,7 +62,7 @@
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="navbar">
 			<ul class="nav navbar-nav">
-				<li><a href="/leave-management/getLeaveCredits">Home</a></li>
+				<li><a href="/leave-management/get-leave-credits">Home</a></li>
 				<li><a href="/leave-management/fileLeave.jsp">File Leave</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right navbar-right-custom">
@@ -72,7 +72,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="/leave-management/changePassword.jsp">Change Password</a></li>
 					</ul></li>
-				<li><a href="/LogoutServlet">Logout</a></li>
+				<li><a href="/logout">Logout</a></li>
 			</ul>
 		</div>
 	</div>
@@ -84,7 +84,7 @@
 			<div
 				class="container-fluid col-xs-12 col-sm-6 col-sm-offset-1 col-md-10">
 				<form role="form" class="form-horizontal"
-					action="changePassword" method="POST" onsubmit="return checkForm(this);">
+					action="change-password" method="POST" onsubmit="return checkForm(this);">
 
 					<div class="form-group title" id="fileLeave">
 						<h2>Change Password</h2>

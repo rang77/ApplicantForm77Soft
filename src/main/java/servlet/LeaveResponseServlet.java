@@ -17,7 +17,7 @@ import utility.ContextKeys;
 /**
  * Servlet implementation class LeaveResponseServlet
  */
-@WebServlet("/leave-management/submitLeaveResponse")
+@WebServlet("/leave-management/submit-leave-response")
 public class LeaveResponseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

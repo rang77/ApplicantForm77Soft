@@ -18,7 +18,7 @@ import utility.StringEncryptor;
 /**
  * Servlet implementation class CreateNewPasswordServlet
  */
-@WebServlet("/leave-management/createNewPassword")
+@WebServlet("/leave-management/create-new-password")
 public class CreateNewPasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -53,7 +53,7 @@ public class CreateNewPasswordServlet extends HttpServlet {
 		String newpassword = request.getParameter("newpassword1");
 		
 		Login tempLogin = loginDAO.retrieveLoginById(id);
-		RequestDispatcher rd = request.getRequestDispatcher("/leave-management/promptNewPassword?id="+id);
+		RequestDispatcher rd = request.getRequestDispatcher("/leave-management/prompt-new-password?id="+id);
 		
 		System.out.println(request.getRequestURI());
 		if(tempLogin.getActivationCode().equals(activationCode)){

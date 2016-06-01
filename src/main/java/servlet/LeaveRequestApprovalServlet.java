@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class LeaveRequestApprovalServlet
  */
-@WebServlet("/leave-management/leaveRequestApproval")
+@WebServlet("/leave-management/leave-request-approval")
 public class LeaveRequestApprovalServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

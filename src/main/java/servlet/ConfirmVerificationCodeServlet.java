@@ -21,7 +21,7 @@ import utility.ContextKeys;
 /**
  * Servlet implementation class ConfirmApprovalCodeServlet
  */
-@WebServlet("/leave-management/ConfirmVerificationCode")
+@WebServlet("/leave-management/confirm-verification-code")
 public class ConfirmVerificationCodeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

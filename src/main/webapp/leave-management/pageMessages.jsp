@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <c:if test="${not empty messages}">
-	<c:forEach var="message" items="messages.pageMessages">
+	<c:forEach var="message" items="${messages.pageMessages}">
 		<c:choose>
 			<c:when test="${message.info}">
 				<c:set var="messageClass" value="alert-info" />
@@ -24,7 +24,7 @@
 		</c:choose>
 
 		<div class="${messageClass} alert-custom">
-			<strong><c:out value="${message}" /></strong>
+			<strong><c:out value="${message.message}" /></strong>
 		</div>
 	</c:forEach>
 </c:if>

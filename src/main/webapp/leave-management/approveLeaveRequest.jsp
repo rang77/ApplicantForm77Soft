@@ -42,7 +42,7 @@
 
 		<!-- Leave Detail Section -->
 		<div class="row container-fluid">
-			<form action="submitLeaveResponse" method="POST">
+			<form action="submit-leave-response" method="POST">
 				<div
 					class="container-fluid col-xs-12 col-sm-6 col-sm-offset-1 col-md-10">
 					<div class="form-horizontal output-form">

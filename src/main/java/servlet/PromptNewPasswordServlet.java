@@ -16,7 +16,7 @@ import utility.ContextKeys;
 /**
  * Servlet implementation class PromptNewPassword
  */
-@WebServlet("/leave-management/promptNewPassword")
+@WebServlet("/leave-management/prompt-new-password")
 public class PromptNewPasswordServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

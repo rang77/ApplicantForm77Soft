@@ -29,16 +29,12 @@ public class SessionFilter implements Filter {
 	/**
 	 * Default constructor.
 	 */
-	public SessionFilter() {
-		// TODO Auto-generated constructor stub
-	}
+	public SessionFilter() {}
 
 	/**
 	 * @see Filter#destroy()
 	 */
-	public void destroy() {
-		// TODO Auto-generated method stub
-	}
+	public void destroy() {}
 
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
@@ -62,7 +58,7 @@ public class SessionFilter implements Filter {
 		if (resourceId != null) {
 			
 			if(whiteList.contains(pageName)){
-				((HttpServletResponse)response).sendRedirect("/leave-management/getLeaveCredits");
+				((HttpServletResponse)response).sendRedirect("/leave-management/get-leave-credits");
 			}else{
 				chain.doFilter(request, response);
 			}
@@ -92,12 +88,12 @@ public class SessionFilter implements Filter {
 	public void init(FilterConfig fConfig) throws ServletException {
 		whiteListNoSession = new HashSet<>();
 		
-		whiteListNoSession.add("leaveRequestApproval");
-		whiteListNoSession.add("ConfirmVerificationCode");
-		whiteListNoSession.add("LoginServlet");
-		whiteListNoSession.add("promptNewPassword");
-		whiteListNoSession.add("createNewPassword");
-		whiteListNoSession.add("submitLeaveResponse");
+		whiteListNoSession.add("leave-request-approval");
+		whiteListNoSession.add("confirm-verification-code");
+		whiteListNoSession.add("login");
+		whiteListNoSession.add("prompt-new-password");
+		whiteListNoSession.add("create-new-password");
+		whiteListNoSession.add("submit-leave-response");
 		whiteListNoSession.add("forgot-password");
 		whiteListNoSession.add("forgotPassword.jsp");
 		whiteListNoSession.add("forgot-password-confirmation");
@@ -106,7 +102,7 @@ public class SessionFilter implements Filter {
 		whiteList.add("viewLeave.jsp");
 		whiteList.add("login.jsp");
 		whiteList.add("promptNewPassword.jsp");
-		whiteList.add("LoginServlet");
+		whiteList.add("login");
 		whiteList.add("confirmActivationCode.jsp");
 		whiteList.add("approveLeaveRequest.jsp");
 		whiteList.add("forgot-password-confirmation");

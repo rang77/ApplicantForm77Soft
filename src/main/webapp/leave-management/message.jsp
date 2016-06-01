@@ -36,26 +36,11 @@
 		<div class="container">
 			<div id="home" class="row">
 				<img src="/img/77NewLogo.jpg" class="img-responsive" width="240px" />
-				<form class="form-horizontal" action="ConfirmVerificationCode"
-					method="post" onsubmit="return checkForm(this);">
+				<div class="form-horizontal">
 					<div class="form-group title login-title-custom" id="formTitle">
 						LEAVE MANAGEMENT SYSTEM</div>
-					<c:if test="${not empty error}">
-						<div class="alert-danger alert-custom">
-							<strong><c:out value="${error.message}" /></strong>
-						</div>
-					</c:if>
-					<c:if test="${not empty smessage}">
-						<div class="alert-success alert-custom">
-							<strong><c:out value="${smessage}" /></strong>
-						</div>
-					</c:if>
-					<c:if test="${not empty imessage}">
-						<div class="alert-info alert-custom">
-							<strong><c:out value="${imessage}" /></strong>
-						</div>
-					</c:if>
-				</form>
+					<jsp:include page="/leave-management/pageMessages.jsp"/>
+				</div>
 			</div>
 		</div>
 	</div>
