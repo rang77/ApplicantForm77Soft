@@ -57,7 +57,7 @@ public class LeaveResponseServlet extends HttpServlet {
 			
 			leaveRequestDAO.updateLeaveRequest(leaveRequest);
 			
-			messages.addSuccessMessage("Your response has been submitted. Thank you! ü");
+			messages.addSuccessMessage("Your response has been submitted. Thank you!");
 			rd = request.getRequestDispatcher("/leave-management/message.jsp");
 		}else{
 			messages.addErrorMessage("An error occured.");
