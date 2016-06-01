@@ -4,6 +4,8 @@ import java.util.List;
 
 import model.LeaveRequest;
 
+//hi
+
 public class LeaveRequestDAO extends SalesforceDAO<LeaveRequest> {
 
 	public static final Class<LeaveRequest> DAOTABLE = LeaveRequest.class;	
