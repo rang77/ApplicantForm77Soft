@@ -163,7 +163,7 @@
 					<div class="form-group">
 						<div class="custom">
 							<button type="reset" class="btncustom">Clear</button>
-							<button type="submit" class="btncustom">Submit</button>
+							<button type="submit" class="btncustom btncustom-success">Submit</button>
 						</div>
 					</div>
 				</form>

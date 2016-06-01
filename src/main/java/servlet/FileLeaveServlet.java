@@ -24,6 +24,10 @@ public class FileLeaveServlet extends HttpServlet {
 	
 	public void init() throws ServletException {
 	}
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.sendRedirect("/login.jsp");
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

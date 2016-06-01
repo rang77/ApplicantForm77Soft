@@ -84,7 +84,7 @@
 			<div
 				class="container-fluid col-xs-12 col-sm-6 col-sm-offset-1 col-md-10">
 				<form role="form" class="form-horizontal"
-					action="/leave-management/ChangePasswordServlet" method="POST" onsubmit="return checkForm(this);">
+					action="changePassword" method="POST" onsubmit="return checkForm(this);">
 
 					<div class="form-group title" id="fileLeave">
 						<h2>Change Password</h2>

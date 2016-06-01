@@ -75,12 +75,17 @@ public class LoginServlet extends HttpServlet {
 			String hashedPassword = StringEncryptor.encryptString(password, resourceLogin.getSalt());
 
 			if (resourceLogin.getPassword().equals(hashedPassword)) {
+				
 				Resource retrievedResource = resourceDAO.retrieveResource(resourceLogin.getResource());
-
-				RequestDispatcher rd = request.getRequestDispatcher("/leave-management/getLeaveCredits");
+				
 				session.setAttribute("recordId", retrievedResource.getId());
+				response.sendRedirect("/leave-management/getLeaveCredits");
+				
+//
+//				RequestDispatcher rd = request.getRequestDispatcher("/leave-management/getLeaveCredits");
+//				session.setAttribute("recordId", retrievedResource.getId());
 //				session.setAttribute("resourceId", retrievedResource.getIdNumber());
-				rd.forward(request, response);
+//				rd.forward(request, response);
 			} else {
 				PageError error = new PageError();
 				error.setMessage("Username or Password is incorrect. Please try again.");

@@ -41,7 +41,7 @@ public class PromptNewPasswordServlet extends HttpServlet {
 			if(tempLogin != null && tempLogin.isAskForNewPassword()){
 				System.out.println(tempLogin.toString());
 				
-				RequestDispatcher rd = request.getRequestDispatcher("/promptNewPassword.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/leave-management/promptNewPassword.jsp");
 				request.setAttribute("login", tempLogin);
 				rd.forward(request, response);
 				
