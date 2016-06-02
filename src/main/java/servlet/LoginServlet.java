@@ -14,10 +14,8 @@ import com.force.api.ApiException;
 
 import db.LoginDAO;
 import db.ResourceDAO;
-import helper.ServletHelper;
 import model.Login;
 import model.Resource;
-import model.error.PageError;
 import model.messages.PageMessages;
 import utility.ContextKeys;
 import utility.StringEncryptor;
@@ -89,14 +87,8 @@ public class LoginServlet extends HttpServlet {
 				rd.forward(request, response);
 			}
 		} catch (ApiException e) {
-			PageError error = ServletHelper.handleAPIException(e.getMessage());
-
-			if (error != null) {
-				messages.addErrorMessage(error.getMessage());
-			}
-
+			messages.addErrorMessage("Username or Password is incorrect. Please try again.");
 			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
-
 			rd.forward(request, response);
 		}
 	}

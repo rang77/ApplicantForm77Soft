@@ -13,9 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.force.api.ApiException;
 
 import db.LeaveRequestDAO;
-import helper.ServletHelper;
 import model.LeaveRequest;
-import model.error.PageError;
 import model.messages.PageMessages;
 import utility.ContextKeys;
 
@@ -67,8 +65,6 @@ public class FileLeaveServlet extends HttpServlet {
 				messages.addSuccessMessage("Request leave successful. Please wait while the request is pending for approval.");
 				rd.forward(request, response);
 			}else{
-				RequestDispatcher rd = request.getRequestDispatcher("/leave-management/fileLeave.jsp");
-				
 				messages.addErrorMessage("An error has occurred.");
 				
 				request.setAttribute("leaveType",leaveType);
@@ -77,20 +73,19 @@ public class FileLeaveServlet extends HttpServlet {
 				request.setAttribute("reason",reason);
 				request.setAttribute("halfday",halfday);
 				
+				RequestDispatcher rd = request.getRequestDispatcher("/leave-management/fileLeave.jsp");
 				rd.forward(request, response);
 			}
 			
 		}catch(ApiException e){
-			PageError error = ServletHelper.handleAPIException(e.getMessage());
-			if(error != null){
-				messages.addErrorMessage(error.getMessage());
-			}
+			messages.addErrorMessage("An error has occured.");
 			
 			request.setAttribute("leaveType",leaveType);
 			request.setAttribute("startDate",startDate);
 			request.setAttribute("endDate",endDate);
 			request.setAttribute("reason",reason);
 			request.setAttribute("halfday",halfday);
+			
 			RequestDispatcher rd = request.getRequestDispatcher("/leave-management/fileLeave.jsp");
 			rd.forward(request, response);
 		}
