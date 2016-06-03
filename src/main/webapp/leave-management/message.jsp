@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/neotheme.css" />
 <link rel="stylesheet" href="/css/lms.css" />
+<link rel="stylesheet" href="/css/page-messages.css" />
 
 <title>Seven Seven GSI - Leave Management System</title>
 </head>

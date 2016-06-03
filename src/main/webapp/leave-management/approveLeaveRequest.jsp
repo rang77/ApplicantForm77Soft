@@ -16,10 +16,19 @@
 <link href="/css/bootstrap.css" rel="stylesheet">
 <link rel="stylesheet" href="/css/neotheme.css" />
 <link rel="stylesheet" href="/css/form-elements-new.css" />
+<link rel="stylesheet" href="/css/page-messages.css" />
 
 <script>
 	function copyResponse(response) {
 		$("#responseInput").val(response);
+	}
+	
+	function checkRemarks(form) {
+		if (form.remarks.value == "" && $("#responseInput").val() == "Denied") {
+			alert("Remarks field is required if leave request is denied");
+			return false;
+		}
+		return true;
 	}
 </script>
 
@@ -42,7 +51,7 @@
 
 		<!-- Leave Detail Section -->
 		<div class="row container-fluid">
-			<form action="submit-leave-response" method="POST">
+			<form action="submit-leave-response" method="POST" onsubmit="return checkRemarks(this);">
 				<div
 					class="container-fluid col-xs-12 col-sm-6 col-sm-offset-1 col-md-10">
 					<div class="form-horizontal output-form">
@@ -110,27 +119,21 @@
 									</div>
 								</div>
 							</div>
-
-							<c:if test="${leave.leaveStatus == 'Pending'}">
-								<div class="form-group">
-									<label class="col-sm-3 control-label" for="remarks">Remarks:
-									</label>
-									<div class="col-sm-9">
+							
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Remarks: </label>
+								<div class="col-sm-9">
+									<c:if test="${leave.leaveStatus == 'Pending'}">
 										<input type="text" class="form-control" name="remarks"
 											style="background-color: white;" id="remarks" />
-									</div>
-								</div>
-							</c:if>
-							<c:if test="${leave.leaveStatus != 'Pending'}">
-								<div class="form-group">
-									<label class="col-sm-3 control-label">Remarks: </label>
-									<div class="col-sm-9">
+									</c:if>
+									<c:if test="${leave.leaveStatus != 'Pending'}">
 										<div class="form-control">
 											<c:out value="${leave.remarks}" />
 										</div>
-									</div>
+									</c:if>
 								</div>
-							</c:if>
+							</div>
 
 						</div>
 

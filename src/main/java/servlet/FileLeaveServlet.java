@@ -13,7 +13,9 @@ import javax.servlet.http.HttpSession;
 import com.force.api.ApiException;
 
 import db.LeaveRequestDAO;
+import helper.ServletHelper;
 import model.LeaveRequest;
+import model.error.PageError;
 import model.messages.PageMessages;
 import utility.ContextKeys;
 
@@ -78,7 +80,12 @@ public class FileLeaveServlet extends HttpServlet {
 			}
 			
 		}catch(ApiException e){
-			messages.addErrorMessage("An error has occured.");
+			PageError pageError = ServletHelper.handleAPIException(e.getMessage());
+			if ("FIELD_CUSTOM_VALIDATION_EXCEPTION".equals(pageError.getErrorCode())) {
+				messages.addErrorMessage(pageError.getMessage());
+			} else {
+				messages.addErrorMessage("An error has occured.");
+			}
 			
 			request.setAttribute("leaveType",leaveType);
 			request.setAttribute("startDate",startDate);

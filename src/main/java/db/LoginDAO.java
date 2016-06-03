@@ -11,7 +11,7 @@ public class LoginDAO extends SalesforceDAO<Login> {
 	public Login retrieveLoginByEmail(String email){
 		connect();
 		
-		List<Login> result = retrieve(String.format("SELECT Id, Email__c, Password__c, Active__c, AskForNewPassword__c, Resource__c, Salt__c, ActivationCode__c" +
+		List<Login> result = retrieve(String.format("SELECT Id, Email__c, Password__c, Active__c, AskForNewPassword__c, Resource__c, Salt__c, ActivationCode__c, ForgotPassword__c" +
 											" FROM Login__c WHERE Email__c = '%s'"
 											,email), DAOTABLE);
 		

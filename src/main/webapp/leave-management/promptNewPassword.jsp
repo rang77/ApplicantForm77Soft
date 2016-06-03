@@ -16,17 +16,7 @@
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 <link rel="stylesheet" href="/css/neotheme.css" />
 <link rel="stylesheet" href="/css/lms.css" />
-
-<style>
-.alert-custom {
-	padding: 5px;
-	padding-left: 12px;
-	padding-right: 12px;
-	margin-bottom: 20px;
-	border: 1px solid transparent;
-	border-radius: 4px
-}
-</style>
+<link rel="stylesheet" href="/css/page-messages.css" />
 
 <script type="text/javascript">
 	function checkPassword(str) {
@@ -64,6 +54,11 @@
 					<div class="form-group title login-title-custom" id="formTitle">
 						LEAVE MANAGEMENT SYSTEM</div>
 					<jsp:include page="/leave-management/pageMessages.jsp"/>
+					<div class="alert-info alert-custom">
+						<strong><c:out value="Password must contain at least one number, 
+						one lowercase and one uppercase letter, and must be at least six
+						characters long." /></strong>
+					</div>
 					<input type="hidden" name="loginid" value="${login.id}" />
 					<div class="form-group" style="margin-top: 22px">
 						<label class="col-xs-4 control-label" for="newpassword1">New

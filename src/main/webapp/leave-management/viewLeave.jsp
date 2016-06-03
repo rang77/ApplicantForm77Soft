@@ -16,6 +16,7 @@
 <link href="/css/bootstrap.css" rel="stylesheet">
 <link rel="stylesheet" href="/css/neotheme.css" />
 <link rel="stylesheet" href="/css/form-elements-new.css" />
+<link rel="stylesheet" href="/css/page-messages.css" />
 
 <script>
 	$(function() {

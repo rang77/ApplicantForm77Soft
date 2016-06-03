@@ -16,6 +16,8 @@
 <link href="/css/bootstrap.css" rel="stylesheet">
 <link rel="stylesheet" href="/css/neotheme.css" />
 <link rel="stylesheet" href="/css/form-elements-new.css" />
+<link rel="stylesheet" href="/css/lms.css" />
+<link rel="stylesheet" href="/css/page-messages.css" />
 
 <script type="text/javascript">
 	function checkPassword(str) {
@@ -90,6 +92,11 @@
 						<h2>Change Password</h2>
 					</div>
 					<jsp:include page="/leave-management/pageMessages.jsp"/>
+					<div class="alert-warning alert-custom">
+						<strong><c:out value="Password must contain at least one number, 
+						one lowercase and one uppercase letter, and must be at least six
+						characters long." /></strong>
+					</div>
 					<div class="col-sm-12">
 						<div class="form-group">
 							<label class="col-sm-2 control-label" for="oldpassword">Old

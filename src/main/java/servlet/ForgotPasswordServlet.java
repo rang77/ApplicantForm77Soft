@@ -46,7 +46,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 			
 			Login login = loginDao.retrieveLoginByEmail(email);
 			
-			if (login != null) {
+			if (login != null && login.isActive()) {
 				login.setForgotPassword(true);
 				loginDao.updateLogin(login);
 			}

@@ -73,7 +73,7 @@ public class ConfirmVerificationCodeServlet extends HttpServlet {
 				if (login != null) {
 					if (code.equals(login.getActivationCode())) {
 						login.setForgotPassword(false);
-						login.setForgotPasswordDate(null);
+						login.setForgotPasswordDate("");
 						login.setAskForNewPassword(true);
 						
 						loginDao.updateLogin(login);

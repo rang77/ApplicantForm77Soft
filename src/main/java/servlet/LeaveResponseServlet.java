@@ -9,8 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.force.api.ApiException;
+
 import db.LeaveRequestDAO;
+import helper.ServletHelper;
 import model.LeaveRequest;
+import model.error.PageError;
 import model.messages.PageMessages;
 import utility.ContextKeys;
 
@@ -50,15 +54,24 @@ public class LeaveResponseServlet extends HttpServlet {
 		request.setAttribute("messages", messages);
 		
 		if(id != null && leaveStatus != null){
-			
-			LeaveRequest leaveRequest = leaveRequestDAO.retrieveRequestById(id);
-			leaveRequest.setRemarks(remarks);
-			leaveRequest.setLeaveStatus(leaveStatus);
-			
-			leaveRequestDAO.updateLeaveRequest(leaveRequest);
-			
-			messages.addSuccessMessage("Your response has been submitted. Thank you!");
-			rd = request.getRequestDispatcher("/leave-management/message.jsp");
+			try {
+				LeaveRequest leaveRequest = leaveRequestDAO.retrieveRequestById(id);
+				leaveRequest.setRemarks(remarks);
+				leaveRequest.setLeaveStatus(leaveStatus);
+				
+				leaveRequestDAO.updateLeaveRequest(leaveRequest);
+				
+				messages.addSuccessMessage("Your response has been submitted. Thank you!");
+				rd = request.getRequestDispatcher("/leave-management/message.jsp");
+			} catch (ApiException e) {
+				PageError pageError = ServletHelper.handleAPIException(e.getMessage());
+				if ("FIELD_CUSTOM_VALIDATION_EXCEPTION".equals(pageError.getErrorCode())) {
+					messages.addErrorMessage(pageError.getMessage());
+				} else {
+					messages.addErrorMessage("An error has occured.");
+				}
+				rd = request.getRequestDispatcher("/leave-management/approveLeaveRequest.jsp");
+			}
 		}else{
 			messages.addErrorMessage("An error occured.");
 			rd = request.getRequestDispatcher("/login.jsp");
