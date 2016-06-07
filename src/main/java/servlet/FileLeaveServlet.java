@@ -81,6 +81,8 @@ public class FileLeaveServlet extends HttpServlet {
 			
 		}catch(ApiException e){
 			PageError pageError = ServletHelper.handleAPIException(e.getMessage());
+			System.err.println(pageError.getErrorCode());
+			System.err.println(pageError.getMessage());
 			if ("FIELD_CUSTOM_VALIDATION_EXCEPTION".equals(pageError.getErrorCode())) {
 				messages.addErrorMessage(pageError.getMessage());
 			} else {

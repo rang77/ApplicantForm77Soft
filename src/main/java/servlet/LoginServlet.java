@@ -14,8 +14,10 @@ import com.force.api.ApiException;
 
 import db.LoginDAO;
 import db.ResourceDAO;
+import helper.ServletHelper;
 import model.Login;
 import model.Resource;
+import model.error.PageError;
 import model.messages.PageMessages;
 import utility.ContextKeys;
 import utility.StringEncryptor;
@@ -89,6 +91,9 @@ public class LoginServlet extends HttpServlet {
 				}
 			}
 		} catch (ApiException e) {
+			PageError pageError = ServletHelper.handleAPIException(e.getMessage());
+			System.err.println(pageError.getErrorCode());
+			System.err.println(pageError.getMessage());
 			messages.addErrorMessage("An error has occured. Please contact your administrator.");
 		}
 		
