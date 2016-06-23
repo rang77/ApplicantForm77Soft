@@ -49,27 +49,48 @@ public class ConfirmVerificationCodeServlet extends HttpServlet {
 		
 		PageMessages messages = new PageMessages();
 		request.setAttribute("messages", messages);
+		request.setAttribute("id", id);
+		request.setAttribute("type", type);
 		
 		if(id != null && type != null && code != null && !id.isEmpty() && !type.isEmpty() && !code.isEmpty()){
 			RequestDispatcher rd = null;
 			
 			if("LeaveRequest__c".equals(type)){
+				LeaveRequest leaveRequest = null;
 				LeaveRequestDAO leaveRequestDao = (LeaveRequestDAO) request.getServletContext().getAttribute(ContextKeys.LEAVE_REQUEST_DAO);
 				ResourceDAO resourceDao = (ResourceDAO) request.getServletContext().getAttribute(ContextKeys.RESOURCE_DAO);
 				
-				LeaveRequest leaveRequest = leaveRequestDao.retrieveRequestById(id);
-				
-				Resource resource = resourceDao.retrieveResourceApprovalDetails(leaveRequest.getEmployeeID(), leaveRequest);
-				
-				request.setAttribute("employee", resource);
-				request.setAttribute("leave", leaveRequest);
-				request.setAttribute("id", id);
-				
-				rd = request.getRequestDispatcher("/leave-management/approveLeaveRequest.jsp");
+				try{
+					leaveRequest = leaveRequestDao.retrieveRequestById(id);
+				}catch(Exception e){
+				}
+					
+				if (leaveRequest != null) {
+					if(code.equals(leaveRequest.getApprovalCode())){
+						Resource resource = resourceDao.retrieveResourceApprovalDetails(leaveRequest.getEmployeeID(), leaveRequest);
+						
+						request.setAttribute("employee", resource);
+						request.setAttribute("leave", leaveRequest);
+						request.setAttribute("id", id);
+						
+						rd = request.getRequestDispatcher("/leave-management/approveLeaveRequest.jsp");
+					}else{
+						messages.addErrorMessage("Invalid approval code.");
+						rd = request.getRequestDispatcher("/leave-management/confirmActivationCode.jsp");
+					}
+				} else {
+					messages.addErrorMessage("Leave request record does not exist.");
+					rd = request.getRequestDispatcher("/leave-management/confirmActivationCode.jsp");
+				}
 			} else if ("forgot-password".equals(type)) {
 				LoginDAO loginDao = (LoginDAO) request.getServletContext().getAttribute(ContextKeys.LOGIN_DAO);
-				Login login = loginDao.retrieveLoginById(id);
+				Login login = null;
 				
+				try{
+					login = loginDao.retrieveLoginById(id);
+				}catch(Exception e){
+				}
+					
 				if (login != null) {
 					if (code.equals(login.getActivationCode())) {
 						login.setForgotPassword(false);
